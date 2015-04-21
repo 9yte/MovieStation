@@ -1,0 +1,52 @@
+.my_input{
+	border-radius: 5px;
+	margin-bottom: 10px;
+	/*margin-left: 10%;
+	width: 80%;*/
+}
+
+.btn-primary{
+	background-color: #607D8B;
+	border-color: #607D8B;
+	font-size: 14px;
+}
+
+.btn-primary:hover{
+	background-color: #607D8B;
+}
+
+.my_input::-webkit-input-placeholder {
+    color: #78909C;
+}
+
+.my_input:-moz-placeholder {
+    color: #78909C;
+    opacity: 1;
+}
+
+.my_input::-moz-placeholder {
+    color: #78909C;
+    opacity: 1;
+}
+
+.my_input:-ms-input-placeholder {
+    color: #78909C;
+}
+
+.my_input{
+	color: #78909C;
+}
+
+.my_input:focus{
+	border-color: #EF9A9A;
+}
+
+.centered-form .panel {
+    background: #CFD8DC;
+    width: 80%;
+    float: right;
+}
+
+.divider{
+	margin: 5% 10%;
+}

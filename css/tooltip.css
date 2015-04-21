@@ -1,0 +1,8 @@
+.color_tooltip + .tooltip > .tooltip-inner {background-color: #EF9A9A;}
+.tooltip.bottom .tooltip-arrow {
+  top: 0;
+  left: 50%;
+  margin-left: -5px;
+  border-bottom-color: #EF9A9A; /* black */
+  border-width: 0 5px 5px;
+}
