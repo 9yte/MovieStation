@@ -1,0 +1,22 @@
+.badge-follower{
+	background-color: #E53935;
+	border-color: #E53935;
+}
+
+.nav.navbar-nav.navbar-right li a {
+    color: white;
+}
+
+.notif{
+	font-size: 10px;
+}
+
+#display-name{
+	font-weight: bolder;
+	font-size: 30px;
+}
+
+#pro-pic {
+	height: 200px;
+	width: 200px;
+}
