@@ -31,10 +31,10 @@
 	          </ul>
 	        </li>
 	        <li>
-	        	<a href="#">Home<span class="glyphicon glyphicon-home" aria-hidden="true"></span></a>
+	        	<a href="#"><span class="glyphicon glyphicon-home" aria-hidden="true"></span></a>
 	        </li>
 	        <li class="dropdown">
-	          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Setting <span class="caret"></span></a>
+	          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false"><span class="glyphicon glyphicon-cog"></span></a>
 	          <ul class="dropdown-menu" role="menu">
 	            <li><a href="#">Action</a></li>
 	            <li><a href="#">Another action</a></li>
@@ -49,7 +49,7 @@
 	        <div class="form-group">
 	          <input type="text" class="form-control" placeholder="Search">
 	        </div>
-	        <button type="submit" class="btn btn-default">Search</button>
+	        <button type="submit" class="btn btn-default"><span class="glyphicon glyphicon-search"></span></button>
 	      </form>
 	    </div><!-- /.navbar-collapse -->
 	  </div><!-- /.container-fluid -->
@@ -79,28 +79,152 @@
   						follower <span class="badge">40</span>
 					</button>
 				</div>
-			</div>
-		</div>
+			</div><!-- detail -->
+		</div><!-- profile detail -->
 		<br>
+
 		<ul class="nav nav-tabs col-lg-12" data-tabs="tabs">
-			<li class="active"><a href="#post-tab" data-toggle="tab">Posts</a></li>
-			<li><a href="#follower-tab" data-toggle="tab">Follower</a></li>
+			<li><a href="#post-tab" data-toggle="tab">Posts</a></li>
+			<li class="active"><a href="#follower-tab" data-toggle="tab">Follower</a></li>
 			<li><a href="#following-tab" data-toggle="tab">Following</a></li>
-		</ul>
-		<div id="my-tab-content" class="tab-content">
-			<div class="row col-lg-12 tab-pane active" id="post-tab">
-				<div class="panel panel-default">
-					<div class="panel-heading">
-						<h3 class="panel-title">Brave</h3>
+		</ul><!-- nav tab -->
+		<br>
+		<div id="my-tab-content col-lg-12" class="tab-content">
+			<div class="row col-lg-12 tab-pane" id="post-tab">
+				
+				<div class="panel panel-default post-panel"> <!-- post begin -->
+					<div class="panel-heading post-header">
+						<a class="panel-title time" href="#">Yesterday</a>
 					</div>
-					<div class="panel-body">
-					Panel content
+					<div class="panel-body post-body">
+						<div class="row movie-desc">
+								<img src="pics/Brave.jpg" class="movie-img">
+								<a href="#">Brave</a>
+								<span class="starRating">
+							       <input id="rating5" type="radio" name="rating" value="5">
+							       <label for="rating5">5</label>
+							       <input id="rating4" type="radio" name="rating" value="4">
+							       <label for="rating4">4</label>
+							       <input id="rating3" type="radio" name="rating" value="3" checked>
+							       <label for="rating3">3</label>
+							       <input id="rating2" type="radio" name="rating" value="2">
+							       <label for="rating2">2</label>
+							       <input id="rating1" type="radio" name="rating" value="1">
+							       <label for="rating1">1</label>
+							    </span>
+								<br>		
+						</div>
+						<div class="col-lg-12 post-content">
+							<p>
+								Very impressive animation.
+							</p>
+						</div>
 					</div>
-				</div>	
-			</div>
-			<div class="row col-lg-12 tab-pane" id="follower-tab">
-				<p>FOLlOWER!</p>
-			</div>
+					<table class="table">
+						<tr>
+							<td>akjsdh</td>
+							<td>90909</td>
+						</tr>
+					</table>
+				</div>	<!-- post ends -->
+
+
+				<div class="panel panel-default post-panel"> <!-- post begin -->
+					<div class="panel-heading post-header">
+						<a class="panel-title time" href="#">Yesterday</a>
+					</div>
+					<div class="panel-body post-body">
+						<div class="row movie-desc">
+								<img src="pics/Brave.jpg" class="movie-img">
+								<a href="#">Brave</a>
+								<span class="starRating">
+							       <input id="rating5" type="radio" name="rating" value="5">
+							       <label for="rating5">5</label>
+							       <input id="rating4" type="radio" name="rating" value="4">
+							       <label for="rating4">4</label>
+							       <input id="rating3" type="radio" name="rating" value="3" checked>
+							       <label for="rating3">3</label>
+							       <input id="rating2" type="radio" name="rating" value="2">
+							       <label for="rating2">2</label>
+							       <input id="rating1" type="radio" name="rating" value="1">
+							       <label for="rating1">1</label>
+							    </span>
+								<br>		
+						</div>
+						<div class="col-lg-12 post-content">
+							<p>
+								Very impressive animation.
+							</p>
+						</div>
+					</div>
+					<table class="table">
+						<tr>
+							<td>akjsdh</td>
+							<td>90909</td>
+						</tr>
+					</table>
+				</div>	<!-- post ends -->
+
+
+			</div> <!-- post-tab -->
+
+			<div class="row col-lg-12 tab-pane active" id="follower-tab">
+				<table class="table"> 
+					<tr>
+						<td>
+							<img class="img-responsive img-circle follow"  src="peyman.jpg">
+							<span class="follow">Sajjad</span>
+							<button type="button" class="btn btn-primary btn-xs follow" data-toggle="button" aria-pressed="false" autocomplete="off">Follow
+							</button>
+						</td>
+						<td>
+							<img class="img-responsive img-circle follow"  src="peyman.jpg">
+							<span class="follow">Sajjad</span>
+							<button type="button" class="btn btn-primary btn-xs  follow" data-toggle="button" aria-pressed="false" autocomplete="off">Follow
+							</button>
+						</td>
+						<td>
+							<img class="img-responsive img-circle follow"  src="peyman.jpg">
+							<span class="follow">Sajjad</span>
+							<button type="button" class="btn btn-primary  btn-xs follow" data-toggle="button" aria-pressed="false" autocomplete="off">Follow
+							</button>
+						</td>
+						<td>
+							<img class="img-responsive img-circle follow"  src="peyman.jpg">
+							<span class="follow">Sajjad</span>
+							<button type="button" class="btn btn-primary  btn-xs follow" data-toggle="button" aria-pressed="false" autocomplete="off">Follow
+							</button>
+						</td>
+					</tr>
+					<tr>
+						<td>
+							<img class="img-responsive img-circle follow"  src="peyman.jpg">
+							<span class="follow">Sajjad</span>
+							<button type="button" class="btn btn-primary  btn-xs follow" data-toggle="button" aria-pressed="false" autocomplete="off">Follow
+							</button>
+						</td>
+						<td>
+							<img class="img-responsive img-circle follow"  src="peyman.jpg">
+							<span class="follow">Sajjad</span>
+							<button type="button" class="btn btn-primary  btn-xs follow" data-toggle="button" aria-pressed="false" autocomplete="off">Follow
+							</button>
+						</td>
+						<td>
+							<img class="img-responsive img-circle follow"  src="peyman.jpg">
+							<span class="follow">Sajjad</span>
+							<button type="button" class="btn btn-primary  btn-xs follow" data-toggle="button" aria-pressed="false" autocomplete="off">Follow
+							</button>
+						</td>
+						<td>
+							<img class="img-responsive img-circle follow"  src="peyman.jpg">
+							<span class="follow">Sajjad</span>
+							<button type="button" class="btn btn-primary  btn-xs follow" data-toggle="button" aria-pressed="false" autocomplete="off">Follow
+							</button>
+						</td>
+					</tr>
+				</table>
+			</div><!-- follower-tab-->
+			
 			<div class="row col-lg-12 tab-pane" id="following-tab">
 				<p>FOLLOWING!</p>
 			</div>	
