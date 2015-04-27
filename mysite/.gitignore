@@ -1,0 +1,6 @@
+*.pyc
+*.DS_STORE
+*.sqlite3
+*.idea
+*.idea/*
+*.iml

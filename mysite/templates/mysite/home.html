@@ -1,33 +1,8 @@
-<!DOCTYPE html>
-<head>
-	<title>Home, Wellcome</title>
-	<script type="text/javascript">
-    	document.write("\<script src='http://code.jquery.com/jquery-latest.min.js' type='text/javascript'>\<\/script>");
-	</script>
-	<link rel="stylesheet" type="text/css" href="css/bootstrap/bootstrap.min.css">
-	<script type="text/javascript" src="js/bootstrap/bootstrap.min.js"></script>
-	<script type="text/javascript" src="js/tooltip.js"></script>
-	<link rel="stylesheet" type="text/css" href="css/navbar.css">
-	<link rel="stylesheet" type="text/css" href="css/tooltip.css">
-	<link rel="stylesheet" type="text/css" href="css/form.css">
-</head>
-<body>
-	<nav class="navbar navbar-default">
-	  <div class="container-fluid">
-	    <!-- Brand and toggle get grouped for better mobile display -->
-	    
-
-	    <!-- Collect the nav links, forms, and other content for toggling -->
-	    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-	      <ul class="nav navbar-nav">
-	      </ul>
-	    </div><!-- /.navbar-collapse -->
-	  </div><!-- /.container-fluid -->
-	</nav>
-	<div class="container">
-		<div class="row">
+{% extends 'mysite/base.html' %}
+{% block loginForm %}
+    <div class="row">
 			<div class="col-lg-9" id="web_desc">
-				
+
 			</div>
 			<div class="col-lg-3" id="forms">
 				<div class="row centered-form">
@@ -82,10 +57,7 @@
 	                        </form>
 	                    </div>
 	                </div>
-
-
         		</div>
 			</div>
 		</div>
-	</div>
-</body>
+{% endblock loginForm %}

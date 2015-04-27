@@ -1,67 +1,9 @@
-<!DOCTYPE html>
-<head>
-	<title>Peyman Ezzati</title>
-	
-	<link rel="stylesheet" type="text/css" href="css/bootstrap/bootstrap.min.css">
-	<link rel="stylesheet" type="text/css" href="css/navbar.css">
-	<link rel="stylesheet" type="text/css" href="css/profile.css">
+{% extends 'mysite/base1.html' %}
+{% load static %}
+{% block content %}
 
-</head>
-<body>
-	
-
-	<nav class="navbar navbar-default">
-	  <div class="container-fluid">
-	    <!-- Brand and toggle get grouped for better mobile display -->
-	    
-
-	    <!-- Collect the nav links, forms, and other content for toggling -->
-	    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-	      
-	      <ul class="nav navbar-nav navbar-right">
-	        <li>
-	        	<a href="#">Peyman</a>
-	        </li>
-	        <li class="dropdown">
-	        	<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false"> Notification <span class="caret"></span></a>
-	          <ul class="dropdown-menu" role="menu">
-	            <li><a href="#"> Navid Liked your post</a></li>
-	            <li class="divider"></li>
-	            <li><a href="#">Karim Comment on your Post</a></li>
-	          </ul>
-	        </li>
-	        <li>
-	        	<a href="#"><span class="glyphicon glyphicon-home" aria-hidden="true"></span></a>
-	        </li>
-	        <li class="dropdown">
-	          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false"><span class="glyphicon glyphicon-cog"></span></a>
-	          <ul class="dropdown-menu" role="menu">
-	            <li><a href="#">Action</a></li>
-	            <li><a href="#">Another action</a></li>
-	            <li><a href="#">Something else here</a></li>
-	            <li class="divider"></li>
-	            <li><a href="home.html">log Out</a></li>
-	          </ul>
-	        </li>
-	        
-	      </ul>
-	      <form class="navbar-form navbar-right" role="search">
-	        <div class="form-group">
-	          <input type="text" class="form-control" placeholder="Search">
-	        </div>
-	        <button type="submit" class="btn btn-default"><span class="glyphicon glyphicon-search"></span></button>
-	      </form>
-	    </div><!-- /.navbar-collapse -->
-	  </div><!-- /.container-fluid -->
-	</nav>
-
-
-
-
-
-	<div class="container">
 		<div class="row" id="main-detail">
-			<img class="img-responsive col-lg-3" id="pro-pic" src="peyman.jpg">
+			<img class="img-responsive col-lg-3" id="pro-pic" src="{% static 'img/peyman.jpg' %}">
 			<div class="col-lg-9">
 				<div class="row">
 					<span id="display-name">Peyman Ezzati</span>
@@ -91,14 +33,14 @@
 		<br>
 		<div id="my-tab-content col-lg-12" class="tab-content">
 			<div class="row col-lg-12 tab-pane" id="post-tab">
-				
+
 				<div class="panel panel-default post-panel"> <!-- post begin -->
 					<div class="panel-heading post-header">
 						<a class="panel-title time" href="#">Yesterday</a>
 					</div>
 					<div class="panel-body post-body container">
 						<div class="row movie-desc">
-								<img src="pics/Brave.jpg" class="movie-img">
+								<img src="{% static 'img/Brave.jpg' %}" class="movie-img">
 								<a href="#">Brave</a>
 								<span class="starRating">
 							       <input id="rating5" type="radio" name="rating" value="5">
@@ -112,7 +54,7 @@
 							       <input id="rating1" type="radio" name="rating" value="1">
 							       <label for="rating1">1</label>
 							    </span>
-								<br>		
+								<br>
 						</div>
 						<div class="col-lg-12 post-content">
 							<p>
@@ -125,10 +67,10 @@
 						<tr class="like-row">
 							<td>
 								<div>
-									<img class="img-responsive img-circle" src="peyman.jpg">	
+									<img class="img-responsive img-circle" src="peyman.jpg">
 									<p>I love her hair! realy i love it</p>
 								</div>
-								
+
 							</td>
 						</tr>
 					</table>
@@ -141,7 +83,7 @@
 					</div>
 					<div class="panel-body post-body">
 						<div class="row movie-desc">
-								<img src="pics/Brave.jpg" class="movie-img">
+								<img src="{% static 'img/Brave.jpg' %}" class="movie-img">
 								<a href="#">Brave</a>
 								<span class="starRating">
 							       <input id="rating5" type="radio" name="rating" value="5">
@@ -155,7 +97,7 @@
 							       <input id="rating1" type="radio" name="rating" value="1">
 							       <label for="rating1">1</label>
 							    </span>
-								<br>		
+								<br>
 						</div>
 						<div class="col-lg-12 post-content">
 							<p>
@@ -176,28 +118,28 @@
 			</div> <!-- post-tab -->
 
 			<div class="row col-lg-12 tab-pane active" id="follower-tab">
-				<table class="table"> 
+				<table class="table">
 					<tr>
 						<td>
-							<img class="img-responsive img-circle follow"  src="peyman.jpg">
+							<img class="img-responsive img-circle follow"  src="{% static 'img/peyman.jpg' %}">
 							<span class="follow">Sajjad</span>
 							<button type="button" class="btn btn-primary btn-xs follow" data-toggle="button" aria-pressed="false" autocomplete="off">Follow
 							</button>
 						</td>
 						<td>
-							<img class="img-responsive img-circle follow"  src="peyman.jpg">
+							<img class="img-responsive img-circle follow"  src="{% static 'img/peyman.jpg' %}">
 							<span class="follow">Sajjad</span>
 							<button type="button" class="btn btn-primary btn-xs  follow" data-toggle="button" aria-pressed="false" autocomplete="off">Follow
 							</button>
 						</td>
 						<td>
-							<img class="img-responsive img-circle follow"  src="peyman.jpg">
+							<img class="img-responsive img-circle follow"  src="{% static 'img/peyman.jpg' %}">
 							<span class="follow">Sajjad</span>
 							<button type="button" class="btn btn-primary  btn-xs follow" data-toggle="button" aria-pressed="false" autocomplete="off">Follow
 							</button>
 						</td>
 						<td>
-							<img class="img-responsive img-circle follow"  src="peyman.jpg">
+							<img class="img-responsive img-circle follow"  src="{% static 'img/peyman.jpg' %}">
 							<span class="follow">Sajjad</span>
 							<button type="button" class="btn btn-primary  btn-xs follow" data-toggle="button" aria-pressed="false" autocomplete="off">Follow
 							</button>
@@ -205,25 +147,25 @@
 					</tr>
 					<tr>
 						<td>
-							<img class="img-responsive img-circle follow"  src="peyman.jpg">
+							<img class="img-responsive img-circle follow"  src="{% static 'img/peyman.jpg' %}">
 							<span class="follow">Sajjad</span>
 							<button type="button" class="btn btn-primary  btn-xs follow" data-toggle="button" aria-pressed="false" autocomplete="off">Follow
 							</button>
 						</td>
 						<td>
-							<img class="img-responsive img-circle follow"  src="peyman.jpg">
+							<img class="img-responsive img-circle follow"  src="{% static 'img/peyman.jpg' %}">
 							<span class="follow">Sajjad</span>
 							<button type="button" class="btn btn-primary  btn-xs follow" data-toggle="button" aria-pressed="false" autocomplete="off">Follow
 							</button>
 						</td>
 						<td>
-							<img class="img-responsive img-circle follow"  src="peyman.jpg">
+							<img class="img-responsive img-circle follow"  src="{% static 'img/peyman.jpg' %}">
 							<span class="follow">Sajjad</span>
 							<button type="button" class="btn btn-primary  btn-xs follow" data-toggle="button" aria-pressed="false" autocomplete="off">Follow
 							</button>
 						</td>
 						<td>
-							<img class="img-responsive img-circle follow"  src="peyman.jpg">
+							<img class="img-responsive img-circle follow"  src="{% static 'img/peyman.jpg' %}">
 							<span class="follow">Sajjad</span>
 							<button type="button" class="btn btn-primary  btn-xs follow" data-toggle="button" aria-pressed="false" autocomplete="off">Follow
 							</button>
@@ -231,18 +173,10 @@
 					</tr>
 				</table>
 			</div><!-- follower-tab-->
-			
+
 			<div class="row col-lg-12 tab-pane" id="following-tab">
 				<p>FOLLOWING!</p>
-			</div>	
+			</div>
 		</div>
-		
-	</div>
 
-
-  
-
-	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
-	<script  src="js/bootstrap/bootstrap.min.js"></script>
-	
-</body>
+{% endblock content %}
