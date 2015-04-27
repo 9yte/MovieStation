@@ -81,7 +81,7 @@ tr.like-row  td  p {
   display         : block;
   float           : right;
   position        : relative;
-  background      : url('../pics/star-off.svg');
+  background      : url('../../static/img/star-off.svg');
   background-size : contain;
 }
 
@@ -90,7 +90,7 @@ tr.like-row  td  p {
   display         : block;
   width           : 1.5em;
   height          : 1.5em;
-  background      : url('../pics/star-on.svg');
+  background      : url('../../static/img/star-on.svg');
   background-size : contain;
   opacity         : 0;
   transition      : opacity 0.2s linear;
