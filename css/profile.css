@@ -46,6 +46,23 @@ button.follow {
 	float: right;
 }
 
+div.post-content  p  span.like-button {
+	padding: 0px;
+}
+
+tr.like-row  td  img {
+	height: 40px;
+	width: 40px;
+	float: left;
+
+}
+
+tr.like-row  td  p {
+	float: left;
+	margin-left: 10px;
+}
+
+
 
 .starRating:not(old){
   display        : inline-block;
