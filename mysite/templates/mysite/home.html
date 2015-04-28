@@ -1,63 +1,244 @@
-{% extends 'mysite/base.html' %}
-{% block loginForm %}
-    <div class="row">
-			<div class="col-lg-9" id="web_desc">
+{% extends 'mysite/base1.html' %}
+{% load static %}
+{% block content %}
 
-			</div>
-			<div class="col-lg-3" id="forms">
-				<div class="row centered-form">
-	                <div class="panel panel-default">
-	                    <div class="panel-body">
-	                        <form method="post" role="form" action="#">
-
-	                            <div class="form-group">
-	                                <input type="text" name="username" id="username"
-	                                       class="form-control input-sm color_tooltip my_input" placeholder="username"
-	                                       data-toggle="tooltip" data-animation="true"
-	                                       data-placement="bottom" title="Please enter your username">
-	                                <input type="password" name="password" id="password"
-	                                       class="form-control input-sm color_tooltip my_input" placeholder="password"
-	                                       data-toggle="tooltip" data-animation="true"
-	                                       data-placement="bottom" title="Please enter your password">
-	                            </div>
-	                            <div class="btn-group" role="group" aria-label="...">
-	                                <div class="btn-group" role="group">
-	                                    <button type="submit" class="btn btn-primary pull-left">
-	                                        Sign In
-	                                    </button>
-	                                </div>
-	                            </div>
-	                        </form>
-	                    </div>
-	                    <hr class="divider">
-	                    <div class="panel-body">
-	                        <form method="post" role="form" action="#">
-
-	                            <div class="form-group">
-	                                <input type="text" name="username" id="username"
-	                                       class="form-control input-sm color_tooltip my_input" placeholder="username"
-	                                       data-toggle="tooltip" data-animation="true"
-	                                       data-placement="bottom" title="Please enter your username">
-	                                <input type="password" name="password" id="password"
-	                                       class="form-control input-sm color_tooltip my_input" placeholder="password"
-	                                       data-toggle="tooltip" data-animation="true"
-	                                       data-placement="bottom" title="Please enter your password">
-	                                <input type="password" name="password_confirm" id="password_confirm"
-	                                       class="form-control input-sm color_tooltip my_input" placeholder="confirm"
-	                                       data-toggle="tooltip" data-animation="true"
-	                                       data-placement="bottom" title="Please confirm your password">
-	                            </div>
-	                            <div class="btn-group" role="group" aria-label="...">
-	                                <div class="btn-group" role="group">
-	                                    <button type="submit" class="btn btn-primary pull-left">
-	                                        Sign Up
-	                                    </button>
-	                                </div>
-	                            </div>
-	                        </form>
-	                    </div>
-	                </div>
-        		</div>
-			</div>
-		</div>
-{% endblock loginForm %}
+<link rel="stylesheet" type="text/css" href="{% static 'css/timeline_style.css' %}">
+<div class="row">
+    <div class="col-xs-3 section">
+        <div class="panel panel-default" id="l">
+            <div class="panel-body">
+                <h5>Popular movies</h5>
+                <hr class="divider">
+                <div class="media">
+                    <div class="media-left media-top popular-movie">
+                        <a href="#">
+                            <img class="media-object img-rounded" src="{% static 'img/Interstellar1.jpg' %}" alt="...">
+                        </a>
+                    </div>
+                    <div class="media-body">
+                        <h4 class="media-heading">Interstellar</h4>
+                        rating here!
+                    </div>
+                </div>
+                <hr class="divider small-divider">
+                <div class="media">
+                    <div class="media-left media-top popular-movie">
+                        <a href="#">
+                            <img class="media-object img-rounded" src="{% static 'img/Interstellar1.jpg' %}" alt="...">
+                        </a>
+                    </div>
+                    <div class="media-body">
+                        <h4 class="media-heading">Interstellar</h4>
+                        rating here!
+                    </div>
+                </div>
+                <hr class="divider small-divider">
+                <div class="media">
+                    <div class="media-left media-top popular-movie">
+                        <a href="#">
+                            <img class="media-object img-rounded" src="{% static 'img/Interstellar1.jpg' %}" alt="...">
+                        </a>
+                    </div>
+                    <div class="media-body">
+                        <h4 class="media-heading">Interstellar</h4>
+                        rating here!
+                    </div>
+                </div>
+                <hr class="divider small-divider">
+                <div class="media">
+                    <div class="media-left media-top popular-movie">
+                        <a href="#">
+                            <img class="media-object img-rounded" src="{% static 'img/Interstellar1.jpg' %}" alt="...">
+                        </a>
+                    </div>
+                    <div class="media-body">
+                        <h4 class="media-heading">Interstellar</h4>
+                        rating here!
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="col-xs-6 section">
+        <div class="panel panel-default" id="m">
+            <div class="panel-body">
+                <img class="img-responsive col-lg-3 pro-pic" src="{% static 'img/peyman.jpg' %}">
+                <h5>Peyman Ezzati</h5>
+                <div class="red date"><span class="glyphicon glyphicon-time" aria-hidden="true"></span>13 April 1994</div>
+                <!--<hr class="divider small-divider">-->
+                <div class="col-sm-12 col-md-12">
+                    <div class="thumbnail">
+                        <img src="{% static 'img/Interstellar.jpg' %}" alt="...">
+                        <div class="caption">
+                            <p>Interstellar is a 2014 science fiction epic film directed by Christopher Nolan, starring Matthew McConaughey, Anne Hathaway, Jessica Chastain and Michael Caine. The film features a crew of astronauts who travel through a wormhole in search of a new home for humanity. Brothers Christopher and Jonathan Nolan wrote the screenplay, which has its origins in a script Jonathan developed in 2007. Christopher Nolan produced the film with his wife Emma Thomas through their production company Syncopy and with Lynda Obst through Lynda Obst Productions.</p>
+                            <div class="hr text-left"><span class="glyphicon glyphicon-comment"></span>12 <span class="glyphicon glyphicon-star-empty star-like"></span>10</div>
+                            <!--<div class="comment">-->
+                            <div class="media">
+                                <div class="media-left media-top my-media">
+                                    <a href="#">
+                                        <img class="media-object img-circle" src="{% static 'img/peyman.jpg' %}" alt="...">
+                                    </a>
+                                </div>
+                                <div class="media-body">
+                                    the end of earth will not be the end of us!the end of earth will not be the end of us!the end of earth will not be the end of us!the end of earth will not be the end of us!
+                                </div>
+                            </div>
+                            <div class="hr small-divider text-right"><span class="glyphicon glyphicon-time" aria-hidden="true"></span>25 Nov 2014</div>
+                            <div class="media">
+                                <div class="media-left media-top my-media">
+                                    <a href="#">
+                                        <img class="media-object img-circle" src="{% static 'img/peyman.jpg' %}" alt="...">
+                                    </a>
+                                </div>
+                                <div class="media-body">
+                                    the end of earth will not be the end of us!the end of earth will not be the end of us!the end of earth will not be the end of us!the end of earth will not be the end of us!
+                                </div>
+                            </div>
+                            <div class="hr small-divider text-right"><span class="glyphicon glyphicon-time" aria-hidden="true"></span>25 Nov 2014</div>
+                            <div class="media" id="last-media">
+                                <div class="media-left media-top my-media">
+                                    <a href="#">
+                                        <img class="media-object img-circle" src="{% static 'img/peyman.jpg' %}" alt="...">
+                                    </a>
+                                </div>
+                                <div class="media-body">
+                                    <div class="input-group col-lg-12 col-xs-12">
+                                        <textarea type="text" class="form-control" id="comment" placeholder="Add comment..."></textarea>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <!--</div>-->
+                    </div>
+                </div>
+            </div>
+            <hr class="divider">
+            <!--<div class="panel-body">-->
+            <!--<img class="img-responsive col-lg-3 pro-pic" src="{% static 'img/peyman.jpg' %}">-->
+            <!--<h5>Peyman Ezzati</h5>-->
+            <!--<div class="red date"><span class="glyphicon glyphicon-time" aria-hidden="true"></span>13 April 1994</div>-->
+            <!--&lt;!&ndash;<hr class="divider small-divider">&ndash;&gt;-->
+            <!--<div class="col-sm-12 col-md-12">-->
+            <!--<div class="thumbnail">-->
+            <!--<img src="{% static 'img/Interstellar.jpg' %}" alt="...">-->
+            <!--<div class="caption">-->
+            <!--<p>Interstellar is a 2014 science fiction epic film directed by Christopher Nolan, starring Matthew McConaughey, Anne Hathaway, Jessica Chastain and Michael Caine. The film features a crew of astronauts who travel through a wormhole in search of a new home for humanity. Brothers Christopher and Jonathan Nolan wrote the screenplay, which has its origins in a script Jonathan developed in 2007. Christopher Nolan produced the film with his wife Emma Thomas through their production company Syncopy and with Lynda Obst through Lynda Obst Productions.</p>-->
+            <!--<div class="hr text-left"><span class="glyphicon glyphicon-comment"></span>12 <span class="glyphicon glyphicon-star-empty star-like"></span>10</div>-->
+            <!--&lt;!&ndash;<div class="comment">&ndash;&gt;-->
+            <!--<div class="media">-->
+            <!--<div class="media-left media-top my-media">-->
+            <!--<a href="#">-->
+            <!--<img class="media-object img-circle" src="{% static 'img/peyman.jpg' %}" alt="...">-->
+            <!--</a>-->
+            <!--</div>-->
+            <!--<div class="media-body">-->
+            <!--the end of earth will not be the end of us!the end of earth will not be the end of us!the end of earth will not be the end of us!the end of earth will not be the end of us!-->
+            <!--</div>-->
+            <!--</div>-->
+            <!--<div class="hr small-divider text-right"><span class="glyphicon glyphicon-time" aria-hidden="true"></span>25 Nov 2014</div>-->
+            <!--<div class="media">-->
+            <!--<div class="media-left media-top my-media">-->
+            <!--<a href="#">-->
+            <!--<img class="media-object img-circle" src="{% static 'img/peyman.jpg' %}" alt="...">-->
+            <!--</a>-->
+            <!--</div>-->
+            <!--<div class="media-body">-->
+            <!--the end of earth will not be the end of us!the end of earth will not be the end of us!the end of earth will not be the end of us!the end of earth will not be the end of us!-->
+            <!--</div>-->
+            <!--</div>-->
+            <!--<div class="hr small-divider text-right"><span class="glyphicon glyphicon-time" aria-hidden="true"></span>25 Nov 2014</div>-->
+            <!--<div class="media" id="last-media">-->
+            <!--<div class="media-left media-top my-media">-->
+            <!--<a href="#">-->
+            <!--<img class="media-object img-circle" src="{% static 'img/peyman.jpg' %}" alt="...">-->
+            <!--</a>-->
+            <!--</div>-->
+            <!--<div class="media-body">-->
+            <!--<div class="input-group col-lg-12 col-xs-12">-->
+            <!--<textarea type="text" class="form-control" id="comment" placeholder="Add comment..."></textarea>-->
+            <!--</div>-->
+            <!--</div>-->
+            <!--</div>-->
+            <!--</div>-->
+            <!--&lt;!&ndash;</div>&ndash;&gt;-->
+            <!--</div>-->
+            <!--</div>-->
+            <!--</div>-->
+        </div>
+    </div>
+    <div class="col-xs-3 section">
+        <div class="panel panel-default" id="r">
+            <div class="panel-body">
+                <h5>Movies you may interest!</h5>
+                <hr class="divider">
+                <div class="media">
+                    <div class="media-left media-top popular-movie">
+                        <a href="#">
+                            <img class="media-object img-rounded" src="{% static 'img/Interstellar1.jpg' %}" alt="...">
+                        </a>
+                    </div>
+                    <div class="media-body">
+                        <h4 class="media-heading">Interstellar</h4>
+                        4 follower favourites this movie!
+                    </div>
+                </div>
+                <hr class="divider small-divider">
+                <div class="media">
+                    <div class="media-left media-top popular-movie">
+                        <a href="#">
+                            <img class="media-object img-rounded" src="{% static 'img/Interstellar1.jpg' %}" alt="...">
+                        </a>
+                    </div>
+                    <div class="media-body">
+                        <h4 class="media-heading">Interstellar</h4>
+                        4 follower favourites this movie!
+                    </div>
+                </div>
+                <hr class="divider small-divider">
+                <div class="media">
+                    <div class="media-left media-top popular-movie">
+                        <a href="#">
+                            <img class="media-object img-rounded" src="{% static 'img/Interstellar1.jpg' %}" alt="...">
+                        </a>
+                    </div>
+                    <div class="media-body">
+                        <h4 class="media-heading">Interstellar</h4>
+                        4 follower favourites this movie!
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="panel panel-default" id="r">
+            <div class="panel-body">
+                <h5>People you may know</h5>
+                <hr class="divider">
+                <div class="media">
+                    <div class="media-left media-top popular-movie">
+                        <a href="#">
+                            <img class="media-object img-rounded" src="{% static 'img/peyman.jpg' %}" alt="...">
+                        </a>
+                    </div>
+                    <div class="media-body">
+                        <h4 class="media-heading">Interstellar</h4>
+                        4 follower favourites this movie!
+                    </div>
+                </div>
+                <hr class="divider small-divider">
+                <div class="media">
+                    <div class="media-left media-top popular-movie">
+                        <a href="#">
+                            <img class="media-object img-rounded" src="{% static 'img/peyman.jpg' %}" alt="...">
+                        </a>
+                    </div>
+                    <div class="media-body">
+                        <h4 class="media-heading">Interstellar</h4>
+                        4 follower favourites this movie!
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<script type="text/javascript" src="{% static 'js/comment.js' %}"></script>
+<script type="text/javascript" src="{% static 'js/like.js' %}"></script>
+{% endblock content %}

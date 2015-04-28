@@ -4,6 +4,10 @@ from django.shortcuts import render
 # from django.shortcuts import HttpResponse
 
 
+def mainpage(request):
+    return render(request, "mysite/mainpage.html")
+
+
 def homepage(request):
     return render(request, "mysite/home.html")
 

@@ -1,0 +1,63 @@
+{% extends 'mysite/base.html' %}
+{% block loginForm %}
+    <div class="row">
+			<div class="col-lg-9" id="web_desc">
+
+			</div>
+			<div class="col-lg-3" id="forms">
+				<div class="row centered-form">
+	                <div class="panel panel-default">
+	                    <div class="panel-body">
+	                        <form method="post" role="form" action="#">
+
+	                            <div class="form-group">
+	                                <input type="text" name="username" id="username"
+	                                       class="form-control input-sm color_tooltip my_input" placeholder="username"
+	                                       data-toggle="tooltip" data-animation="true"
+	                                       data-placement="bottom" title="Please enter your username">
+	                                <input type="password" name="password" id="password"
+	                                       class="form-control input-sm color_tooltip my_input" placeholder="password"
+	                                       data-toggle="tooltip" data-animation="true"
+	                                       data-placement="bottom" title="Please enter your password">
+	                            </div>
+	                            <div class="btn-group" role="group" aria-label="...">
+	                                <div class="btn-group" role="group">
+	                                    <button type="submit" class="btn btn-primary pull-left">
+	                                        Sign In
+	                                    </button>
+	                                </div>
+	                            </div>
+	                        </form>
+	                    </div>
+	                    <hr class="divider">
+	                    <div class="panel-body">
+	                        <form method="post" role="form" action="#">
+
+	                            <div class="form-group">
+	                                <input type="text" name="username" id="username"
+	                                       class="form-control input-sm color_tooltip my_input" placeholder="username"
+	                                       data-toggle="tooltip" data-animation="true"
+	                                       data-placement="bottom" title="Please enter your username">
+	                                <input type="password" name="password" id="password"
+	                                       class="form-control input-sm color_tooltip my_input" placeholder="password"
+	                                       data-toggle="tooltip" data-animation="true"
+	                                       data-placement="bottom" title="Please enter your password">
+	                                <input type="password" name="password_confirm" id="password_confirm"
+	                                       class="form-control input-sm color_tooltip my_input" placeholder="confirm"
+	                                       data-toggle="tooltip" data-animation="true"
+	                                       data-placement="bottom" title="Please confirm your password">
+	                            </div>
+	                            <div class="btn-group" role="group" aria-label="...">
+	                                <div class="btn-group" role="group">
+	                                    <button type="submit" class="btn btn-primary pull-left">
+	                                        Sign Up
+	                                    </button>
+	                                </div>
+	                            </div>
+	                        </form>
+	                    </div>
+	                </div>
+        		</div>
+			</div>
+		</div>
+{% endblock loginForm %}

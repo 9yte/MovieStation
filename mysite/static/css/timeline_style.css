@@ -1,0 +1,109 @@
+#l{
+    background-color: #ECEFF1;
+}
+
+#m{
+    background-color: #ECEFF1;
+}
+
+#r{
+    background-color: #ECEFF1;
+}
+
+.panel, .panel-body{
+    border-radius: 10px;
+}
+
+body{
+    background-color: #263238;
+}
+
+.divider {
+    border-color: #CFD8DC;
+}
+
+.panel {
+    padding: 1%;
+}
+
+.row {
+    margin-left: -40px;
+    margin-right: -40px;
+}
+
+.section{
+    padding-left: 5px;
+    padding-right: 5px;
+}
+
+.pro-pic{
+    height: 50px;
+    width: 50px;
+    border-radius: 10px;
+    padding: 0px;
+}
+
+.small-divider{
+    margin-left: 10%;
+    margin-right: 10%;
+}
+
+h5{
+    padding-top: 0px;
+    margin-top: 0px;
+}
+
+.thumbnail{
+    margin-top: 15px;
+}
+
+.my-media{
+    width: 10%;
+}
+
+#comment:focus{
+    border-color: #EF9A9A;
+}
+
+#comment{
+    border-radius: 5px;
+}
+
+.hr{
+    border-bottom: 1px solid #CFD8DC;
+    color: #EF9A9A;
+    margin-top: 0px;
+    /*margin-left: 10%;*/
+    /*margin-right: 10%;*/
+    font-size: 10px;
+}
+
+.media-body{
+    font-size: 12px;
+}
+
+.red{
+    color: #EF9A9A;
+}
+
+.date{
+    font-size: 10px;
+}
+
+.glyphicon{
+    padding: 0px 2px;
+}
+
+.star-like{
+    padding-left: 10%;
+}
+
+.media img{
+    display: block;
+    max-width: 100%;
+    height: auto;
+}
+
+.popular-movie{
+    width: 25%;
+}

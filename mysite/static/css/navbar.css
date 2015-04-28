@@ -1,4 +1,10 @@
+.nav.navbar-nav.navbar-right li a {
+    color: white;
+}
+
 .navbar-default {
-    background-color: #607D8B;
-    border-color: #607D8B;
+    background-color: #ECEFF1;
+    border-color: #ECEFF1;
+    margin-bottom: 10px;
+    border-radius: 0px;
 }

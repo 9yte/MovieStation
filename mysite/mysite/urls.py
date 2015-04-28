@@ -13,4 +13,5 @@ urlpatterns = patterns('',
     url(r'^admin/', include(admin.site.urls)),
     url(r'^home/', views.homepage),
     url(r'^profile/', views.show_profile),
+    url(r'^', views.mainpage),
 )
