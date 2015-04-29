@@ -1,0 +1,124 @@
+{% extends 'mysite/base1.html' %}
+{% load static %}
+{% block content %}
+
+
+    {% comment %}<link href="http://netdna.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap.min.css" rel="stylesheet">
+    <link href="{% static 'css/star/star-rating.min.css' %}" media="all" rel="stylesheet" type="text/css" />{% endcomment %}
+    <link rel="stylesheet" type="text/css" href="{% static 'css/movieProfile.css' %}">
+    <script src="{% static 'js/star/star-rating.js' %}"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
+    <script src="{% static 'js/movieProfile.js' %}"></script>
+
+
+    <div class="row" id="main-detail">
+        <div class="media">
+            <div class="media-left">
+                <a href="#">
+                    <img class="media-object"  id="pro-pic" src="{% static 'img/Brave.jpg' %}" alt="...">
+                </a>
+            </div>
+            <div class="media-body">
+                <h1 class="media-heading">Brave 2012</h1>
+                {% comment %}<input id="mainStar" type="number" class="rating" min=1 max=10 step=0.5 data-size="lg" data-rtl="true">{% endcomment %}
+                <p>
+                    Brave is a 2012 American computer-animated fantasy comedy film produced by Pixar Animation
+                    Studios and released by Walt Disney Pictures. It was directed by Mark Andrews and Brenda
+                    Chapman, and co-directed by Steve Purcell. The story is by Chapman, with the screenplay by
+                    Andrews, Purcell, Chapman and Irene Mecchi. Chapman drew inspiration from her relationship
+                    with her own daughter. Chapman became Pixar’s first female director of a feature-length
+                    film.[4] The film was produced by Katherine Sarafian, with John Lasseter, Andrew Stanton
+                    and Pete Docter as executive producers. The film's voice cast features Kelly Macdonald, Julie
+                    Walters, Billy Connolly, Emma Thompson, Kevin McKidd, Craig Ferguson, and Robbie Coltrane.
+                </p>
+                <a href="http://http://en.wikipedia.org/wiki/Brave_(2012_film)"><h5>Wikipedia Page</h5></a>
+
+
+
+                <button type="button" class="btn btn-success" data-toggle="modal" data-target="#myDesc">
+                    Write Description</button>
+                <!-- Modal -->
+                <div class="modal fade" id="myDesc" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
+                     aria-hidden="true">
+                    <div class="modal-dialog">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">
+                                   &times;</span></button>
+                                <h4 class="modal-title" id="myModalLabel">Write Description</h4>
+                            </div>
+                            <div class="modal-body">
+                                <div class="row">
+                                    SATR RATING
+                                </div>
+                                <br>
+                                <div class="row">
+                                    <textarea class="form-control" rows="6"></textarea>
+                                </div>
+                                <br>
+                                <div class="row">
+                                    <button type="button" class="btn btn-success" onclick="return submitPost()" id="post-desc">Post</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div><!-- profile detail -->
+
+    <br>
+    <div class="container panel panel-default panel-body" id="contributes">
+        <h3>Cast</h3>
+        <ul>
+            <li>Kelly Macdonald as Merida</li>
+            <li>Emma Thompson as Queen Elinor</li>
+        </ul>
+        <div class="divider"></div>
+        <h3>Producers</h3>
+        <ul>
+            <li>Directed by Mark Andrews and Brenda Chapman</li>
+            <li>Produced by Katherine Sarafian</li>
+        </ul>
+        <div class="divider"></div>
+        <h3>Awards</h3>
+        <table class="table awards">
+            <tr class="table-header">
+                <th>#</th>
+                <th>Award</th>
+                <th>Candidate for</th>
+                <th>year</th>
+                <th>Result</th>
+            </tr>
+            <tr>
+                <td>1</td>
+                <td>Oscar</td>
+                <td>Best Graphic of 2011</td>
+                <td>2012</td>
+                <td>
+                    <div>
+                        Won
+                    </div>
+                </td>
+            </tr>
+            <tr>
+                <td>2</td>
+                <td>Oscar</td>
+                <td>Best Sound track of 2011</td>
+                <td>2012</td>
+                <td>
+                    <div>
+                        Nominated
+                    </div>
+                </td>
+            </tr>
+        </table>
+
+    </div>
+    <script>
+    $('#mainStar').rating();
+    {% comment %}['min'=>0, 'max'=>10, 'step'=>2, 'size'=>'lg']{% endcomment %}
+    </script>
+
+
+{% endblock content %}

@@ -1,64 +1,19 @@
-.badge-follower{
-	background-color: #E53935;
-	border-color: #E53935;
+.modal-header {
+    background-color: green;
+}
+.modal-body * {
+    margin-left: auto;
+    margin-right: auto;
 }
 
-.notif{
-	font-size: 10px;
+.modal-body button{
+    float: right;
 }
 
-.movie-img {
-	height: 80px;
-	width: 80px;
-	float: left;
-	margin-left: 30px;
+.modal-footer *{
+    float: right;
+    margin: 2px;
 }
-.movie-img + a{
-	float: left;
-	margin-left: 10px;
-	font-size: 30px;
-}
-
-#display-name{
-	font-weight: bolder;
-	font-size: 30px;
-}
-
-#pro-pic{
-	height: 200px;
-	width: 200px;
-}
-
-.follow{
-	float: left;
-}
-
-img.follow{
-	height: 50px;
-	width: 50px;
-}
-
-button.follow {
-	float: right;
-}
-
-div.post-content  p  span.like-button {
-	padding: 0px;
-}
-
-tr.like-row  td  img {
-	height: 40px;
-	width: 40px;
-	float: left;
-
-}
-
-tr.like-row  td  p {
-	float: left;
-	margin-left: 10px;
-}
-
-
 
 .starRating:not(old){
   display        : inline-block;

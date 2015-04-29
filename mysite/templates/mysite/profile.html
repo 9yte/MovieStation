@@ -2,35 +2,37 @@
 {% load static %}
 {% block content %}
 
+<<<<<<< HEAD
         <link rel="stylesheet" type="text/css" href="{% static 'css/profile.css' %}">
 
 		<div class="row" id="main-detail">
-			<img class="img-responsive col-lg-3" id="pro-pic" src="{% static 'img/peyman.jpg' %}">
-			<div class="col-lg-9">
-				<div class="row">
-					<span id="display-name">Peyman Ezzati</span>
-					<button type="button" class="btn btn-primary" data-toggle="button" aria-pressed="false" autocomplete="off">Follow
-					</button>
-				</div>
-				<div class="row">
-					<h5>pezzati</h5>
-				</div>
-				<div class="row">
-					<button class="btn btn-primary" type="button">
-  						following <span class="badge">20</span>
-					</button>
-					<button class="btn btn-primary badge-follower" type="button">
-  						follower <span class="badge">40</span>
-					</button>
-				</div>
-			</div><!-- detail -->
-		</div><!-- profile detail -->
+=======
+
+
+        <div class="row" id="main-detail">
+            <div class="media">
+                <div class="media-left">
+                    <a href="#">
+                        <img class="media-object"  id="pro-pic" src="{% static 'img/peyman.jpg' %}" alt="...">
+                    </a>
+                </div>
+                <div class="media-body">
+                    <h1 class="media-heading">Peyman Ezzati</h1>
+                    <h4>pezzati</h4>
+                    <p>
+                      I am student in SUT. I like a movie that has a purpose, thus i like classic movies and
+                        movies with minimum Visual Effect. But i am in love with Animation!!!
+                    </p>
+                </div>
+            </div>
+        </div>
+
 		<br>
 
 		<ul class="nav nav-tabs col-lg-12" data-tabs="tabs">
 			<li><a href="#post-tab" data-toggle="tab">Posts</a></li>
-			<li class="active"><a href="#follower-tab" data-toggle="tab">Follower</a></li>
-			<li><a href="#following-tab" data-toggle="tab">Following</a></li>
+			<li class="active"><a href="#follower-tab" data-toggle="tab">Follower 40</a></li>
+			<li><a href="#following-tab" data-toggle="tab">Following 20</a></li>
 		</ul><!-- nav tab -->
 		<br>
 		<div id="my-tab-content col-lg-12" class="tab-content">
@@ -69,7 +71,7 @@
 						<tr class="like-row">
 							<td>
 								<div>
-									<img class="img-responsive img-circle" src="peyman.jpg">
+									<img class="img-responsive img-circle" src="{% static 'img/peyman.jpg' %}">
 									<p>I love her hair! realy i love it</p>
 								</div>
 
