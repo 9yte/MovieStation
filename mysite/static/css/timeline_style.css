@@ -62,16 +62,17 @@ h5{
 }
 
 .comment:focus{
-    border-color: #EF9A9A;
+    border-color: #90A4AE;
 }
 
-#comment{
+.comment{
     border-radius: 5px;
+    color: #90A4AE;
+    font-size: 12px;
 }
 
 .hr{
     border-bottom: 1px solid #CFD8DC;
-    color: #EF9A9A;
     margin-top: 0px;
     /*margin-left: 10%;*/
     /*margin-right: 10%;*/
@@ -82,8 +83,8 @@ h5{
     font-size: 12px;
 }
 
-.red{
-    color: #EF9A9A;
+.second-color{
+    color: #90A4AE;
 }
 
 .date{
