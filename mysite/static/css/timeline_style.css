@@ -6,7 +6,7 @@
     background-color: #ECEFF1;
 }
 
-#r{
+.r{
     background-color: #ECEFF1;
 }
 
@@ -61,7 +61,7 @@ h5{
     width: 10%;
 }
 
-#comment:focus{
+.comment:focus{
     border-color: #EF9A9A;
 }
 
@@ -95,7 +95,7 @@ h5{
 }
 
 .star-like{
-    padding-left: 10%;
+    padding-left: 2px;
 }
 
 .media img{

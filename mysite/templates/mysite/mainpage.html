@@ -1,63 +1,102 @@
 {% extends 'mysite/base.html' %}
+{% load static %}
 {% block loginForm %}
-    <div class="row">
-			<div class="col-lg-9" id="web_desc">
+<div class="row">
+    <div class="col-lg-9" id="web_desc">
 
-			</div>
-			<div class="col-lg-3" id="forms">
-				<div class="row centered-form">
-	                <div class="panel panel-default">
-	                    <div class="panel-body">
-	                        <form method="post" role="form" action="#">
-
-	                            <div class="form-group">
-	                                <input type="text" name="username" id="username"
-	                                       class="form-control input-sm color_tooltip my_input" placeholder="username"
-	                                       data-toggle="tooltip" data-animation="true"
-	                                       data-placement="bottom" title="Please enter your username">
-	                                <input type="password" name="password" id="password"
-	                                       class="form-control input-sm color_tooltip my_input" placeholder="password"
-	                                       data-toggle="tooltip" data-animation="true"
-	                                       data-placement="bottom" title="Please enter your password">
-	                            </div>
-	                            <div class="btn-group" role="group" aria-label="...">
-	                                <div class="btn-group" role="group">
-	                                    <button type="submit" class="btn btn-primary pull-left">
-	                                        Sign In
-	                                    </button>
-	                                </div>
-	                            </div>
-	                        </form>
-	                    </div>
-	                    <hr class="divider">
-	                    <div class="panel-body">
-	                        <form method="post" role="form" action="#">
-
-	                            <div class="form-group">
-	                                <input type="text" name="username" id="username"
-	                                       class="form-control input-sm color_tooltip my_input" placeholder="username"
-	                                       data-toggle="tooltip" data-animation="true"
-	                                       data-placement="bottom" title="Please enter your username">
-	                                <input type="password" name="password" id="password"
-	                                       class="form-control input-sm color_tooltip my_input" placeholder="password"
-	                                       data-toggle="tooltip" data-animation="true"
-	                                       data-placement="bottom" title="Please enter your password">
-	                                <input type="password" name="password_confirm" id="password_confirm"
-	                                       class="form-control input-sm color_tooltip my_input" placeholder="confirm"
-	                                       data-toggle="tooltip" data-animation="true"
-	                                       data-placement="bottom" title="Please confirm your password">
-	                            </div>
-	                            <div class="btn-group" role="group" aria-label="...">
-	                                <div class="btn-group" role="group">
-	                                    <button type="submit" class="btn btn-primary pull-left">
-	                                        Sign Up
-	                                    </button>
-	                                </div>
-	                            </div>
-	                        </form>
-	                    </div>
-	                </div>
-        		</div>
-			</div>
-		</div>
+    </div>
+    <div class="col-lg-3" id="forms">
+        <div class="row centered-form">
+            <div class="panel panel-default">
+                <div class="panel-body">
+                    <form method="post" role="form" action="#" data-toggle="validator" id="signin">
+                        {% csrf_token %}
+                        <div class="form-group">
+                            <input type="text" name="username"
+                                   class="form-control input-sm color_tooltip my_input" placeholder="username"
+                                   data-toggle="tooltip" data-animation="true"
+                                   data-placement="bottom" title="Please enter your username">
+                            <input type="password" name="password"
+                                   class="form-control input-sm color_tooltip my_input" placeholder="password"
+                                   data-toggle="tooltip" data-animation="true"
+                                   data-placement="bottom" title="Please enter your password">
+                        </div>
+                        <div class="btn-group" role="group" aria-label="...">
+                            <div class="btn-group" role="group">
+                                <button type="submit" class="btn btn-primary pull-left">
+                                    Sign In
+                                </button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+                <hr class="divider">
+                <div class="panel-body">
+                    <form method="post" role="form" action="#" data-toggle="validator" id="signup">
+                        {% csrf_token %}
+                        <div class="form-group" >
+                            <input type="text" name="username"
+                                   class="form-control input-sm color_tooltip my_input" placeholder="username"
+                                   data-toggle="tooltip" data-animation="true"
+                                   data-placement="bottom" title="Please enter your username, only a to z and numeric character" pattern="^([_A-z0-9]){3,}$" maxlength="20" required>
+                            <div class="help-block with-errors"></div>
+                        </div>
+                        <div class="form-group">
+                            <input type="password" name="password" id="password_signup"
+                                   class="form-control input-sm color_tooltip my_input" placeholder="password"
+                                   data-toggle="tooltip" data-animation="true"
+                                   data-placement="bottom" title="Please enter your password with Minimum of 6 characters" data-minlength="6" required>
+                            <div class="help-block with-errors"></div>
+                        </div>
+                        <div class="form-group">
+                            <input type="password" name="password_confirm" id="password_confirm"
+                                   class="form-control input-sm color_tooltip my_input" placeholder="confirm"
+                                   data-toggle="tooltip" data-animation="true"
+                                   data-placement="bottom" title="Please confirm your password" data-match="#password_signup" data-match-error="Whoops, these don't match" required>
+                            <div class="help-block with-errors"></div>
+                        </div>
+                        <div class="form-group">
+                            <input type="email" name="email" id="email"
+                                   class="form-control input-sm color_tooltip my_input" placeholder="email"
+                                   data-toggle="tooltip" data-animation="true"
+                                   data-placement="bottom" title="Please enter your email" data-error="Bruh, that email address is invalid" required>
+                            <div class="help-block with-errors"></div>
+                        </div>
+                        <div class="form-group">
+                            <div id="datetimepicker1" class="input-append date">
+                                <input data-format="dd/MM/yyyy hh:mm:ss" type="text" name="date" id="date"
+                                       class="form-control input-sm color_tooltip my_input" placeholder="birthdate"
+                                       data-toggle="tooltip" data-animation="true"
+                                       data-placement="bottom" title="Please enter your birthdate" required>
+                                <span class="add-on">
+                                  <i data-time-icon="icon-time" data-date-icon="icon-calendar">
+                                      <span class="glyphicon glyphicon-calendar"></span>
+                                  </i>
+                                </span>
+                            </div>
+                            <div class="help-block with-errors"></div>
+                        </div>
+                        <div class="btn-group" role="group" aria-label="...">
+                            <div class="btn-group" role="group">
+                                <button type="submit" class="btn btn-primary pull-left">
+                                    Sign Up
+                                </button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<script type="text/javascript" src="{% static 'js/validator.js' %}"></script>
+<script type="text/javascript" src="{% static 'js/form.js' %}"></script>
+<script type="text/javascript" src="{% static 'js/bootstrap/bootstrap-datetimepicker.min.js' %}"></script>
+<script type="text/javascript">
+    $(function() {
+        $('#datetimepicker1').datetimepicker({
+            language: 'pt-BR'
+        });
+    });
+</script>
 {% endblock loginForm %}
