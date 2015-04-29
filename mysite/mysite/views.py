@@ -10,3 +10,8 @@ def homepage(request):
 
 def show_profile(request):
     return render(request, "mysite/profile.html")
+
+
+
+def show_movie(request):
+    return render(request, "mysite/movieProfile.html")
