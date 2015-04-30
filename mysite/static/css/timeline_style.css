@@ -113,3 +113,7 @@ h5{
 .popular-movie{
     width: 25%;
 }
+
+.small-font{
+    font-size: 10px;
+}

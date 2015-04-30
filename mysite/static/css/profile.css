@@ -97,3 +97,9 @@ tr.like-row  td  p {
 .starRating:not(:hover) > :checked ~ label:before{
   opacity : 1;
 }
+
+table th, table td{
+    border-top: none !important;
+    padding-top: 2px !important;
+    padding-bottom: 2px !important;
+}
