@@ -6,7 +6,14 @@ $(document).ready(function() {
         if(x.text().trim() == 'Won')
             x.css({'color':'green', 'font-weight':'bolder'});
         else
-            x.css({'color':'red', 'font-weight':'bolder'})
+            x.css({'color':'red', 'font-weight':'bolder'});
+
+        $("#rating-input").rating({
+            showClear:false
+        });
+        $("#movieRate").rating({
+            showClear:false
+        });
     }
 });
 function submitPost(){

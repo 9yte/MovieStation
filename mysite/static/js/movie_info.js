@@ -7,4 +7,9 @@ $(function () {
  */
 $(document).ready(function () {
     $('#movie-info').popover("");
+
+});
+
+$(".postRate").rating({
+    showClear:false
 });

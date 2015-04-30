@@ -4,6 +4,12 @@
 
 <link rel="stylesheet" type="text/css" href="{% static 'css/timeline_style.css' %}">
 <link rel="stylesheet" type="text/css" href="{% static 'css/popover.css' %}">
+
+<link rel="stylesheet" href="{% static 'css/star/star-rating.css' %}" media="all" rel="stylesheet" type="text/css"/>
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
+<script src="{% static 'js/star/star-rating.js' %}" type="text/javascript"></script>
+
 <div class="col-xs-6 section">
     <div class="panel panel-default" id="m">
         <div  class="tab-content">
@@ -17,6 +23,8 @@
                         <div class="thumbnail">
                             <img src="{% static 'img/Interstellar.jpg' %}" alt="...">
                             <div class="caption">
+                                <input class="postRate" value="8.5" type="number"  readonly="true" data-stars="10" class="rating" min=0 max=10 step=0.2 data-size="xs">
+
                                 <p>Interstellar is a 2014 science fiction epic film directed by Christopher Nolan, starring Matthew McConaughey, Anne Hathaway, Jessica Chastain and Michael Caine. The film features a crew of astronauts who travel through a wormhole in search of a new home for humanity. Brothers Christopher and Jonathan Nolan wrote the screenplay, which has its origins in a script Jonathan developed in 2007. Christopher Nolan produced the film with his wife Emma Thomas through their production company Syncopy and with Lynda Obst through Lynda Obst Productions.</p>
                                 <div class="hr second-color text-left"><span class="glyphicon glyphicon-comment"></span>12 Commnets<span class="glyphicon glyphicon-star-empty star-like"></span>10 Favourites</div>
                                 <!--<div class="comment">-->
@@ -69,6 +77,8 @@
                         <div class="thumbnail">
                             <img src="{% static 'img/Interstellar.jpg' %}" alt="...">
                             <div class="caption">
+                                <input class="postRate" value="8.5" type="number"  readonly="true" data-stars="10" class="rating" min=0 max=10 step=0.2 data-size="xs">
+
                                 <p>Interstellar is a 2014 science fiction epic film directed by Christopher Nolan, starring Matthew McConaughey, Anne Hathaway, Jessica Chastain and Michael Caine. The film features a crew of astronauts who travel through a wormhole in search of a new home for humanity. Brothers Christopher and Jonathan Nolan wrote the screenplay, which has its origins in a script Jonathan developed in 2007. Christopher Nolan produced the film with his wife Emma Thomas through their production company Syncopy and with Lynda Obst through Lynda Obst Productions.</p>
                                 <div class="hr second-color text-left"><span class="glyphicon glyphicon-comment"></span>12 Commnets<span class="glyphicon glyphicon-star-empty star-like"></span>10 Favourites</div>
                                 <!--<div class="comment">-->
