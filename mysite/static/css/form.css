@@ -5,14 +5,26 @@
 	width: 80%;*/
 }
 
-.btn-primary{
-	background-color: #607D8B;
-	border-color: #607D8B;
-	font-size: 14px;
+.btn-form{
+	background-color: #607D8B !important;
+	border-color: #607D8B!important;
+	font-size: 12px!important;
+    color: #FFFFFF!important;
 }
 
-.btn-primary:hover{
-	background-color: #607D8B;
+.btn-form:hover{
+	background-color: #607D8B!important;
+}
+
+.signup{
+	background-color: #607D8B !important;
+	border-color: #607D8B!important;
+	font-size: 12px!important;
+    color: #FFFFFF!important;
+}
+
+.signup:hover{
+	background-color: #607D8B!important;
 }
 
 .my_input::-webkit-input-placeholder {
@@ -53,4 +65,18 @@
 
 .date{
     width: 80%;
+}
+
+.forgot{
+    font-size: 11px;
+    color: #607D8B;
+    text-decoration: none;
+}
+
+.color{
+    color: #607D8B;
+}
+
+#myModalLabel{
+    color: #455A64;
 }

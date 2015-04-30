@@ -23,9 +23,37 @@
                         </div>
                         <div class="btn-group" role="group" aria-label="...">
                             <div class="btn-group" role="group">
-                                <button type="submit" class="btn btn-primary pull-left">
+                                <button type="submit" class="btn btn-form pull-left">
                                     Sign In
                                 </button>
+                            </div>
+
+                        </div>
+                        <a class="forgot" data-toggle="modal" data-target="#myDesc">forgot password?</a>
+                        <div class="container">
+                            <div class="modal fade" id="myDesc" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
+                                 aria-hidden="true">
+                                <div class="modal-dialog modal-sm">
+                                    <div class="modal-content">
+                                        <div class="modal-header">
+                                            <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">
+                                   &times;</span></button>
+                                            <h4 class="modal-title" id="myModalLabel">Forgot Password!</h4>
+                                        </div>
+                                        <form class="mine" method="post" action="/signin/modal">
+                                            {% csrf_token %}
+                                            <div class="modal-body">
+                                                <input type="text" name="username"
+                                                       class="form-control input-sm color_tooltip my_input" placeholder="username"
+                                                       data-toggle="tooltip" data-animation="true"
+                                                       data-placement="bottom" title="Please enter your username">
+                                            </div>
+                                            <div class="modal-footer ">
+                                                <button type="button" class="btn btn-success btn-form" onclick="return submitPost()" id="post-desc">Post</button>
+                                            </div>
+                                        </form>
+                                    </div>
+                                </div>
                             </div>
                         </div>
                     </form>
@@ -70,7 +98,7 @@
                                        data-placement="bottom" title="Please enter your birthdate" required>
                                 <span class="add-on">
                                   <i data-time-icon="icon-time" data-date-icon="icon-calendar">
-                                      <span class="glyphicon glyphicon-calendar"></span>
+                                      <span class="glyphicon glyphicon-calendar color"></span>
                                   </i>
                                 </span>
                             </div>
@@ -78,7 +106,7 @@
                         </div>
                         <div class="btn-group" role="group" aria-label="...">
                             <div class="btn-group" role="group">
-                                <button type="submit" class="btn btn-primary pull-left">
+                                <button type="submit" class="btn btn-form pull-left signup">
                                     Sign Up
                                 </button>
                             </div>
@@ -98,5 +126,8 @@
             language: 'pt-BR'
         });
     });
+    function submitPost(){
+        $('#myDesc').modal('hide');
+    }
 </script>
 {% endblock loginForm %}
