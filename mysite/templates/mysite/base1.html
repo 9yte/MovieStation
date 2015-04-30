@@ -60,8 +60,137 @@
 </nav>
 
 <div class="container">
-    {% block content %}
-    {% endblock %}
+    <div class="row">
+        <div class="col-xs-3 section">
+            <div class="panel panel-default" id="l">
+                <div class="panel-body">
+                    <h5>Popular movies</h5>
+                    <hr class="divider">
+                    <div class="media">
+                        <div class="media-left media-top popular-movie">
+                            <a href="#">
+                                <img class="media-object img-rounded" src="{% static 'img/Interstellar1.jpg' %}" alt="...">
+                            </a>
+                        </div>
+                        <div class="media-body">
+                            <h4 class="media-heading">Interstellar</h4>
+                            rating here!
+                        </div>
+                    </div>
+                    <hr class="divider small-divider">
+                    <div class="media">
+                        <div class="media-left media-top popular-movie">
+                            <a href="#">
+                                <img class="media-object img-rounded" src="{% static 'img/Interstellar1.jpg' %}" alt="...">
+                            </a>
+                        </div>
+                        <div class="media-body">
+                            <h4 class="media-heading">Interstellar</h4>
+                            rating here!
+                        </div>
+                    </div>
+                    <hr class="divider small-divider">
+                    <div class="media">
+                        <div class="media-left media-top popular-movie">
+                            <a href="#">
+                                <img class="media-object img-rounded" src="{% static 'img/Interstellar1.jpg' %}" alt="...">
+                            </a>
+                        </div>
+                        <div class="media-body">
+                            <h4 class="media-heading">Interstellar</h4>
+                            rating here!
+                        </div>
+                    </div>
+                    <hr class="divider small-divider">
+                    <div class="media">
+                        <div class="media-left media-top popular-movie">
+                            <a href="#">
+                                <img class="media-object img-rounded" src="{% static 'img/Interstellar1.jpg' %}" alt="...">
+                            </a>
+                        </div>
+                        <div class="media-body">
+                            <h4 class="media-heading">Interstellar</h4>
+                            rating here!
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        {% block content %}
+        {% endblock %}
+        <div class="col-xs-3 section">
+            <div class="panel panel-default r">
+                <div class="panel-body">
+                    <h5>Movies you may interest!</h5>
+                    <hr class="divider">
+                    <div class="media">
+                        <div class="media-left media-top popular-movie">
+                            <a href="#">
+                                <img class="media-object img-rounded" src="{% static 'img/Interstellar1.jpg' %}" alt="...">
+                            </a>
+                        </div>
+                        <div class="media-body">
+                            <h4 class="media-heading">Interstellar</h4>
+                            4 follower favourites this movie!
+                        </div>
+                    </div>
+                    <hr class="divider small-divider">
+                    <div class="media">
+                        <div class="media-left media-top popular-movie">
+                            <a href="#">
+                                <img class="media-object img-rounded" src="{% static 'img/Interstellar1.jpg' %}" alt="...">
+                            </a>
+                        </div>
+                        <div class="media-body">
+                            <h4 class="media-heading">Interstellar</h4>
+                            4 follower favourites this movie!
+                        </div>
+                    </div>
+                    <hr class="divider small-divider">
+                    <div class="media">
+                        <div class="media-left media-top popular-movie">
+                            <a href="#">
+                                <img class="media-object img-rounded" src="{% static 'img/Interstellar1.jpg' %}" alt="...">
+                            </a>
+                        </div>
+                        <div class="media-body">
+                            <h4 class="media-heading">Interstellar</h4>
+                            4 follower favourites this movie!
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="panel panel-default r">
+                <div class="panel-body">
+                    <h5>People you may know</h5>
+                    <hr class="divider">
+                    <div class="media">
+                        <div class="media-left media-top popular-movie">
+                            <a href="#">
+                                <img class="media-object img-rounded" src="{% static 'img/peyman.jpg' %}" alt="...">
+                            </a>
+                        </div>
+                        <div class="media-body">
+                            <h4 class="media-heading">Peyman Ezzati</h4>
+                            4 mutual follower
+                        </div>
+                    </div>
+                    <hr class="divider small-divider">
+                    <div class="media">
+                        <div class="media-left media-top popular-movie">
+                            <a href="#">
+                                <img class="media-object img-rounded" src="{% static 'img/peyman.jpg' %}" alt="...">
+                            </a>
+                        </div>
+                        <div class="media-body">
+                            <h4 class="media-heading">Peyman Ezzati</h4>
+                            4 mutual follower
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
 </div>
 <script type="text/javascript" src="{% static 'js/bootstrap/bootstrap.min.js' %}"></script>
 

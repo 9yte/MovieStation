@@ -9,7 +9,6 @@ $(document).ready(function() {
             x.css({'color':'red', 'font-weight':'bolder'})
     }
 });
-
 function submitPost(){
-    $.modal.close();
+    $('#myDesc').modal('hide');
 }

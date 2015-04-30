@@ -8,3 +8,13 @@
     margin-bottom: 10px;
     border-radius: 0px;
 }
+
+input[type="text"]:focus{
+    border-color: #90A4AE;
+}
+
+input[type="text"]{
+    color: #90A4AE;
+    font-size: 12px;
+    border-radius: 5px;
+}

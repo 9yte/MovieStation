@@ -1,5 +1,9 @@
 .modal-header {
-    background-color: green;
+    background-color: #B0BEC5;
+}
+.my-btn{
+    background-color: #455A64;
+    border-color: #455A64;
 }
 .modal-body * {
     margin-left: auto;
@@ -13,6 +17,14 @@
 .modal-footer *{
     float: right;
     margin: 2px;
+}
+
+.my-text-area:focus{
+    border-color: #546E7A;
+}
+
+.my-text-area{
+    color: #546E7A;
 }
 
 .starRating:not(old){
