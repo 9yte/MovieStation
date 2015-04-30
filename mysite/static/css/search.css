@@ -79,7 +79,7 @@ input[type="text"]{
 }
 
 input[type="text"]:focus{
-	border-color: #EF9A9A!important;
+	border-color: #78909C!important;
 }
 
 .selectize-dropdown-content .label{
