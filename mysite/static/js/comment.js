@@ -5,10 +5,7 @@ $(document).ready(function() {
     $('.comment').keyup(function(e) {
         if(e.which == 13) {
             var comment = $(this).val();
-//            console.log(s=$(comment).closest('#last-media'));
-//            var last = $(comment).closest('#last-media');
             var last = $($($(this).parent()).parent()).parent();
-//            var last = $('#last-media');
             var last_comment = last.prev().prev();
             var new_comment = last_comment.clone();
             var cm = new_comment.children('.media-body');

@@ -4,14 +4,18 @@
     <title>Peyman Ezzati</title>
 
     <link rel="stylesheet" type="text/css" href="{% static 'css/bootstrap/bootstrap.min.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'css/bootstrap/selectize.bootstrap3.css' %}">
     <link rel="stylesheet" type="text/css" href="{% static 'css/navbar.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'css/chat.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'css/form.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'css/search.css' %}">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
 
 </head>
 <body>
 
 
-<nav class="navbar navbar-default">
+<nav class="navbar navbar-default navbar-fixed-top">
     <div class="container-fluid">
         <!-- Brand and toggle get grouped for better mobile display -->
 
@@ -51,7 +55,7 @@
             </ul>
             <form class="navbar-form navbar-right" role="search">
                 <div class="form-group">
-                    <input type="text" class="form-control" placeholder="Search">
+                    <select id="select-to" class="contacts my-input" placeholder="Search"></select>
                 </div>
                 <button type="submit" class="btn btn-default"><span class="glyphicon glyphicon-search"></span></button>
             </form>
@@ -59,141 +63,312 @@
     </div><!-- /.container-fluid -->
 </nav>
 
-<div class="container">
-    <div class="row">
-        <div class="col-xs-3 section">
-            {% block profile %}
-            {% endblock %}
-            <div class="panel panel-default" id="l">
-                <div class="panel-body">
-                    <h5>Popular movies</h5>
-                    <hr class="divider">
+<div class="container my-container">
+<div class="row">
+<div class="col-xs-3 section" id="chat-list">
+{% block profile %}
+{% endblock %}
+<div class="panel panel-default" id="l">
+    <div class="panel-body chat-list-panel">
+        <ul class="media-list">
+            <li class="media">
+                <div class="media-body">
                     <div class="media">
-                        <div class="media-left media-top popular-movie">
-                            <a href="#">
-                                <img class="media-object img-rounded" src="{% static 'img/Interstellar1.jpg' %}" alt="...">
-                            </a>
-                        </div>
-                        <div class="media-body">
-                            <h4 class="media-heading">Interstellar</h4>
-                            rating here!
+                        <a class="pull-left" href="#">
+                            <img class="media-object img-circle small-img" src="{% static 'img/peyman.jpg' %}" />
+                        </a>
+                        <div class="media-body" >
+                            <h5 class="name-chat">Peyman Ezzati</h5>
+                            <small class="text-muted second-color">Active From 3 hours</small>
                         </div>
                     </div>
-                    <hr class="divider small-divider">
+                </div>
+            </li>
+            <li class="media">
+                <div class="media-body">
                     <div class="media">
-                        <div class="media-left media-top popular-movie">
-                            <a href="#">
-                                <img class="media-object img-rounded" src="{% static 'img/Interstellar1.jpg' %}" alt="...">
-                            </a>
-                        </div>
-                        <div class="media-body">
-                            <h4 class="media-heading">Interstellar</h4>
-                            rating here!
+                        <a class="pull-left" href="#">
+                            <img class="media-object img-circle small-img" src="{% static 'img/peyman.jpg' %}" />
+                        </a>
+                        <div class="media-body" >
+                            <h5 class="name-chat">Peyman Ezzati</h5>
+                            <small class="text-muted second-color">Active From 3 hours</small>
                         </div>
                     </div>
-                    <hr class="divider small-divider">
+                </div>
+            </li>
+            <li class="media">
+                <div class="media-body">
                     <div class="media">
-                        <div class="media-left media-top popular-movie">
-                            <a href="#">
-                                <img class="media-object img-rounded" src="{% static 'img/Interstellar1.jpg' %}" alt="...">
-                            </a>
-                        </div>
-                        <div class="media-body">
-                            <h4 class="media-heading">Interstellar</h4>
-                            rating here!
+                        <a class="pull-left" href="#">
+                            <img class="media-object img-circle small-img" src="{% static 'img/peyman.jpg' %}" />
+                        </a>
+                        <div class="media-body" >
+                            <h5 class="name-chat">Peyman Ezzati</h5>
+                            <small class="text-muted second-color">Active From 3 hours</small>
                         </div>
                     </div>
-                    <hr class="divider small-divider">
+                </div>
+            </li>
+            <li class="media">
+                <div class="media-body">
                     <div class="media">
-                        <div class="media-left media-top popular-movie">
-                            <a href="#">
-                                <img class="media-object img-rounded" src="{% static 'img/Interstellar1.jpg' %}" alt="...">
-                            </a>
-                        </div>
-                        <div class="media-body">
-                            <h4 class="media-heading">Interstellar</h4>
-                            rating here!
+                        <a class="pull-left" href="#">
+                            <img class="media-object img-circle small-img" src="{% static 'img/peyman.jpg' %}" />
+                        </a>
+                        <div class="media-body" >
+                            <h5 class="name-chat">Peyman Ezzati</h5>
+                            <small class="text-muted second-color">Active From 3 hours</small>
                         </div>
                     </div>
+                </div>
+            </li>
+            <li class="media">
+                <div class="media-body">
+                    <div class="media">
+                        <a class="pull-left" href="#">
+                            <img class="media-object img-circle small-img" src="{% static 'img/peyman.jpg' %}" />
+                        </a>
+                        <div class="media-body" >
+                            <h5 class="name-chat">Peyman Ezzati</h5>
+                            <small class="text-muted second-color">Active From 3 hours</small>
+                        </div>
+                    </div>
+                </div>
+            </li>
+            <li class="media">
+                <div class="media-body">
+                    <div class="media">
+                        <a class="pull-left" href="#">
+                            <img class="media-object img-circle small-img" src="{% static 'img/peyman.jpg' %}" />
+                        </a>
+                        <div class="media-body" >
+                            <h5 class="name-chat">Peyman Ezzati</h5>
+                            <small class="text-muted second-color">Active From 3 hours</small>
+                        </div>
+                    </div>
+                </div>
+            </li>
+            <li class="media">
+                <div class="media-body">
+                    <div class="media">
+                        <a class="pull-left" href="#">
+                            <img class="media-object img-circle small-img" src="{% static 'img/peyman.jpg' %}" />
+                        </a>
+                        <div class="media-body" >
+                            <h5 class="name-chat">Peyman Ezzati</h5>
+                            <small class="text-muted second-color">Active From 3 hours</small>
+                        </div>
+                    </div>
+                </div>
+            </li>
+            <li class="media">
+                <div class="media-body">
+                    <div class="media">
+                        <a class="pull-left" href="#">
+                            <img class="media-object img-circle small-img" src="{% static 'img/peyman.jpg' %}" />
+                        </a>
+                        <div class="media-body" >
+                            <h5 class="name-chat">Peyman Ezzati</h5>
+                            <small class="text-muted second-color">Active From 3 hours</small>
+                        </div>
+                    </div>
+                </div>
+            </li>
+            <li class="media">
+                <div class="media-body">
+                    <div class="media">
+                        <a class="pull-left" href="#">
+                            <img class="media-object img-circle small-img" src="{% static 'img/peyman.jpg' %}" />
+                        </a>
+                        <div class="media-body" >
+                            <h5 class="name-chat">Peyman Ezzati</h5>
+                            <small class="text-muted second-color">Active From 3 hours</small>
+                        </div>
+                    </div>
+                </div>
+            </li>
+            <li class="media">
+                <div class="media-body">
+                    <div class="media">
+                        <a class="pull-left" href="#">
+                            <img class="media-object img-circle small-img" src="{% static 'img/peyman.jpg' %}" />
+                        </a>
+                        <div class="media-body" >
+                            <h5 class="name-chat">Peyman Ezzati</h5>
+                            <small class="text-muted second-color">Active From 3 hours</small>
+                        </div>
+                    </div>
+                </div>
+            </li>
+            <li class="media">
+                <div class="media-body">
+                    <div class="media">
+                        <a class="pull-left" href="#">
+                            <img class="media-object img-circle small-img" src="{% static 'img/peyman.jpg' %}" />
+                        </a>
+                        <div class="media-body" >
+                            <h5 class="name-chat">Peyman Ezzati</h5>
+                            <small class="text-muted second-color">Active From 3 hours</small>
+                        </div>
+                    </div>
+                </div>
+            </li>
+            <li class="media">
+                <div class="media-body">
+                    <div class="media">
+                        <a class="pull-left" href="#">
+                            <img class="media-object img-circle small-img" src="{% static 'img/peyman.jpg' %}" />
+                        </a>
+                        <div class="media-body" >
+                            <h5 class="name-chat">Peyman Ezzati</h5>
+                            <small class="text-muted second-color">Active From 3 hours</small>
+                        </div>
+                    </div>
+                </div>
+            </li>
+            <li class="media">
+                <div class="media-body">
+                    <div class="media">
+                        <a class="pull-left" href="#">
+                            <img class="media-object img-circle small-img" src="{% static 'img/peyman.jpg' %}" />
+                        </a>
+                        <div class="media-body" >
+                            <h5 class="name-chat">Peyman Ezzati</h5>
+                            <small class="text-muted second-color">Active From 3 hours</small>
+                        </div>
+                    </div>
+                </div>
+            </li>
+        </ul>
+    </div>
+</div>
+<div class="panel panel-default chat" hidden="true">
+    <div class="panel-body ">
+        <ul class="media-list">
+
+            <li class="media">
+
+                <div class="media-body">
+
+                    <div class="media">
+                        <a class="pull-left" href="#">
+                            <img class="media-object img-circle small-img" src="{% static 'img/Peyman.jpg' %}" />
+                        </a>
+                        <div class="media-body" >
+                            <span class="msg-text">Donec sit amet ligula enim. Duis vel condimentum massa.</span>
+                            <small class="text-muted second-color">Peyman Ezzati | 23rd June at 5:00pm</small>
+                        </div>
+                    </div>
+
+                </div>
+            </li>
+            <li class="media">
+
+                <div class="media-body">
+
+                    <div class="media">
+                        <a class="pull-left" href="#">
+                            <img class="media-object img-circle small-img" src="{% static 'img/Peyman.jpg' %}" />
+                        </a>
+                        <div class="media-body" >
+                            <span class="msg-text">Donec sit amet ligula enim. Duis vel condimentum massa.</span>
+                            <small class="text-muted second-color">Peyman Ezzati | 23rd June at 5:00pm</small>
+                        </div>
+                    </div>
+
+                </div>
+            </li>
+        </ul>
+    </div>
+    <div class="panel-footer">
+        <div class="input-group">
+            <input type="text" class="form-control chat-msg my_input" placeholder="Enter Message" />
+                                    <span class="input-group-btn">
+                                        <button class="btn btn-form" type="button">SEND</button>
+                                    </span>
+        </div>
+    </div>
+</div>
+</div>
+{% block content %}
+{% endblock %}
+<div class="col-xs-3 section">
+    <div class="panel panel-default r">
+        <div class="panel-body">
+            <h5>Movies you may interest!</h5>
+            <hr class="divider">
+            <div class="media">
+                <div class="media-left media-top popular-movie">
+                    <a href="#">
+                        <img class="media-object img-rounded" src="{% static 'img/Interstellar1.jpg' %}" alt="...">
+                    </a>
+                </div>
+                <div class="media-body">
+                    <h4 class="media-heading">Interstellar</h4>
+                    4 follower favourites this movie!
+                </div>
+            </div>
+            <hr class="divider small-divider">
+            <div class="media">
+                <div class="media-left media-top popular-movie">
+                    <a href="#">
+                        <img class="media-object img-rounded" src="{% static 'img/Interstellar1.jpg' %}" alt="...">
+                    </a>
+                </div>
+                <div class="media-body">
+                    <h4 class="media-heading">Interstellar</h4>
+                    4 follower favourites this movie!
+                </div>
+            </div>
+            <hr class="divider small-divider">
+            <div class="media">
+                <div class="media-left media-top popular-movie">
+                    <a href="#">
+                        <img class="media-object img-rounded" src="{% static 'img/Interstellar1.jpg' %}" alt="...">
+                    </a>
+                </div>
+                <div class="media-body">
+                    <h4 class="media-heading">Interstellar</h4>
+                    4 follower favourites this movie!
                 </div>
             </div>
         </div>
-        {% block content %}
-        {% endblock %}
-        <div class="col-xs-3 section">
-            <div class="panel panel-default r">
-                <div class="panel-body">
-                    <h5>Movies you may interest!</h5>
-                    <hr class="divider">
-                    <div class="media">
-                        <div class="media-left media-top popular-movie">
-                            <a href="#">
-                                <img class="media-object img-rounded" src="{% static 'img/Interstellar1.jpg' %}" alt="...">
-                            </a>
-                        </div>
-                        <div class="media-body">
-                            <h4 class="media-heading">Interstellar</h4>
-                            4 follower favourites this movie!
-                        </div>
-                    </div>
-                    <hr class="divider small-divider">
-                    <div class="media">
-                        <div class="media-left media-top popular-movie">
-                            <a href="#">
-                                <img class="media-object img-rounded" src="{% static 'img/Interstellar1.jpg' %}" alt="...">
-                            </a>
-                        </div>
-                        <div class="media-body">
-                            <h4 class="media-heading">Interstellar</h4>
-                            4 follower favourites this movie!
-                        </div>
-                    </div>
-                    <hr class="divider small-divider">
-                    <div class="media">
-                        <div class="media-left media-top popular-movie">
-                            <a href="#">
-                                <img class="media-object img-rounded" src="{% static 'img/Interstellar1.jpg' %}" alt="...">
-                            </a>
-                        </div>
-                        <div class="media-body">
-                            <h4 class="media-heading">Interstellar</h4>
-                            4 follower favourites this movie!
-                        </div>
-                    </div>
+    </div>
+    <div class="panel panel-default r">
+        <div class="panel-body">
+            <h5>People you may know</h5>
+            <hr class="divider">
+            <div class="media">
+                <div class="media-left media-top popular-movie">
+                    <a href="#">
+                        <img class="media-object img-rounded" src="{% static 'img/peyman.jpg' %}" alt="...">
+                    </a>
+                </div>
+                <div class="media-body">
+                    <h4 class="media-heading">Peyman Ezzati</h4>
+                    4 mutual follower
                 </div>
             </div>
-            <div class="panel panel-default r">
-                <div class="panel-body">
-                    <h5>People you may know</h5>
-                    <hr class="divider">
-                    <div class="media">
-                        <div class="media-left media-top popular-movie">
-                            <a href="#">
-                                <img class="media-object img-rounded" src="{% static 'img/peyman.jpg' %}" alt="...">
-                            </a>
-                        </div>
-                        <div class="media-body">
-                            <h4 class="media-heading">Peyman Ezzati</h4>
-                            4 mutual follower
-                        </div>
-                    </div>
-                    <hr class="divider small-divider">
-                    <div class="media">
-                        <div class="media-left media-top popular-movie">
-                            <a href="#">
-                                <img class="media-object img-rounded" src="{% static 'img/peyman.jpg' %}" alt="...">
-                            </a>
-                        </div>
-                        <div class="media-body">
-                            <h4 class="media-heading">Peyman Ezzati</h4>
-                            4 mutual follower
-                        </div>
-                    </div>
+            <hr class="divider small-divider">
+            <div class="media">
+                <div class="media-left media-top popular-movie">
+                    <a href="#">
+                        <img class="media-object img-rounded" src="{% static 'img/peyman.jpg' %}" alt="...">
+                    </a>
+                </div>
+                <div class="media-body">
+                    <h4 class="media-heading">Peyman Ezzati</h4>
+                    4 mutual follower
                 </div>
             </div>
         </div>
     </div>
 </div>
+</div>
+</div>
 <script type="text/javascript" src="{% static 'js/bootstrap/bootstrap.min.js' %}"></script>
+<script type="text/javascript" src="{% static 'js/bootstrap/selectize.min.js' %}"></script>
+<script type="text/javascript" src="{% static 'js/search.js' %}"></script>
 
 </body>

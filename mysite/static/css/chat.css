@@ -1,0 +1,32 @@
+.small-img{
+    max-height:40px;
+}
+
+.name-chat{
+    padding-top: 13px;
+    display: inline-block;
+    font-size: 14px;
+}
+
+.chat-list-panel{
+    overflow-y: scroll;
+    max-height: 450px;
+}
+
+.chat{
+    overflow-y: scroll;
+    max-height: 200px;
+    position: fixed;
+    bottom: 0px;
+    width: 300px;
+    background-color: #ECEFF1;
+}
+
+#chat-list{
+    /*position: fixed;*/
+    /*bottom: 0px;*/
+    /*left: 0px;*/
+    /*padding-bottom: 0px;*/
+    /*margin-bottom: 0px;*/
+    overflow-y: scroll;
+}

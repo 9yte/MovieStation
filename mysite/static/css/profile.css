@@ -103,3 +103,7 @@ table th, table td{
     padding-top: 2px !important;
     padding-bottom: 2px !important;
 }
+
+.chat-list-panel{
+    max-height: 350px !important;
+}

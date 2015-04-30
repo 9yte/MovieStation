@@ -7,6 +7,8 @@
     border-color: #ECEFF1;
     margin-bottom: 10px;
     border-radius: 0px;
+    border-bottom-left-radius: 5px;
+    border-bottom-right-radius: 5px;
 }
 
 input[type="text"]:focus{
@@ -17,4 +19,8 @@ input[type="text"]{
     color: #90A4AE;
     font-size: 12px;
     border-radius: 5px;
+}
+
+.my-container{
+    margin-top: 60px;
 }

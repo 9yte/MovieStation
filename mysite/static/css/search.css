@@ -1,0 +1,91 @@
+.selectize-control.contacts .selectize-input > div {
+    padding: 1px 10px;
+    font-size: 10px;
+    font-weight: normal;
+    -webkit-font-smoothing: auto;
+    color: #f7fbff;
+    text-shadow: 0 1px 0 rgba(8,32,65,0.2);
+    background: #78909C;
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#2183f5', endColorstr='#1d77f3',GradientType=0 );
+    border: 1px solid #78909C;
+    -webkit-border-radius: 999px;
+    -moz-border-radius: 999px;
+    border-radius: 999px;
+    -webkit-box-shadow: 0 1px 1px rgba(0,0,0,0.15);
+    -moz-box-shadow: 0 1px 1px rgba(0,0,0,0.15);
+    box-shadow: 0 1px 1px rgba(0,0,0,0.15);
+}
+.selectize-control.contacts .selectize-input > div.active {
+    background: #78909C;
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#0059c7', endColorstr='#0051c1',GradientType=0 );
+    border-color: #78909C;
+}
+.selectize-control.contacts .selectize-input > div .email {
+    opacity: 0.8;
+}
+.selectize-control.contacts .selectize-input > div .name + .email {
+    margin-left: 5px;
+}
+.selectize-control.contacts .selectize-input > div .email:before {
+    content: '<';
+}
+.selectize-control.contacts .selectize-input > div .email:after {
+    content: '>';
+}
+.selectize-control.contacts .selectize-dropdown .caption {
+    font-size: 12px;
+    display: block;
+    color: #a0a0a0;
+}
+
+.selectize-control{
+    height: 34px !important;
+    width: 150px !important;
+}
+
+.selectize-input{
+    margin-bottom: 0px !important;
+	border-radius: 5px !important;
+	margin-bottom: 10px!important;
+	/*margin-left: 10%;
+	width: 80%;*/
+}
+
+.selectize-input:hover{
+    border-color: #78909C;
+}
+
+
+input[type="text"]::-webkit-input-placeholder {
+    color: #78909C!important;
+}
+
+input[type="text"]:-moz-placeholder {
+    color: #78909C!important;
+    opacity: 1!important;
+}
+
+input[type="text"]::-moz-placeholder {
+    color: #78909C!important;
+    opacity: 1!important;
+}
+
+input[type="text"]:-ms-input-placeholder {
+    color: #78909C!important;
+}
+
+input[type="text"]{
+	color: #78909C!important;
+}
+
+input[type="text"]:focus{
+	border-color: #EF9A9A!important;
+}
+
+.selectize-dropdown-content .label{
+    color: #37474F !important;
+}
+
+.selectize-dropdown-content .caption{
+    color: #607D8B !important;
+}
