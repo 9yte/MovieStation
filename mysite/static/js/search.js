@@ -8,8 +8,8 @@ $('#select-to').selectize({
     labelField: 'name',
     searchField: ['name', 'email'],
     options: [
-        {email: 'hojjat.aghakhani72@gmail.com', name: 'Hojjat Aghakhani'},
-        {email: 'p.ezzati@gmail.com', name: 'Peyman Ezzati'},
+        {email: 'brian@thirdroute.com', name: 'Brian Reavis'},
+        {email: 'nikola@tesla.com', name: 'Nikola Tesla'},
         {email: 'someone@gmail.com'}
     ],
     render: {

@@ -1,0 +1,115 @@
+{% extends 'mysite/home.html' %}
+{%  load static %}
+{% block profile %}
+    <div class="panel panel-default">
+        <div class="panel-body">
+            <h3>Results of Interstular</h3>
+            <br>
+            <table class="table">
+                <tr>
+                    <th><a href="#post-tab" data-toggle="tab" class="text-muted small-font">POSTS</a></th>
+                    <th><a href="#people-tab" data-toggle="tab" class="text-muted small-font">PEOPLE</a></th>
+                    <th><a href="#movies-tab" data-toggle="tab" class="text-muted small-font">MOVIES</a></th>
+                </tr>
+                <tr>
+                    <td class="second-color">2</td>
+                    <td class="second-color">4</td>
+                    <td class="second-color">6</td>
+                </tr>
+            </table>
+        </div>
+    </div>
+
+{% endblock profile %}
+
+{% block other_tab %}
+
+    <div class="tab-pane" id="people-tab">
+        <table class="table">
+            <tr>
+                <td>
+                    <div class="media">
+                        <div class="media-left media-top popular-movie">
+                            <a href="#">
+                                <img class="media-object img-rounded" src="{% static 'img/peyman.jpg' %}" alt="...">
+                            </a>
+                        </div>
+                        <div class="media-body">
+                            <h5 class="media-heading">Peyman Ezzati</h5>
+                            @pezzati
+                        </div>
+                    </div>
+                </td>
+                <td>
+                    <div class="media">
+                        <div class="media-left media-top popular-movie">
+                            <a href="#">
+                                <img class="media-object img-rounded" src="{% static 'img/peyman.jpg' %}" alt="...">
+                            </a>
+                        </div>
+                        <div class="media-body">
+                            <h5 class="media-heading">Peyman Ezzati</h5>
+                            @pezzati
+                        </div>
+                    </div>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <div class="media">
+                        <div class="media-left media-top popular-movie">
+                            <a href="#">
+                                <img class="media-object img-rounded" src="{% static 'img/peyman.jpg' %}" alt="...">
+                            </a>
+                        </div>
+                        <div class="media-body">
+                            <h5 class="media-heading">Peyman Ezzati</h5>
+                            @pezzati
+                        </div>
+                    </div>
+                </td>
+                <td>
+                    <div class="media">
+                        <div class="media-left media-top popular-movie">
+                            <a href="#">
+                                <img class="media-object img-rounded" src="{% static 'img/peyman.jpg' %}" alt="...">
+                            </a>
+                        </div>
+                        <div class="media-body">
+                            <h5 class="media-heading">Peyman Ezzati</h5>
+                            @pezzati
+                        </div>
+                    </div>
+                </td>
+            </tr>
+        </table>
+    </div><!-- people tab -->
+
+
+    <div class="tab-pane" id="movies-tab">
+        <table class="table">
+            <tr>
+                <td>
+                    <div class="media">
+                        <div class="media-left media-top popular-movie">
+                            <a href="#">
+                                <img class="media-object img-rounded" src="{% static 'img/Brave.jpg' %}" alt="...">
+                            </a>
+                        </div>
+                        <div class="media-body">
+                            <a href="movieProfile.html"><h3 class="media-heading">Brave 2012</h3></a>
+                            <input id="movieRate" value="8.9" type="number"  readonly="true" data-stars="10" class="rating" min=0 max=10 step=0.2 data-size="xs">
+                            <p>
+                                Brave is a 2012 American computer-animated fantasy comedy film produced by Pixar Animation
+                                Studios and released by Walt Disney Pictures.
+                            </p>
+                        </div>
+                    </div>
+                </td>
+            </tr>
+        </table>
+    </div>
+
+    <script src="{% static 'js/search.js'%}" type="text/javascript"></script>
+
+{% endblock other_tab %}

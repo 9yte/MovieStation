@@ -18,3 +18,11 @@ def show_profile(request):
 
 def show_movie(request):
     return render(request, "mysite/movieProfile.html")
+
+
+def show_post(request):
+    return render(request, "mysite/post.html")
+
+
+def show_searchResult(request):
+    return render(request, "mysite/search.html");
