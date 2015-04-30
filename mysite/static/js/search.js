@@ -1,0 +1,3 @@
+$("#movieRate").rating({
+    showClear:false
+});

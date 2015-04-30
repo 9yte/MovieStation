@@ -14,5 +14,7 @@ urlpatterns = patterns('',
     url(r'^home', views.homepage),
     url(r'^profile', views.show_profile),
     url(r'^movieprofile', views.show_movie),
-    url(r'^', views.mainpage),
+    url(r'^post', views.show_post),
+    url(r'^search', views.show_searchResult),
+    url(r'^', views.mainpage)
 )
