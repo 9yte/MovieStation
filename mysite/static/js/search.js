@@ -58,3 +58,7 @@ $('#select-to').selectize({
         return false;
     }
 });
+
+$(".movieRate").rating({
+    showClear:false
+});

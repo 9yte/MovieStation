@@ -3,6 +3,7 @@
  */
 $(document).ready(function() {
     $('#signup').validator().on('submit', function (e) {
+
         if (e.isDefaultPrevented()) {
         } else {
         }

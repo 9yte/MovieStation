@@ -1,27 +1,6 @@
-.badge-follower{
-	background-color: #E53935;
-	border-color: #E53935;
-}
 
 .notif{
 	font-size: 10px;
-}
-
-.movie-img {
-	height: 80px;
-	width: 80px;
-	float: left;
-	margin-left: 30px;
-}
-.movie-img + a{
-	float: left;
-	margin-left: 10px;
-	font-size: 30px;
-}
-
-#display-name{
-	font-weight: bolder;
-	font-size: 30px;
 }
 
 
@@ -55,14 +34,16 @@ tr.like-row  td  p {
 	margin-left: 10px;
 }
 
-
-
-table th, table td{
-    border-top: none !important;
-    padding-top: 2px !important;
-    padding-bottom: 2px !important;
-}
-
 .chat-list-panel{
     max-height: 350px !important;
+}
+
+.follow-btn{
+    padding-top: 1px;
+    padding-bottom: 1px;
+}
+
+.tab-title {
+    margin-top: 0.4em;
+    margin-left: 8px;
 }

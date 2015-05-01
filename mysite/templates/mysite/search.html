@@ -1,6 +1,7 @@
 {% extends 'mysite/home.html' %}
 {%  load static %}
 {% block profile %}
+    <link rel="stylesheet" type="text/css" href="{% static 'css/profileTable.css' %}">
     <div class="panel panel-default">
         <div class="panel-body">
             <h4>Results of Interstular</h4>
@@ -36,7 +37,8 @@
                         </div>
                         <div class="media-body">
                             <h5 class="media-heading">Peyman Ezzati</h5>
-                            @pezzati
+                            <p>@pezzati</p>
+                            <p>21</p>
                         </div>
                     </div>
                 </td>
@@ -49,7 +51,8 @@
                         </div>
                         <div class="media-body">
                             <h5 class="media-heading">Peyman Ezzati</h5>
-                            @pezzati
+                            <p>@pezzati</p>
+                            <p>21</p>
                         </div>
                     </div>
                 </td>
@@ -64,7 +67,8 @@
                         </div>
                         <div class="media-body">
                             <h5 class="media-heading">Peyman Ezzati</h5>
-                            @pezzati
+                            <p>@pezzati</p>
+                            <p>21</p>
                         </div>
                     </div>
                 </td>
@@ -77,7 +81,8 @@
                         </div>
                         <div class="media-body">
                             <h5 class="media-heading">Peyman Ezzati</h5>
-                            @pezzati
+                            <p>@pezzati</p>
+                            <p>21</p>
                         </div>
                     </div>
                 </td>
@@ -98,7 +103,8 @@
                         </div>
                         <div class="media-body">
                             <a href="movieProfile.html"><h3 class="media-heading">Brave 2012</h3></a>
-                            <input id="movieRate" value="8.9" type="number"  readonly="true" data-stars="10" class="rating" min=0 max=10 step=0.2 data-size="xs">
+                            <input  value="8.9" type="number"  readonly="true" data-stars="10" class="rating movieRate" min=0 max=10 step=0.2 data-size="xs">
+                            <p>Directed by Mark Andrews Brenda Chapman</p>
                             <p>
                                 Brave is a 2012 American computer-animated fantasy comedy film produced by Pixar Animation
                                 Studios and released by Walt Disney Pictures.
