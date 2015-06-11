@@ -10,9 +10,9 @@ class UserProfile(AbstractUser):
     birth_date = models.DateField(blank=True, null=True)
     followings = models.ManyToManyField("self")
     followers = models.ManyToManyField("self")
-    activation_code = models.CharField(max_length=100)
+    activation_code = models.CharField(max_length=100, default=1)
     nickname = models.CharField(max_length=20, null=True, blank=True)
-    avatar = models.ImageField(max_length=settings.UPLOAD_URL + '/avatars', null=True, blank=True)
+    avatar = models.ImageField(upload_to=settings.UPLOAD_URL + '/avatars', null=True, blank=True)
     objects = UserManager()
 
     def __str__(self):
