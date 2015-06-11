@@ -27,14 +27,14 @@ def activation(request):
 def register(request):
     print("hi")
     if request.method == "POST":
+        print(request.POST)
         form = RegisterForm(request.POST)
         print(form)
         if form.is_valid():
             user = UserProfile.objects.create_user(form.cleaned_data['username'], form.cleaned_data['email'],
                                                    form.cleaned_data['password'])
-            user.first_name = form.cleaned_data['first_name']
-            user.last_name = form.cleaned_data['last_name']
             user.birth_date = form.cleaned_data['birth_date']
+            user.nickname = form.cleaned_data['username']
             user.activation_code = "1"
             # user.activation_code = hashlib.sha224(user.username + user.password).hexdigest()
             # send_mail('Simorgh Hotel Reservation', "127.0.0.1:8000/activation/?activation=" + user.activation_code,

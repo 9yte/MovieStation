@@ -34,7 +34,7 @@ class Post(models.Model):
     movie = models.ForeignKey(Movie)
     rate = models.FloatField(validators=[MinValueValidator(0), MaxValueValidator(10)])
     text = models.TextField(blank=True, null=False)
-    date = models.DateField(blank=False, null=False)
+    date_time = models.DateTimeField(blank=False, null=False)
 
     def __str__(self):
         return "{}".format(self.text)
@@ -42,7 +42,7 @@ class Post(models.Model):
 
 class Comment(models.Model):
     author = models.ForeignKey(UserProfile)
-    date = models.DateField(blank=False, null=False)
+    date_time = models.DateTimeField(blank=False, null=False)
     text = models.CharField(max_length=350)
     post = models.ForeignKey(Post)
 
