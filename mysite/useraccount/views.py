@@ -8,12 +8,14 @@ from django.contrib.auth.hashers import *
 from django.contrib.auth.decorators import login_required
 
 # import models
-from mysite.useraccount.models import UserProfile
+from .models import UserProfile
 
 # import forms
-from mysite.useraccount.forms import RegisterForm
+from .forms import RegisterForm
 
 # Create your views here.
+
+
 @login_required(login_url='/signin')
 def activation(request):
     user = UserProfile.objects.get(id=request.user.id)
@@ -23,6 +25,7 @@ def activation(request):
 
 
 def register(request):
+    print("hi")
     if request.method == "POST":
         form = RegisterForm(request.POST)
         print(form)
