@@ -4,13 +4,14 @@ from django.contrib import admin
 
 admin.autodiscover()
 
-from .views import *
+from . import views
 
 urlpatterns = patterns('', url(r'^admin', include(admin.site.urls)),
-                       url(r'^home', homepage),
-                       url(r'^profile', show_profile),
-                       url(r'^movieprofile', show_movie),
-                       url(r'^post', show_post),
-                       url(r'^search', show_searchResult),
-                       url(r'^', mainpage),
+                       url(r'^home', views.homepage),
+                       url(r'^profile', views.show_profile),
+                       url(r'^movieprofile', views.show_movie),
+                       url(r'^post', views.show_post),
+                       url(r'^register', include('useraccount.urls')),
+                       url(r'^search', views.show_searchResult),
+                       url(r'^', views.mainpage)
 )

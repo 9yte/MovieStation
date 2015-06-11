@@ -5,5 +5,11 @@
     <orderEntry type="jdk" jdkName="Python 3.4.3 (/Library/Frameworks/Python.framework/Versions/3.4/bin/python3.4)" jdkType="Python SDK" />
     <orderEntry type="sourceFolder" forTests="false" />
   </component>
+  <component name="PyDocumentationSettings">
+    <option name="myDocStringFormat" value="Plain" />
+  </component>
+  <component name="TestRunnerService">
+    <option name="PROJECT_TEST_RUNNER" value="Unittests" />
+  </component>
 </module>
 
