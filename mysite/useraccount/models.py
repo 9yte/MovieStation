@@ -26,8 +26,32 @@ class Post(models.Model):
     text = models.TextField(blank=True, null=False)
     date = models.DateField(blank=False, null=False)
 
+    def __str__(self):
+        return "{}".format(self.text)
+
 
 class Movie:
     name = models.CharField(max_length=40)
     description = models.TextField(blank=True, null=False)
     IMDB_link = models.CharField(max_length=100)
+
+    def __str__(self):
+        return "{}".format(self.name)
+
+
+class Comment(models.Model):
+    author = models.ForeignKey(UserProfile)
+    date = models.DateField(blank=False, null=False)
+    text = models.CharField(max_length=350)
+    post = models.ForeignKey(Post)
+
+    def __str__(self):
+        return "{}".format(self.text)
+
+
+class Favourite(models.Model):
+    user = models.ForeignKey(UserProfile)
+    post = models.ForeignKey(Post)
+
+    def __str__(self):
+        return "{}".format(self.user.nickname)

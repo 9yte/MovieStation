@@ -87,3 +87,5 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/1.6/howto/static-files/
 
 STATIC_URL = '/static/'
+
+UPLOAD_URL = os.path.join(BASE_DIR, 'images')
