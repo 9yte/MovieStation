@@ -5,7 +5,7 @@ from django.contrib import admin
 admin.autodiscover()
 
 import mysite.views as views
-import mysite.useraccount.views as useraccount_view
+from mysite.useraccount import views as useraccount_view
 
 urlpatterns = patterns('', url(r'^admin', include(admin.site.urls)),
                        url(r'^home', views.homepage),
