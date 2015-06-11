@@ -1,5 +1,6 @@
 from django.db import models
 
+
 from django.core.validators import MaxValueValidator, MinValueValidator
 from django.contrib.auth.models import AbstractUser, UserManager
 from django.conf import settings
@@ -7,15 +8,24 @@ from django.conf import settings
 
 class UserProfile(AbstractUser):
     birth_date = models.DateField(blank=True, null=True)
-    followings = models.ManyToManyField(models.UserProfile)
-    followers = models.ManyToManyField(models.UserProfile)
+    followings = models.ManyToManyField("self")
+    followers = models.ManyToManyField("self")
     activation_code = models.CharField(max_length=100)
-    nickname = models.CharField(max_length=20)
-    avatar = models.ImageField(max_length=settings.UPLOAD_URL + '/avatars')
+    nickname = models.CharField(max_length=20, null=True, blank=True)
+    avatar = models.ImageField(max_length=settings.UPLOAD_URL + '/avatars', null=True, blank=True)
     objects = UserManager()
 
     def __str__(self):
         return "{}".format(self.username)
+
+
+class Movie(models.Model):
+    name = models.CharField(max_length=40)
+    description = models.TextField(blank=True, null=False)
+    IMDB_link = models.CharField(max_length=100)
+
+    def __str__(self):
+        return "{}".format(self.name)
 
 
 class Post(models.Model):
@@ -28,15 +38,6 @@ class Post(models.Model):
 
     def __str__(self):
         return "{}".format(self.text)
-
-
-class Movie:
-    name = models.CharField(max_length=40)
-    description = models.TextField(blank=True, null=False)
-    IMDB_link = models.CharField(max_length=100)
-
-    def __str__(self):
-        return "{}".format(self.name)
 
 
 class Comment(models.Model):

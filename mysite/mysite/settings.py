@@ -36,6 +36,7 @@ INSTALLED_APPS = (
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'useraccount',
 )
 
 MIDDLEWARE_CLASSES = (
@@ -46,6 +47,8 @@ MIDDLEWARE_CLASSES = (
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 )
+
+AUTH_USER_MODEL = 'useraccount.UserProfile'
 
 TEMPLATE_DIRS = (
    BASE_DIR + '/templates/',

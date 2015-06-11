@@ -64,7 +64,7 @@
                     </div>
                     <hr class="divider">
                     <div class="panel-body">
-                        <form method="post" role="form" action="#" data-toggle="validator" id="signup">
+                        <form method="post" role="form" action="register" data-toggle="validator" id="signup">
                             {% csrf_token %}
                             <div class="form-group" >
                                 <input type="text" name="username"
@@ -81,7 +81,7 @@
                                 <div class="help-block with-errors"></div>
                             </div>
                             <div class="form-group">
-                                <input type="password" name="password_confirm" id="password_confirm"
+                                <input type="password" name="confirm" id="password_confirm"
                                        class="form-control input-sm color_tooltip my_input" placeholder="confirm"
                                        data-toggle="tooltip" data-animation="true"
                                        data-placement="bottom" title="Please confirm your password" data-match="#password_signup" data-match-error="Whoops, these don't match" required>
@@ -96,7 +96,7 @@
                             </div>
                             <div class="form-group">
                                 <div id="datetimepicker1" class="input-append date">
-                                    <input data-format="dd/MM/yyyy hh:mm:ss" type="text" name="date" id="date"
+                                    <input data-format="dd/MM/yyyy hh:mm:ss" type="text" name="birth_date" id="date"
                                            class="form-control input-sm color_tooltip my_input" placeholder="birthdate"
                                            data-toggle="tooltip" data-animation="true"
                                            data-placement="bottom" title="Please enter your birthdate" required>
