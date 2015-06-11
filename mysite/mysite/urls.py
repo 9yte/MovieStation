@@ -4,7 +4,6 @@ from django.contrib import admin
 
 admin.autodiscover()
 
-from ..useraccount.views import *
 from .views import *
 
 urlpatterns = patterns('', url(r'^admin', include(admin.site.urls)),
@@ -12,7 +11,6 @@ urlpatterns = patterns('', url(r'^admin', include(admin.site.urls)),
                        url(r'^profile', show_profile),
                        url(r'^movieprofile', show_movie),
                        url(r'^post', show_post),
-                       url(r'^register', register),
                        url(r'^search', show_searchResult),
-                       url(r'^', mainpage)
+                       url(r'^', mainpage),
 )
