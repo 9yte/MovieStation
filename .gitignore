@@ -2,5 +2,7 @@
 *.DS_STORE
 *.sqlite3
 *.idea
-*.idea/*
 *.iml
+*.xml
+.idea/*
+.idea/worksapce.xml
