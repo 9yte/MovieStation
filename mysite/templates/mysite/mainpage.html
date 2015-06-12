@@ -12,7 +12,7 @@
             <div class="row centered-form">
                 <div class="panel panel-default">
                     <div class="panel-body">
-                        <form method="post" role="form" action="/user/login"  data-toggle="validator" id="signin">
+                        <form method="post" role="form" action="/user/login" data-toggle="validator" id="signin">
                             {% csrf_token %}
                             <div class="form-group">
                                 <input type="text" name="UserName"
@@ -25,11 +25,9 @@
                                        data-placement="bottom" title="Please enter your password">
                             </div>
                             {% if messages %}
-                                <ul class="messages">
-                                 {% for message in messages %}
-                                 <li{% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</li>
-                                 {% endfor %}
-                                </ul>
+                                {% for message in messages %}
+                                    <p class="small red">{{ message }}</p>
+                                {% endfor %}
                             {% endif %}
                             <div class="btn-group" role="group" aria-label="...">
                                 <div class="btn-group" role="group">
@@ -40,13 +38,16 @@
 
                             </div>
                             <a class="forgot" data-toggle="modal" data-target="#myDesc">forgot password?</a>
+
                             <div class="container">
-                                <div class="modal fade" id="myDesc" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
+                                <div class="modal fade" id="myDesc" tabindex="-1" role="dialog"
+                                     aria-labelledby="myModalLabel"
                                      aria-hidden="true">
                                     <div class="modal-dialog modal-sm">
                                         <div class="modal-content">
                                             <div class="modal-header">
-                                                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">
+                                                <button type="button" class="close" data-dismiss="modal"
+                                                        aria-label="Close"><span aria-hidden="true">
                                    &times;</span></button>
                                                 <h4 class="modal-title" id="myModalLabel">Forgot Password!</h4>
                                             </div>
@@ -54,12 +55,15 @@
                                                 {% csrf_token %}
                                                 <div class="modal-body">
                                                     <input type="text" name="username"
-                                                           class="form-control input-sm color_tooltip my_input" placeholder="username"
+                                                           class="form-control input-sm color_tooltip my_input"
+                                                           placeholder="username"
                                                            data-toggle="tooltip" data-animation="true"
                                                            data-placement="bottom" title="Please enter your username">
                                                 </div>
                                                 <div class="modal-footer ">
-                                                    <button type="button" class="btn btn-success btn-form" onclick="return submitPost()" id="post-desc">Post</button>
+                                                    <button type="button" class="btn btn-success btn-form"
+                                                            onclick="return submitPost()" id="post-desc">Post
+                                                    </button>
                                                 </div>
                                             </form>
                                         </div>
@@ -72,32 +76,43 @@
                     <div class="panel-body">
                         <form method="post" role="form" action="/user/register" data-toggle="validator" id="signup">
                             {% csrf_token %}
-                            <div class="form-group" >
+                            <div class="form-group">
                                 <input type="text" name="username"
                                        class="form-control input-sm color_tooltip my_input" placeholder="username"
                                        data-toggle="tooltip" data-animation="true"
-                                       data-placement="bottom" title="Please enter your username, only a to z and numeric character" pattern="^([_A-z0-9]){3,}$" maxlength="20" required>
+                                       data-placement="bottom"
+                                       title="Please enter your username, only a to z and numeric character"
+                                       pattern="^([_A-z0-9]){3,}$" maxlength="20" required>
+
                                 <div class="help-block with-errors"></div>
                             </div>
                             <div class="form-group">
                                 <input type="password" name="password" id="password_signup"
                                        class="form-control input-sm color_tooltip my_input" placeholder="password"
                                        data-toggle="tooltip" data-animation="true"
-                                       data-placement="bottom" title="Please enter your password with Minimum of 6 characters" data-minlength="6" required>
+                                       data-placement="bottom"
+                                       title="Please enter your password with Minimum of 6 characters"
+                                       data-minlength="6" required>
+
                                 <div class="help-block with-errors"></div>
                             </div>
                             <div class="form-group">
                                 <input type="password" name="confirm" id="password_confirm"
                                        class="form-control input-sm color_tooltip my_input" placeholder="confirm"
                                        data-toggle="tooltip" data-animation="true"
-                                       data-placement="bottom" title="Please confirm your password" data-match="#password_signup" data-match-error="Whoops, these don't match" required>
+                                       data-placement="bottom" title="Please confirm your password"
+                                       data-match="#password_signup" data-match-error="Whoops, these don't match"
+                                       required>
+
                                 <div class="help-block with-errors"></div>
                             </div>
                             <div class="form-group">
                                 <input type="email" name="email" id="email"
                                        class="form-control input-sm color_tooltip my_input" placeholder="email"
                                        data-toggle="tooltip" data-animation="true"
-                                       data-placement="bottom" title="Please enter your email" data-error="Bruh, that email address is invalid" required>
+                                       data-placement="bottom" title="Please enter your email"
+                                       data-error="Bruh, that email address is invalid" required>
+
                                 <div class="help-block with-errors"></div>
                             </div>
                             <div class="form-group">
@@ -132,12 +147,12 @@
     <script type="text/javascript" src="{% static 'js/bootstrap/bootstrap-datetimepicker.min.js' %}"></script>
 
     <script type="text/javascript">
-        $(function() {
+        $(function () {
             $('#datetimepicker1').datetimepicker({
                 language: 'pt-BR'
             });
         });
-        function submitPost(){
+        function submitPost() {
             $('#myDesc').modal('hide');
         }
 
