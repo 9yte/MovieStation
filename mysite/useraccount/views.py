@@ -73,6 +73,22 @@ def login(request):
 def homepage(request):
     return render(request, "mysite/home.html")
 
-
+@login_required(login_url='')
 def show_profile(request, username):
-    return render(request, "mysite/profile.html")
+    nowUser = UserProfile.objects.get(id=request.user)
+    try:
+        user = UserProfile.objects.get(username=username)
+    except:
+        user = None
+    if user is not None:
+        if user.username == nowUser.username:
+            return render(request, "mysite/profile.html", {"User":user, "Owner":True})
+        else:
+            if user in nowUser.followings.all():
+                return render(request, "mysite/profile.html", {"User": user, "Owner": False, "follows": True})
+            else:
+                return render(request, "mysite/profile.html", {"User": user, "Owner": False, "follows": False})
+    else:
+        return HttpResponse("Error : cant find requsted user")
+
+

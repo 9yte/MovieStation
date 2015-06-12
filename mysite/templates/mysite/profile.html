@@ -10,15 +10,25 @@
         <div class="panel-body">
             <div class="media">
                 <div class="media-left media-top popular-movie">
-                    <a href="#" >
+                    <a href="#">
                         <img class="media-object img-rounded" src="{% static 'img/peyman.jpg' %}" alt="...">
                     </a>
                 </div>
                 <div class="media-body">
-                    <h4 class="media-heading">Peyman Ezzati</h4>
+                    <h4 class="media-heading"> {{ User.username }}</h4>
                     <div>
-                        @pezzati
-                        <button class="btn btn-default follow-btn">Edit profile</button>
+                        @{{ User.username }}
+                        {% if Owner %}
+                            <button class="btn btn-default follow-btn">Edit profile</button>
+                        {% endif %}
+                        {% if not Owner %}
+                            {% if follows %}
+                                <button class="btn btn-default follow-btn">Unfollow</button>
+                            {% endif %}
+                            {% if not follows %}
+                                <button class="btn btn-default follow-btn">follow</button>
+                            {% endif %}
+                        {% endif %}
                     </div>
                 </div>
             </div>
