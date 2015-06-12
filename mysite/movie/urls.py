@@ -8,5 +8,6 @@ from . import views
 
 
 urlpatterns = patterns('',
-                       url(r'^movieprofile/(?P<id>\d+)$', views.show_movie),
+                       url(r'^(?P<movie_id>\d+)$', views.show_movie),
+                       url(r'^', views.mainpage),
 )

@@ -19,22 +19,15 @@
         <div class="panel-body">
             <div class="col-sm-12 col-md-12">
                 <div class="thumbnail">
-                    <img src="{% static 'img/Brave.jpg' %}" alt="...">
+                    <img src="/Mine/CE/WebProgramming/Project/mysite/media/movie_covers/Interstellar.jpg" alt="cover photo">
                     <div class="caption">
                         <h1 class="media-heading">Brave 2012</h1>
                         <input id="movieRate" value="8.9" type="number"  readonly="true" data-stars="10" class="rating" min=0 max=10 step=0.2 data-size="xs">
                         {% comment %}<input id="mainStar" type="number" class="rating" min=1 max=10 step=0.5 data-size="lg" data-rtl="true">{% endcomment %}
                         <p>
-                            Brave is a 2012 American computer-animated fantasy comedy film produced by Pixar Animation
-                            Studios and released by Walt Disney Pictures. It was directed by Mark Andrews and Brenda
-                            Chapman, and co-directed by Steve Purcell. The story is by Chapman, with the screenplay by
-                            Andrews, Purcell, Chapman and Irene Mecchi. Chapman drew inspiration from her relationship
-                            with her own daughter. Chapman became Pixar’s first female director of a feature-length
-                            film.[4] The film was produced by Katherine Sarafian, with John Lasseter, Andrew Stanton
-                            and Pete Docter as executive producers. The film's voice cast features Kelly Macdonald, Julie
-                            Walters, Billy Connolly, Emma Thompson, Kevin McKidd, Craig Ferguson, and Robbie Coltrane.
+                            {{movie.description}}
                         </p>
-                        <a href="http://en.wikipedia.org/wiki/Brave_(2012_film)"><h5>Wikipedia Page</h5></a>
+                        <a href="{{ movie.IMDB_link }}"><h5>Wikipedia Page</h5></a>
 
 
 
