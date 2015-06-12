@@ -3,3 +3,7 @@ body{
 	background-repeat: false;
 	background-size: 100%;
 }
+
+.red{
+    color: #d9534f !important;
+}

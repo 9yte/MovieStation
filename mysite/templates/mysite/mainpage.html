@@ -12,7 +12,7 @@
             <div class="row centered-form">
                 <div class="panel panel-default">
                     <div class="panel-body">
-                        <form method="post" role="form" action="/user/login/"  data-toggle="validator" id="signin">
+                        <form method="post" role="form" action="/user/login"  data-toggle="validator" id="signin">
                             {% csrf_token %}
                             <div class="form-group">
                                 <input type="text" name="UserName"
@@ -24,6 +24,13 @@
                                        data-toggle="tooltip" data-animation="true"
                                        data-placement="bottom" title="Please enter your password">
                             </div>
+                            {% if messages %}
+                                <ul class="messages">
+                                 {% for message in messages %}
+                                 <li{% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</li>
+                                 {% endfor %}
+                                </ul>
+                            {% endif %}
                             <div class="btn-group" role="group" aria-label="...">
                                 <div class="btn-group" role="group">
                                     <button type="submit" class="btn btn-form pull-left" id="sign-in-btn">
@@ -33,9 +40,6 @@
 
                             </div>
                             <a class="forgot" data-toggle="modal" data-target="#myDesc">forgot password?</a>
-                            {% if Alert %}
-                                <p>UserName or Password is incorrect</p>
-                            {% endif %}
                             <div class="container">
                                 <div class="modal fade" id="myDesc" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
                                      aria-hidden="true">

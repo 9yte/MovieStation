@@ -7,6 +7,7 @@ from django.shortcuts import HttpResponse
 from django.contrib.auth.hashers import *
 from django.contrib.auth.decorators import login_required
 from django.template import RequestContext, loader
+from django.contrib import messages
 
 # import models
 from .models import UserProfile
@@ -53,21 +54,24 @@ def register(request):
 
 
 def login(request):
+    print(request.user.id)
     if request.method == "POST":
         username = request.POST.get("UserName", "")
         password = request.POST.get("password", "")
-
         user = authenticate(username=username, password=password)
-
         if user is not None:
             a_login(request, user)
             return render(request, 'mysite/home.html')
         else:
-            template = loader.get_template("mysite/mainpage.html")
-            context = RequestContext(request, {
-                'Alert': True
-            })
-            return HttpResponse(template.render(context))
+            return redirect('/', alert=True)
+
+
+@login_required(login_url='')
+def logout(request):
+    if request.method == "GET":
+        a_logout(request)
+        messages.error(request, 'Username or password is incorrect!')
+        return redirect('/')
 
 
 def homepage(request):
