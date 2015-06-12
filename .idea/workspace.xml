@@ -2,6 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="fceec738-e56c-4368-b972-f84f12727270" name="Default" comment="">
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/mysite/templates/mysite/mainpage.html" afterPath="$PROJECT_DIR$/mysite/templates/mysite/mainpage.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/mysite/mysite/settings.py" afterPath="$PROJECT_DIR$/mysite/mysite/settings.py" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/mysite/useraccount/views.py" afterPath="$PROJECT_DIR$/mysite/useraccount/views.py" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
@@ -47,7 +49,7 @@
       <file leaf-file-name="views.py" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/mysite/useraccount/views.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="123" column="49" selection-start="4382" selection-end="4382" vertical-scroll-proportion="4.599509" vertical-offset="162" max-vertical-offset="2286">
+            <state line="75" column="25" selection-start="2687" selection-end="2687" vertical-scroll-proportion="0.088452086" vertical-offset="1134" max-vertical-offset="2268">
               <folding />
             </state>
           </provider>
@@ -630,7 +632,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/mysite/useraccount/views.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="123" column="49" selection-start="4382" selection-end="4382" vertical-scroll-proportion="4.599509" vertical-offset="162" max-vertical-offset="2286">
+        <state line="75" column="25" selection-start="2687" selection-end="2687" vertical-scroll-proportion="0.088452086" vertical-offset="1134" max-vertical-offset="2268">
           <folding />
         </state>
       </provider>

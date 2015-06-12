@@ -64,17 +64,16 @@ def login(request):
         if user is not None:
             print("User accepted")
             a_login(request, user)
-            return render(request, 'mysite/home.html')
+            return redirect('/home')
         else:
-            print("User is wrong")
-            return redirect('/', alert=True)
+            messages.error(request, 'Username or password is incorrect!')
+            return redirect('/')
 
 
 @login_required(login_url='')
 def logout(request):
     if request.method == "GET":
         a_logout(request)
-        messages.error(request, 'Username or password is incorrect!123')
         return redirect('/')
 
 
