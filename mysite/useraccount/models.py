@@ -10,7 +10,7 @@ class UserProfile(AbstractUser):
     followers = models.ManyToManyField("self", blank=True)
     activation_code = models.CharField(max_length=100, default=1)
     nickname = models.CharField(max_length=20, null=True, blank=True)
-    avatar = models.ImageField(upload_to=settings.MEDIA_ROOT + '/avatars', null=True, blank=True)
+    avatar = models.ImageField(upload_to='/avatars', null=True, blank=True)
     objects = UserManager()
 
     def __str__(self):
