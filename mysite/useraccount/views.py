@@ -6,6 +6,7 @@ from django.shortcuts import redirect
 from django.shortcuts import HttpResponse
 from django.contrib.auth.hashers import *
 from django.contrib.auth.decorators import login_required
+from django.template import RequestContext, loader
 
 # import models
 from .models import UserProfile
@@ -52,7 +53,21 @@ def register(request):
 
 
 def login(request):
-    pass
+    if request.method == "POST":
+        username = request.POST.get("UserName", "")
+        password = request.POST.get("password", "")
+
+        user = authenticate(username=username, password=password)
+
+        if user is not None:
+            a_login(request, user)
+            return render(request, 'mysite/home.html')
+        else:
+            template = loader.get_template("mysite/mainpage.html")
+            context = RequestContext(request, {
+                'Alert': True
+            })
+            return HttpResponse(template.render(context))
 
 
 def homepage(request):
