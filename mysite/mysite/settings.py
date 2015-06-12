@@ -37,6 +37,8 @@ INSTALLED_APPS = (
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'useraccount',
+    'movie',
+    'post',
 )
 
 MIDDLEWARE_CLASSES = (
@@ -91,4 +93,5 @@ USE_TZ = True
 
 STATIC_URL = '/static/'
 
-UPLOAD_URL = os.path.join(BASE_DIR, 'images')
+MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
+MEDIA_URL = '/media/'

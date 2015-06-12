@@ -49,3 +49,15 @@ def register(request):
     else:
         form = RegisterForm()
         return render(request, "mysite/mainpage.html")
+
+
+def login(request):
+    pass
+
+
+def homepage(request):
+    return render(request, "mysite/home.html")
+
+
+def show_profile(request, username):
+    return render(request, "mysite/profile.html")
