@@ -19,14 +19,16 @@
                     <div>
                         @{{ User.username }}
                         {% if Owner %}
-                            <button class="btn btn-default follow-btn">Edit profile</button>
+                            <button class="btn btn-default follow-btn" id="editProfile" >Edit profile</button>
                         {% endif %}
                         {% if not Owner %}
                             {% if follows %}
-                                <button class="btn btn-default follow-btn">Unfollow</button>
+                                <button class="btn btn-default follow-btn follow unfollow-post"
+                                        data-follow="unfollow" id="{{ User.username }}">Unfollow</button>
                             {% endif %}
                             {% if not follows %}
-                                <button class="btn btn-default follow-btn">follow</button>
+                                <button class="btn btn-default follow-btn follow follow-post"
+                                        data-follow="follow" id="{{ User.username}}">follow</button>
                             {% endif %}
                         {% endif %}
                     </div>
@@ -206,4 +208,5 @@
     <script type="text/javascript" src="{% static 'js/comment.js' %}"></script>
     <script type="text/javascript" src="{% static 'js/like.js' %}"></script>
     <script type="text/javascript" src="{% static 'js/movie_info.js' %}"></script>
+    <script type="text/javascript" src="{% static 'js/follow.js' %}"></script>
 {% endblock other_tab %}
