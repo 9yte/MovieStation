@@ -121,7 +121,7 @@ def follow(requset):
 def unfollow(requset):
     if requset.method == 'POST':
         currentUser = UserProfile.objects.get(id=requset.user.id)
-        username = requset.POST.get('followed')
+        username = requset.POST.get('followed', '')
         user = UserProfile.objects.get(username=username)
 
         print('unfollow req from ' + currentUser.username + " to " + user.username)
