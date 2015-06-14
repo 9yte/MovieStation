@@ -10,15 +10,27 @@
         <div class="panel-body">
             <div class="media">
                 <div class="media-left media-top popular-movie">
-                    <a href="#" >
+                    <a href="#">
                         <img class="media-object img-rounded" src="{% static 'img/peyman.jpg' %}" alt="...">
                     </a>
                 </div>
                 <div class="media-body">
-                    <h4 class="media-heading">Peyman Ezzati</h4>
+                    <h4 class="media-heading"> {{ User.username }}</h4>
                     <div>
-                        @pezzati
-                        <button class="btn btn-default follow-btn">Edit profile</button>
+                        @{{ User.username }}
+                        {% if Owner %}
+                            <button class="btn btn-default follow-btn" id="editProfile" >Edit profile</button>
+                        {% endif %}
+                        {% if not Owner %}
+                            {% if follows %}
+                                <button class="btn btn-default follow-btn follow"
+                                        data-follow="unfollow" data-user="{{ User.username }}">Unfollow</button>
+                            {% endif %}
+                            {% if not follows %}
+                                <button class="btn btn-default follow-btn follow"
+                                        data-follow="follow" data-user="{{ User.username}}">follow</button>
+                            {% endif %}
+                        {% endif %}
                     </div>
                 </div>
             </div>
@@ -47,153 +59,52 @@
     <!--<link rel="stylesheet" type="text/css" href="{% static 'css/timeline_style.css' %}">-->
     <div class="tab-pane" id="follower-tab">
         <h3 class="tab-title">Followers</h3>
-        <table class="table">
-            <tr>
-                <td>
-                    <div class="media">
-                        <div class="media-left media-top popular-movie">
-                            <a href="#">
-                                <img class="media-object img-rounded" src="{% static 'img/peyman.jpg' %}" alt="...">
-                            </a>
-                        </div>
-                        <div class="media-body">
-                            <h5 class="media-heading">Peyman Ezzati</h5>
-                            <div>
-                                @pezzati
-                                <button class="btn btn-success follow-btn">Follow</button>
-                            </div>
-                        </div>
+        <div class="container-fluid">
+            {% for user in User.followers.all %}
+            <div class="media col-lg-6" style="margin-top: 15px">
+                <div class="media-left media-top popular-movie">
+                    <a href="#">
+                        <img class="media-object img-rounded" src="{% static 'img/peyman.jpg' %}" alt="...">
+                    </a>
+                </div>
+                <div class="media-body">
+                    <h5 class="media-heading">{{user.username}}</h5>
+                    <div>
+                        @{{user.username}}
+                        <button class="btn btn-success follow-btn follow" data-follow="follow"
+                                data-user="{{user.username}}">follow</button>
                     </div>
-                </td>
-                <td>
-                    <div class="media">
-                        <div class="media-left media-top popular-movie">
-                            <a href="#">
-                                <img class="media-object img-rounded" src="{% static 'img/peyman.jpg' %}" alt="...">
-                            </a>
-                        </div>
-                        <div class="media-body">
-                            <h5 class="media-heading">Peyman Ezzati</h5>
-                            <div>
-                                @pezzati
-                                <button class="btn btn-success follow-btn">Follow</button>
-                            </div>
-                        </div>
-                    </div>
-                </td>
-            </tr>
-            <tr>
-                <td>
-                    <div class="media">
-                        <div class="media-left media-top popular-movie">
-                            <a href="#">
-                                <img class="media-object img-rounded" src="{% static 'img/peyman.jpg' %}" alt="...">
-                            </a>
-                        </div>
-                        <div class="media-body">
-                            <h5 class="media-heading">Peyman Ezzati</h5>
-                            <div>
-                                @pezzati
-                                <button class="btn btn-danger follow-btn">Un follow</button>
-                            </div>
-                        </div>
-                    </div>
-                </td>
-                <td>
-                    <div class="media">
-                        <div class="media-left media-top popular-movie">
-                            <a href="#">
-                                <img class="media-object img-rounded" src="{% static 'img/peyman.jpg' %}" alt="...">
-                            </a>
-                        </div>
-                        <div class="media-body">
-                            <h5 class="media-heading">Peyman Ezzati</h5>
-                            <div>
-                                @pezzati
-                                <button class="btn btn-success follow-btn">Follow</button>
-                            </div>
-                        </div>
-                    </div>
-                </td>
-            </tr>
-        </table>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
     </div><!-- follower-tab-->
 
     <div class="tab-pane" id="following-tab">
-    <h3 class="tab-title">Following</h3>
-        <table class="table">
-            <tr>
-                <td>
-                    <div class="media">
-                        <div class="media-left media-top popular-movie">
-                            <a href="#">
-                                <img class="media-object img-rounded" src="{% static 'img/peyman.jpg' %}" alt="...">
-                            </a>
-                        </div>
-                        <div class="media-body">
-                            <h5 class="media-heading">Peyman Ezzati</h5>
-                            <div>
-                                @pezzati
-                                <button class="btn btn-danger follow-btn">Un follow</button>
-                            </div>
-                        </div>
+        <h3 class="tab-title">Following</h3>
+        <div class="container-fluid">
+            {% for user in User.followings.all %}
+            <div class="media col-lg-6" style="margin-top: 15px">
+                <div class="media-left media-top popular-movie">
+                    <a href="#">
+                        <img class="media-object img-rounded" src="{% static 'img/peyman.jpg' %}" alt="...">
+                    </a>
+                </div>
+                <div class="media-body">
+                    <h5 class="media-heading">{{user.username}}</h5>
+                    <div>
+                        @{{user.username}}
+                        <button class="btn btn-success follow-btn follow" data-follow="unfollow"
+                                data-user="{{user.username}}">unfollow</button>
                     </div>
-                </td>
-                <td>
-                    <div class="media">
-                        <div class="media-left media-top popular-movie">
-                            <a href="#">
-                                <img class="media-object img-rounded" src="{% static 'img/peyman.jpg' %}" alt="...">
-                            </a>
-                        </div>
-                        <div class="media-body">
-                            <h5 class="media-heading">Peyman Ezzati</h5>
-                            <div>
-                                @pezzati
-                                <button class="btn btn-danger follow-btn">Un follow</button>
-                            </div>
-                        </div>
-                    </div>
-                </td>
-            </tr>
-            <tr>
-                <td>
-                    <div class="media">
-                        <div class="media-left media-top popular-movie">
-                            <a href="#">
-                                <img class="media-object img-rounded" src="{% static 'img/peyman.jpg' %}" alt="...">
-                            </a>
-                        </div>
-                        <div class="media-body">
-                            <h5 class="media-heading">Peyman Ezzati</h5>
-                            <div>
-                                @pezzati
-                                <button class="btn btn-danger follow-btn">Un follow</button>
-                            </div>
-                        </div>
-                    </div>
-                </td>
-                <td>
-                    <div class="media">
-                        <div class="media-left media-top popular-movie">
-                            <a href="#">
-                                <img class="media-object img-rounded" src="{% static 'img/peyman.jpg' %}" alt="...">
-                            </a>
-                        </div>
-                        <div class="media-body">
-                            <h5 class="media-heading">Peyman Ezzati</h5>
-                            <div>
-                                @pezzati
-                                <button class="btn btn-danger follow-btn">Un follow</button>
-                            </div>
-                        </div>
-                    </div>
-                </td>
-            </tr>
-        </table>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
     </div><!-- follower-tab-->
     <script type="text/javascript" src="{% static 'js/chat.js' %}"></script>
     <script type="text/javascript" src="{% static 'js/comment.js' %}"></script>
     <script type="text/javascript" src="{% static 'js/like.js' %}"></script>
     <script type="text/javascript" src="{% static 'js/movie_info.js' %}"></script>
+    <script type="text/javascript" src="{% static 'js/follow.js' %}"></script>
 {% endblock other_tab %}

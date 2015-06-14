@@ -8,8 +8,10 @@ from django.contrib.auth.hashers import *
 from django.contrib.auth.decorators import login_required
 from django.template import RequestContext, loader
 from django.contrib import messages
+from django.http.response import HttpResponse, JsonResponse
 
 # import models
+from django.views.decorators.csrf import csrf_exempt
 from .models import UserProfile
 
 # import forms
@@ -60,6 +62,7 @@ def login(request):
         password = request.POST.get("password", "")
         user = authenticate(username=username, password=password)
         if user is not None:
+            print("User accepted")
             a_login(request, user)
             return redirect('/home')
         else:
@@ -77,6 +80,52 @@ def logout(request):
 def homepage(request):
     return render(request, "mysite/home.html")
 
-
+@login_required(login_url='')
 def show_profile(request, username):
-    return render(request, "mysite/profile.html")
+    print("show profile")
+    nowUser = UserProfile.objects.get(id=request.user.id)
+    print("current user ditected")
+    try:
+        user = UserProfile.objects.get(username=username)
+    except:
+        user = None
+    if user is not None:
+        if user.username == nowUser.username:
+            return render(request, "mysite/profile.html", {"User":user, "Owner":True})
+        else:
+            if user in nowUser.followings.all():
+                return render(request, "mysite/profile.html", {"User": user, "Owner": False, "follows": True})
+            else:
+                return render(request, "mysite/profile.html", {"User": user, "Owner": False, "follows": False})
+    else:
+        #TODO error page
+        return HttpResponse("Error : cant find requsted user")
+
+@csrf_exempt
+def follow(requset):
+    if requset.method == 'POST':
+        currentUser = UserProfile.objects.get(id=requset.user.id)
+        username = requset.POST.get('followed')
+        user = UserProfile.objects.get(username=username)
+
+        print('follow req from ' + currentUser.username + " to " + user.username)
+        currentUser.followings.add(user)
+        user.followers.add(currentUser)
+        currentUser.save()
+        user.save()
+        return JsonResponse({'status': 'ok'})
+
+
+@csrf_exempt
+def unfollow(requset):
+    if requset.method == 'POST':
+        currentUser = UserProfile.objects.get(id=requset.user.id)
+        username = requset.POST.get('followed', '')
+        user = UserProfile.objects.get(username=username)
+
+        print('unfollow req from ' + currentUser.username + " to " + user.username)
+        currentUser.followings.remove(user)
+        user.followers.remove(currentUser)
+        currentUser.save()
+        user.save()
+        return JsonResponse({'status': 'ok'})

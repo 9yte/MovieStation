@@ -12,5 +12,7 @@ urlpatterns = patterns('',
                        url(r'^/login$', views.login),
                        url(r'^/logout$', views.logout),
                        url(r'^(?P<username>\w+)$', views.show_profile),
+                       url(r'^/follow$', views.follow),
+                       url(r'^/unfollow$', views.unfollow),
                        url(r'^', views.homepage),
 )
