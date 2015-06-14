@@ -11,6 +11,6 @@ class Movie(models.Model):
     cover_photo = models.ImageField(upload_to='/movie_covers', null=True, blank=True)
     rate = models.FloatField(validators=[MinValueValidator(0), MaxValueValidator(10)])
     rate_numbers = models.FloatField(default=0)
-    
+
     def __str__(self):
         return "{}".format(self.name)
