@@ -71,13 +71,13 @@ def login(request):
             return redirect('/')
 
 
-@login_required(login_url='')
+@login_required(login_url='/')
 def logout(request):
     if request.method == "GET":
         a_logout(request)
         return redirect('/')
 
-@login_required(login_url='')
+@login_required(login_url='/')
 def homepage(request):
     user = UserProfile.objects.get(id=request.user.id)
     followings = user.followings.all()
@@ -89,7 +89,7 @@ def homepage(request):
     posts.sort(key=lambda x: x.date_time, reverse=True)
     return render(request, "mysite/home.html", {"posts": posts})
 
-@login_required(login_url='')
+@login_required(login_url='/')
 def show_profile(request, username):
     print("show profile")
     nowUser = UserProfile.objects.get(id=request.user.id)
@@ -100,25 +100,22 @@ def show_profile(request, username):
         user = None
     if user is not None:
         if user.username == nowUser.username:
-            return render(request, "mysite/profile.html", {"User":user, "Owner":True})
+            return render(request, "mysite/profile.html", {"user": user, "owner": True})
         else:
             if user in nowUser.followings.all():
-                return render(request, "mysite/profile.html", {"User": user, "Owner": False, "follows": True})
+                return render(request, "mysite/profile.html", {"user": user, "owner": False, "follows": True})
             else:
-                return render(request, "mysite/profile.html", {"User": user, "Owner": False, "follows": False})
+                return render(request, "mysite/profile.html", {"user": user, "owner": False, "follows": False})
     else:
         #TODO error page
         return HttpResponse("Error : cant find requsted user")
 
 @csrf_exempt
-def follow(requset):
-    print("salaaaaam")
-    if requset.method == 'POST':
-        currentUser = UserProfile.objects.get(id=requset.user.id)
-        username = requset.POST.get('followed')
+def follow(request):
+    if request.method == 'POST':
+        currentUser = UserProfile.objects.get(id=request.user.id)
+        username = request.POST.get('followed')
         user = UserProfile.objects.get(username=username)
-
-        print('follow req from ' + currentUser.username + " to " + user.username)
         currentUser.followings.add(user)
         user.followers.add(currentUser)
         currentUser.save()
@@ -127,13 +124,11 @@ def follow(requset):
 
 
 @csrf_exempt
-def unfollow(requset):
-    if requset.method == 'POST':
-        currentUser = UserProfile.objects.get(id=requset.user.id)
-        username = requset.POST.get('followed', '')
+def unfollow(request):
+    if request.method == 'POST':
+        currentUser = UserProfile.objects.get(id=request.user.id)
+        username = request.POST.get('followed', '')
         user = UserProfile.objects.get(username=username)
-
-        print('unfollow req from ' + currentUser.username + " to " + user.username)
         currentUser.followings.remove(user)
         user.followers.remove(currentUser)
         currentUser.save()

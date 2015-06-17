@@ -37,7 +37,7 @@
                     </ul>
                 </li>
                 <li>
-                    <a href="/profile">Peyman</a>
+                    <a href="/profile/{{ user.username }}">{{ user.nickname }}</a>
                 </li>
             </ul>
             <ul class="nav navbar-nav navbar-right">
@@ -49,7 +49,9 @@
                         <li><a href="#">Another action</a></li>
                         <li><a href="#">Something else here</a></li>
                         <li class="divider"></li>
+                        {% if user %}
                         <li><a href="/user/logout">log Out</a></li>
+                        {% endif %}
                     </ul>
                 </li>
             </ul>

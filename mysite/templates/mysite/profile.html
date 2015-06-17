@@ -15,20 +15,19 @@
                     </a>
                 </div>
                 <div class="media-body">
-                    <h4 class="media-heading"> {{ User.username }}</h4>
+                    <h4 class="media-heading"> {{ user.username }}</h4>
                     <div>
-                        @{{ User.username }}
-                        {% if Owner %}
+                        @{{ user.username }}
+                        {% if owner %}
                             <button class="btn btn-default follow-btn" id="editProfile" >Edit profile</button>
-                        {% endif %}
-                        {% if not Owner %}
+                        {% else %}
                             {% if follows %}
                                 <button class="btn btn-default follow-btn follow"
-                                        data-follow="unfollow" data-user="{{ User.username }}">Unfollow</button>
+                                        data-follow="unfollow" data-user="{{ user.username }}">Unfollow</button>
                             {% endif %}
                             {% if not follows %}
                                 <button class="btn btn-default follow-btn follow"
-                                        data-follow="follow" data-user="{{ User.username}}">follow</button>
+                                        data-follow="follow" data-user="{{ user.username}}">follow</button>
                             {% endif %}
                         {% endif %}
                     </div>
@@ -60,7 +59,7 @@
     <div class="tab-pane" id="follower-tab">
         <h3 class="tab-title">Followers</h3>
         <div class="container-fluid">
-            {% for user in User.followers.all %}
+            {% for user in user.followers.all %}
             <div class="media col-lg-6" style="margin-top: 15px">
                 <div class="media-left media-top popular-movie">
                     <a href="#">
@@ -83,7 +82,7 @@
     <div class="tab-pane" id="following-tab">
         <h3 class="tab-title">Following</h3>
         <div class="container-fluid">
-            {% for user in User.followings.all %}
+            {% for user in user.followings.all %}
             <div class="media col-lg-6" style="margin-top: 15px">
                 <div class="media-left media-top popular-movie">
                     <a href="#">
