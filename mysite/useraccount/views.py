@@ -13,6 +13,7 @@ from django.http.response import HttpResponse, JsonResponse
 # import models
 from django.views.decorators.csrf import csrf_exempt
 from .models import UserProfile
+from post.models import Post
 
 # import forms
 from .forms import RegisterForm
@@ -76,9 +77,17 @@ def logout(request):
         a_logout(request)
         return redirect('/')
 
-
+@login_required(login_url='')
 def homepage(request):
-    return render(request, "mysite/home.html")
+    user = UserProfile.objects.get(id=request.user.id)
+    followings = user.followings.all()
+    posts = []
+    for f in followings:
+        user_posts = Post.objects.filter(author=f)
+        posts += user_posts
+    posts += Post.objects.filter(author=user)
+    posts.sort(key=lambda x: x.date_time, reverse=True)
+    return render(request, "mysite/home.html", {"posts": posts})
 
 @login_required(login_url='')
 def show_profile(request, username):
@@ -103,6 +112,7 @@ def show_profile(request, username):
 
 @csrf_exempt
 def follow(requset):
+    print("salaaaaam")
     if requset.method == 'POST':
         currentUser = UserProfile.objects.get(id=requset.user.id)
         username = requset.POST.get('followed')
