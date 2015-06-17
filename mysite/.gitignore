@@ -6,3 +6,4 @@
 *.iml
 media/*
 .idea/*
+migrations/*
