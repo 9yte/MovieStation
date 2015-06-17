@@ -6,7 +6,7 @@ class Post(models.Model):
     author = models.ForeignKey('useraccount.UserProfile')
     movie = models.ForeignKey('movie.Movie')
     rate = models.FloatField(validators=[MinValueValidator(0), MaxValueValidator(10)])
-    text = models.TextField(blank=True, null=False)
+    text = models.TextField()
     date_time = models.DateTimeField(blank=False, null=False)
 
     def __str__(self):

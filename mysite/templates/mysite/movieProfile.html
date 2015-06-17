@@ -3,120 +3,149 @@
 {% block content %}
 
 
-<!--{% comment %}<link href="http://netdna.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap.min.css" rel="stylesheet">-->
+    <!--{% comment %}<link href="http://netdna.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap.min.css" rel="stylesheet">-->
 <!--<link href="{% static 'css/star/star-rating.min.css' %}" media="all" rel="stylesheet" type="text/css" />{% endcomment %}-->
-<link rel="stylesheet" type="text/css" href="{% static 'css/movieProfile.css' %}">
-<link rel="stylesheet" type="text/css" href="{% static 'css/timeline_style.css' %}">
-<link rel="stylesheet" href="{% static 'css/star/star-rating.css' %}" media="all" rel="stylesheet" type="text/css"/>
+    <link rel="stylesheet" type="text/css" href="{% static 'css/movieProfile.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'css/timeline_style.css' %}">
+    <link rel="stylesheet" href="{% static 'css/star/star-rating.css' %}" media="all" rel="stylesheet" type="text/css"/>
 
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
-<script src="{% static 'js/movieProfile.js' %}"></script>
-<script src="{% static 'js/star/star-rating.js' %}" type="text/javascript"></script>
-
-
-<div class="col-xs-6 section">
-    <div class="panel panel-default" id="m">
-        <div class="panel-body">
-            <div class="col-sm-12 col-md-12">
-                <div class="thumbnail">
-                    <img src="{{ movie.cover_photo.url }}" alt="cover photo">
-                    <div class="caption">
-                        <h1 class="media-heading">{{ movie.name }}</h1>
-                        <input id="movieRate" value="{{ rate }}" type="number"  readonly="true" data-stars="10" class="rating" min=0 max=10 step=0.2 data-size="xs">
-                        {% comment %}<input id="mainStar" type="number" class="rating" min=1 max=10 step=0.5 data-size="lg" data-rtl="true">{% endcomment %}
-                        <p>
-                            {{movie.description}}
-                        </p>
-                        <a href="{{ movie.IMDB_link }}"><h5>Wikipedia Page</h5></a>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
+    <script src="{% static 'js/movieProfile.js' %}"></script>
+    <script src="{% static 'js/star/star-rating.js' %}" type="text/javascript"></script>
 
 
+    <div class="col-xs-6 section">
+        <div class="panel panel-default" id="m">
+            <div class="panel-body">
+                <div class="col-sm-12 col-md-12">
+                    {% if messages %}
+                        {% for message in messages %}
+                            {% if message.tags == 'error' %}
+                                <div class="alert alert-danger alert-dismissible" role="alert">
+                                    <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span
+                                            aria-hidden="true">&times;</span></button>
+                                    {{ message }}
+                                </div>
+                            {% elif message.tags == 'success' %}
+                                <div class="alert alert-success alert-dismissible" role="alert">
+                                    <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span
+                                            aria-hidden="true">&times;</span></button>
+                                    {{ message }}
+                                </div>
+                            {% endif %}
+                        {% endfor %}
+                    {% endif %}
+                    <div class="thumbnail">
+                        <img src="{{ movie.cover_photo.url }}" alt="cover photo">
 
-                        <button type="button" class="btn btn-success" data-toggle="modal" data-target="#myDesc">
-                            Write Description</button>
-                        <!-- Modal -->
-                        <div class="container">
-                            <div class="modal fade" id="myDesc" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
-                                 aria-hidden="true">
-                                <div class="modal-dialog">
-                                    <div class="modal-content">
-                                        <div class="modal-header">
-                                            <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">
+                        <div class="caption">
+                            <h1 class="media-heading">{{ movie.name }}</h1>
+                            <input id="movieRate" value="{{ rate }}" type="number" readonly="true" data-stars="10"
+                                   class="rating" min=0 max=10 step=0.2 data-size="xs">
+                            {% comment %}<input id="mainStar" type="number" class="rating" min=1 max=10 step=0.5 data-size="lg" data-rtl="true">{% endcomment %}
+                            <p>
+                                {{ movie.description }}
+                            </p>
+                            <a href="{{ movie.IMDB_link }}"><h5>IMDB Page</h5></a>
+
+                            {% if can_post %}
+                                <button type="button" class="btn btn-success" data-toggle="modal" data-target="#myDesc">
+                                    Write Description
+                                </button>
+                            {% elif user %}
+                                <span class="label label-info ">Your rate:{{ user_rate }}</span>
+                            {% endif %}
+                            <!-- Modal -->
+                            <div class="container">
+                                <div class="modal fade" id="myDesc" tabindex="-1" role="dialog"
+                                     aria-labelledby="myModalLabel"
+                                     aria-hidden="true">
+                                    <div class="modal-dialog">
+                                        <div class="modal-content">
+                                            <div class="modal-header">
+                                                <button type="button" class="close" data-dismiss="modal"
+                                                        aria-label="Close"><span aria-hidden="true">
                                    &times;</span></button>
-                                            <h4 class="modal-title" id="myModalLabel">Write Description</h4>
+                                                <h4 class="modal-title" id="myModalLabel">Write Description</h4>
+                                            </div>
+                                            <form class="mine" method="post" action="/post/new_post/{{ movie.id }}">
+                                                {% csrf_token %}
+                                                <div class="modal-body">
+                                                    <input name="rate" id="rating-input" value="" type="number"
+                                                           data-stars="10" class="rating" min=0 max=10 step=0.2
+                                                           data-size="xs">
+                                                    <textarea class="form-control my-text-area" rows="6"
+                                                              name="text"></textarea>
+                                                </div>
+                                                <div class="modal-footer ">
+                                                    <button type="submit" class="btn btn-success"
+                                                            onclick="return submitPost()" id="post-desc">Post
+                                                    </button>
+                                                </div>
+                                            </form>
                                         </div>
-                                        <form class="mine" method="post" action="/signin/modal">
-                                            {% csrf_token %}
-                                            <div class="modal-body">
-                                                <input id="rating-input" value="9" type="number"  data-stars="10" class="rating" min=0 max=10 step=0.2 data-size="xs">
-                                                <textarea class="form-control my-text-area" rows="6"></textarea>
-                                            </div>
-                                            <div class="modal-footer ">
-                                                <button type="button" class="btn btn-success" onclick="return submitPost()" id="post-desc">Post</button>
-                                            </div>
-                                        </form>
                                     </div>
                                 </div>
                             </div>
                         </div>
                     </div>
+                    <hr class="divider">
                 </div>
-                <hr class="divider">
+                <div class="media">
+
+
+                </div>
             </div>
-            <div class="media">
-
-
+            <div class="panel-body">
+                <h3>Cast</h3>
+                <ul>
+                    <li>Kelly Macdonald as Merida</li>
+                    <li>Emma Thompson as Queen Elinor</li>
+                </ul>
+                <div class="divider"></div>
+                <h3>Producers</h3>
+                <ul>
+                    <li>Directed by Mark Andrews and Brenda Chapman</li>
+                    <li>Produced by Katherine Sarafian</li>
+                </ul>
+                <div class="divider"></div>
+                <h3>Awards</h3>
+                <table class="table awards">
+                    <tr class="table-header">
+                        <th>#</th>
+                        <th>Award</th>
+                        <th>Candidate for</th>
+                        <th>year</th>
+                        <th>Result</th>
+                    </tr>
+                    <tr>
+                        <td>1</td>
+                        <td>Oscar</td>
+                        <td>Best Graphic of 2011</td>
+                        <td>2012</td>
+                        <td>
+                            <div>
+                                Won
+                            </div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>2</td>
+                        <td>Oscar</td>
+                        <td>Best Sound track of 2011</td>
+                        <td>2012</td>
+                        <td>
+                            <div>
+                                Nominated
+                            </div>
+                        </td>
+                    </tr>
+                </table>
             </div>
         </div>
-        <div class="panel-body">
-            <h3>Cast</h3>
-            <ul>
-                <li>Kelly Macdonald as Merida</li>
-                <li>Emma Thompson as Queen Elinor</li>
-            </ul>
-            <div class="divider"></div>
-            <h3>Producers</h3>
-            <ul>
-                <li>Directed by Mark Andrews and Brenda Chapman</li>
-                <li>Produced by Katherine Sarafian</li>
-            </ul>
-            <div class="divider"></div>
-            <h3>Awards</h3>
-            <table class="table awards">
-                <tr class="table-header">
-                    <th>#</th>
-                    <th>Award</th>
-                    <th>Candidate for</th>
-                    <th>year</th>
-                    <th>Result</th>
-                </tr>
-                <tr>
-                    <td>1</td>
-                    <td>Oscar</td>
-                    <td>Best Graphic of 2011</td>
-                    <td>2012</td>
-                    <td>
-                        <div>
-                            Won
-                        </div>
-                    </td>
-                </tr>
-                <tr>
-                    <td>2</td>
-                    <td>Oscar</td>
-                    <td>Best Sound track of 2011</td>
-                    <td>2012</td>
-                    <td>
-                        <div>
-                            Nominated
-                        </div>
-                    </td>
-                </tr>
-            </table>
+        <div class="row">
+
         </div>
     </div>
-    <div class="row">
-
-    </div>
-</div>
 
 {% endblock content %}
