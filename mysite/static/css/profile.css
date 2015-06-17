@@ -3,8 +3,6 @@
 	font-size: 10px;
 }
 
-
-
 .follow{
 	float: left;
 }
@@ -46,4 +44,14 @@ tr.like-row  td  p {
 .tab-title {
     margin-top: 0.4em;
     margin-left: 8px;
+}
+
+.btn-red {
+    background-color: #e87e78 !important;
+    border-color: #e87e78 !important;
+}
+
+.btn-second-color{
+    background-color: #90A4AE !important;
+    border-color: #90A4AE !important;
 }

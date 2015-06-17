@@ -4,47 +4,61 @@
 {% block profile %}
     <link rel="stylesheet" type="text/css" href="{% static 'css/profile.css' %}">
     <link rel="stylesheet" type="text/css" href="{% static 'css/timeline_style.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'css/tooltip.css' %}">
     <link rel="stylesheet" type="text/css" href="{% static 'css/profileTable.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'css/bootstrap/bootstrap-datetimepicker.min.css' %}">
 
     <div class="panel panel-default">
         <div class="panel-body">
-            <div class="media">
+            <div class="media col-lg-10" style="padding-left: 0px">
                 <div class="media-left media-top popular-movie">
-                    <a href="#">
-                        <img class="media-object img-rounded" src="{% static 'img/peyman.jpg' %}" alt="...">
-                    </a>
+                    <img class="media-object img-rounded" src="{{ other.avatar.url }}"
+                         alt="{{ other.username }} avatar">
                 </div>
                 <div class="media-body">
-                    <h4 class="media-heading"> {{ user.username }}</h4>
+                    <h5 class="media-heading nickname"> {{ other.nickname }}</h5>
+
                     <div>
-                        @{{ user.username }}
-                        {% if owner %}
-                            <button class="btn btn-default follow-btn" id="editProfile" >Edit profile</button>
-                        {% else %}
+                        @{{ other.username }}
+                        {% if not owner %}
                             {% if follows %}
                                 <button class="btn btn-default follow-btn follow"
-                                        data-follow="unfollow" data-user="{{ user.username }}">Unfollow</button>
+                                        data-follow="unfollow" data-user="{{ other.username }}">Unfollow
+                                </button>
                             {% endif %}
                             {% if not follows %}
                                 <button class="btn btn-default follow-btn follow"
-                                        data-follow="follow" data-user="{{ user.username}}">follow</button>
+                                        data-follow="follow" data-user="{{ other.username }}">follow
+                                </button>
                             {% endif %}
                         {% endif %}
                     </div>
                 </div>
+            </div>
+            <div class="col-lg-2">
+                {% if owner %}
+                    <button href="#edit-tab" data-toggle="tab" class="btn btn-sm btn-primary btn-second-color"
+                            style="float: right; font-size: 10px"
+                            id="editProfile">Edit profile
+                    </button>
+                    <button href="#password-tab" data-toggle="tab" class="btn btn-sm btn-danger btn-red"
+                            style="float: right ; font-size: 10px"
+                            id="editProfile">Change Password
+                    </button>
+                {% endif %}
             </div>
             <br>
 
             <table class="table">
                 <tr>
                     <th><a href="#post-tab" data-toggle="tab" class="text-muted small-font">POSTS</a></th>
-                    <th><a href="#follower-tab" data-toggle="tab" class="text-muted small-font">FOLLOWER</a></th>
-                    <th><a href="#following-tab" data-toggle="tab" class="text-muted small-font">FOLLOWING</a></th>
+                    <th><a href="#follower-tab" data-toggle="tab" class="text-muted small-font">FOLLOWERS</a></th>
+                    <th><a href="#following-tab" data-toggle="tab" class="text-muted small-font">FOLLOWINGS</a></th>
                 </tr>
                 <tr>
-                    <td class="second-color">2</td>
-                    <td class="second-color">40</td>
-                    <td class="second-color">20</td>
+                    <td class="second-color">{{ posts.count }}</td>
+                    <td class="second-color">{{ other.followings.count }}</td>
+                    <td class="second-color">{{ other.followers.count }}</td>
                 </tr>
             </table>
         </div>
@@ -58,52 +72,126 @@
     <!--<link rel="stylesheet" type="text/css" href="{% static 'css/timeline_style.css' %}">-->
     <div class="tab-pane" id="follower-tab">
         <h3 class="tab-title">Followers</h3>
+
         <div class="container-fluid">
-            {% for user in user.followers.all %}
-            <div class="media col-lg-6" style="margin-top: 15px">
-                <div class="media-left media-top popular-movie">
-                    <a href="#">
-                        <img class="media-object img-rounded" src="{% static 'img/peyman.jpg' %}" alt="...">
-                    </a>
-                </div>
-                <div class="media-body">
-                    <h5 class="media-heading">{{user.username}}</h5>
-                    <div>
-                        @{{user.username}}
-                        <button class="btn btn-success follow-btn follow" data-follow="follow"
-                                data-user="{{user.username}}">follow</button>
+            {% for user in other.followers.all %}
+                <div class="media col-lg-6" style="margin-top: 15px">
+                    <div class="media-left media-top popular-movie">
+                        <a href="#">
+                            <img class="media-object img-rounded" src="{{ user.avatar.url }}" alt="...">
+                        </a>
+                    </div>
+                    <div class="media-body">
+                        <h5 class="media-heading">{{ user.username }}</h5>
+
+                        <div>
+                            @{{ user.username }}
+                            <button class="btn btn-success follow-btn follow" data-follow="follow"
+                                    data-user="{{ user.username }}">follow
+                            </button>
+                        </div>
                     </div>
                 </div>
-            </div>
             {% endfor %}
         </div>
     </div><!-- follower-tab-->
 
     <div class="tab-pane" id="following-tab">
         <h3 class="tab-title">Following</h3>
+
         <div class="container-fluid">
-            {% for user in user.followings.all %}
-            <div class="media col-lg-6" style="margin-top: 15px">
-                <div class="media-left media-top popular-movie">
-                    <a href="#">
-                        <img class="media-object img-rounded" src="{% static 'img/peyman.jpg' %}" alt="...">
-                    </a>
-                </div>
-                <div class="media-body">
-                    <h5 class="media-heading">{{user.username}}</h5>
-                    <div>
-                        @{{user.username}}
-                        <button class="btn btn-success follow-btn follow" data-follow="unfollow"
-                                data-user="{{user.username}}">unfollow</button>
+            {% for user in other.followings.all %}
+                <div class="media col-lg-6" style="margin-top: 15px">
+                    <div class="media-left media-top popular-movie">
+                        <a href="#">
+                            <img class="media-object img-rounded" src="{{ user.avatar.url }}" alt="...">
+                        </a>
+                    </div>
+                    <div class="media-body">
+                        <h5 class="media-heading">{{ user.username }}</h5>
+
+                        <div>
+                            @{{ user.username }}
+                            <button class="btn btn-success follow-btn follow" data-follow="unfollow"
+                                    data-user="{{ user.username }}">unfollow
+                            </button>
+                        </div>
                     </div>
                 </div>
-            </div>
             {% endfor %}
         </div>
-    </div><!-- follower-tab-->
+    </div>
+    <div class="tab-pane" id="edit-tab">
+        <div class="container-fluid" id="message">
+            <div class="media col-lg-6 col-lg-offset-3" style="margin-top: 15px">
+                <div class="panel-body">
+                    <h4 class="tab-title red">Edit your profile</h4>
+
+                    <form onsubmit="return false;" method="post" role="form" action="#" data-toggle="validator">
+                        {% csrf_token %}
+                        <div class="form-group">
+                            <input type="text" name="nickname"
+                                   class="form-control input-sm color_tooltip my_input" value="{{ user.nickname }}"
+                                   placeholder="{{ user.nickname }}"
+                                   data-toggle="tooltip" data-animation="true"
+                                   data-placement="bottom"
+                                   title="Please enter your nickname, only alphabet characters"
+                                   pattern="^([_A-z]){3,}$" maxlength="20" required>
+
+                            <div class="help-block with-errors"></div>
+                        </div>
+                        <div class="form-group">
+                            <input type="email" name="email" id="email"
+                                   class="form-control input-sm color_tooltip my_input" value="{{ user.email }}"
+                                   placeholder="{{ user.email }}"
+                                   data-toggle="tooltip" data-animation="true"
+                                   data-placement="bottom" title="Please enter your email"
+                                   data-error="Bruh, that email address is invalid" required>
+
+                            <div class="help-block with-errors"></div>
+                        </div>
+                        <div class="form-group">
+                            <div id="datetimepicker" class="input-append date">
+                                <input data-format="yyyy-MM-dd" type="text" name="birth_date" id="date"
+                                       class="form-control input-sm color_tooltip my_input" value="{{ user.birth_date}}"
+                                       placeholder="{{ user.birth_date }}"
+                                       data-toggle="tooltip" data-animation="true"
+                                       data-placement="bottom" title="Please enter your birthdate" required>
+                                <span class="add-on">
+                                  <i data-time-icon="icon-time" data-date-icon="icon-calendar">
+                                      <span class="glyphicon glyphicon-calendar color"></span>
+                                  </i>
+                                </span>
+                            </div>
+                            <div class="help-block with-errors"></div>
+                        </div>
+                        <div class="btn-group" role="group" aria-label="...">
+                            <div class="btn-group" role="group">
+                                <button type="submit" id="edit" username="{{ user.username }}"
+                                        class="btn btn-form pull-left signup">
+                                    Save
+                                </button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script type="text/javascript">
+        $(function () {
+            $('#datetimepicker').datetimepicker({
+                language: 'pt-BR'
+            });
+        });
+    </script>
     <script type="text/javascript" src="{% static 'js/chat.js' %}"></script>
     <script type="text/javascript" src="{% static 'js/comment.js' %}"></script>
     <script type="text/javascript" src="{% static 'js/like.js' %}"></script>
     <script type="text/javascript" src="{% static 'js/movie_info.js' %}"></script>
     <script type="text/javascript" src="{% static 'js/follow.js' %}"></script>
+    <script type="text/javascript" src="{% static 'js/validator.js' %}"></script>
+    <script type="text/javascript" src="{% static 'js/form.js' %}"></script>
+    <script type="text/javascript" src="{% static 'js/edit.js' %}"></script>
+    <script type="text/javascript" src="{% static 'js/bootstrap/bootstrap-datetimepicker.min.js' %}"></script>
 {% endblock other_tab %}
