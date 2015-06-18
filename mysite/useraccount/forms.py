@@ -20,7 +20,7 @@ class RegisterForm(forms.ModelForm):
         return password2
 
 
-class ChangePassForms(forms.Form):
+class ChangePassForm(forms.Form):
     current_password = forms.CharField(widget=forms.PasswordInput)
     password = forms.CharField(widget=forms.PasswordInput, min_length=6)
     confirm = forms.CharField(widget=forms.PasswordInput, min_length=6)
@@ -33,3 +33,9 @@ class ChangePassForms(forms.Form):
         if password1 != password2:
             raise forms.ValidationError("Your passwords do not match")
         return password2
+
+
+class EditForm(forms.ModelForm):
+    class Meta:
+        model = UserProfile
+        fields = ['nickname', 'email', 'avatar']

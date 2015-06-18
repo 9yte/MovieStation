@@ -12,7 +12,7 @@
         <div class="panel-body">
             <div class="media col-lg-10" style="padding-left: 0px">
                 <div class="media-left media-top popular-movie">
-                    <img class="media-object img-rounded" src="{{ other.avatar.url }}"
+                    <img class="media-object img-rounded" id="profile-avatar" src="{{ other.avatar.url }}"
                          alt="{{ other.username }} avatar">
                 </div>
                 <div class="media-body">
@@ -127,7 +127,7 @@
                 <div class="panel-body">
                     <h4 class="tab-title red">Edit your profile</h4>
 
-                    <form onsubmit="return false;" method="post" role="form" action="#" data-toggle="validator">
+                    <form onsubmit="return false;" method="post" role="form" action="#" data-toggle="validator" enctype="multipart/form-data">
                         {% csrf_token %}
                         <div class="form-group">
                             <input type="text" name="nickname"
@@ -147,6 +147,16 @@
                                    data-toggle="tooltip" data-animation="true"
                                    data-placement="bottom" title="Please enter your email"
                                    data-error="Bruh, that email address is invalid" required>
+
+                            <div class="help-block with-errors"></div>
+                        </div>
+                        <div class="form-group">
+                            <input type="file" name="avatar" id="avatar"
+                                   class="form-control input-sm color_tooltip my_input" value="{{ user.avatar.url }}"
+                                   placeholder="{{ user.avatar.url }}"
+                                   data-toggle="tooltip" data-animation="true"
+                                   data-placement="bottom" title="Please select your avatar"
+                                   required>
 
                             <div class="help-block with-errors"></div>
                         </div>

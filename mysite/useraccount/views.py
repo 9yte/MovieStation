@@ -17,7 +17,7 @@ from post.models import Post
 from datetime import datetime, date
 
 # import forms
-from .forms import RegisterForm, ChangePassForms
+from .forms import RegisterForm, ChangePassForm, EditForm
 
 # Create your views here.
 
@@ -122,7 +122,7 @@ def change_password(request):
         print(request.POST.get('current_password'))
         print(request.POST.get('password'))
         print(request.POST.get('confirm'))
-        form = ChangePassForms(request.POST)
+        form = ChangePassForm(request.POST)
         print(form)
         if form.is_valid():
             print("valid")
@@ -131,9 +131,9 @@ def change_password(request):
             user = UserProfile.objects.get(id=request.user.id)
             if check_password(current_pass, user.password):
                 UserProfile.objects.filter(id=request.user.id).update(password=make_password(
-                            password, salt=None, hasher='default'))
+                    password, salt=None, hasher='default'))
                 # send_mail('Simorgh Hotel Reservation', 'your password has been changed.',
-                #                   '', [user.email],
+                # '', [user.email],
                 #                   fail_silently=False)
                 return JsonResponse({'status': 3})
             else:
@@ -158,14 +158,20 @@ def follow(request):
 @csrf_exempt
 def edit(request):
     if request.method == 'POST':
-        nickname = request.POST.get('nickname')
-        email = request.POST.get('email')
-        birth_date = request.POST.get('birth_date')
-        birth_date = datetime.strptime(birth_date, "%B %d, %Y")
-        birth_date = birth_date.strftime("%Y-%m-%d")
-        user = UserProfile.objects.get(id=request.user.id)
-        UserProfile.objects.filter(id=request.user.id).update(nickname=nickname, email=email, birth_date=birth_date)
-        return JsonResponse({'status': 'ok'})
+        form = EditForm(request.POST, request.FILES)
+        if form.is_valid():
+            nickname = form.cleaned_data["nickname"]
+            email = form.cleaned_data["email"]
+            avatar = form.cleaned_data["avatar"]
+            birth_date = request.POST.get("birth_date")
+            birth_date = datetime.strptime(birth_date, "%B %d, %Y")
+            birth_date = birth_date.strftime("%Y-%m-%d")
+            user = UserProfile.objects.get(id=request.user.id)
+            user.avatar = avatar
+            UserProfile.objects.filter(id=request.user.id).update(nickname=nickname, email=email, birth_date=birth_date)
+            user.save()
+            return JsonResponse({'status': 'ok', 'url': user.avatar.url})
+
 
 @csrf_exempt
 def unfollow(request):

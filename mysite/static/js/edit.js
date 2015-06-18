@@ -1,11 +1,38 @@
+//$("#edit").click(function () {
+//    alert($("input[name='avatar']")[0].files[0]);
+//    $.post("/user/edit", {nickname: $("input[name='nickname']").val(), email: $("input[name='email']").val(), birth_date: $("input[name='birth_date']").val(), avatar: $("input[name='avatar']")[0].files[0]}, function (data) {
+//        if (data.status == 'ok') {
+//            addMessage("Updating profile done successfully!", "success", "message");
+//            $('.nickname').text($("input[name='nickname']").val());
+//        }
+//        else {
+//            addMessage("Problem with updating profile!", "danger", "message");
+//        }
+//    });
+//});
 $("#edit").click(function () {
-    $.post("/user/edit", {nickname: $("input[name='nickname']").val(), email: $("input[name='email']").val(), birth_date: $("input[name='birth_date']").val()}, function (data) {
-        if (data.status == 'ok') {
-            addMessage("Updating profile done successfully!", "success", "message");
-            $('.nickname').text($("input[name='nickname']").val());
-        }
-        else {
-            addMessage("Problem with updating profile!", "danger", "message");
+    var form = new FormData();
+    form.append("nickname", $("input[name='nickname']").val());
+    form.append("email", $("input[name='email']").val());
+    form.append("birth_date", $("input[name='birth_date']").val());
+    form.append("avatar", $("input[name='avatar']")[0].files[0]);
+    $.ajax({
+        url: '/user/edit',
+        data: form,
+        processData: false,
+        type: 'POST',
+        contentType: false,
+        success: function (data) {
+            if (data.status == 'ok') {
+                addMessage("Updating profile done successfully!", "success", "message");
+                $('.nickname').text($("input[name='nickname']").val());
+                var d = new Date();
+                var c = $("#profile-avatar").attr("src");
+                $("#profile-avatar").attr("src", data.url+"?"+d.getTime());
+            }
+            else {
+                addMessage("Problem with updating profile!", "danger", "message");
+            }
         }
     });
 });
