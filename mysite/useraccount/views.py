@@ -17,7 +17,7 @@ from post.models import Post
 from datetime import datetime, date
 
 # import forms
-from .forms import RegisterForm
+from .forms import RegisterForm, ChangePassForms
 
 # Create your views here.
 
@@ -114,6 +114,32 @@ def show_profile(request, username):
     else:
         # TODO error page
         return HttpResponse("Error : cant find requsted user")
+
+
+@csrf_exempt
+def change_password(request):
+    if request.method == 'POST':
+        print(request.POST.get('current_password'))
+        print(request.POST.get('password'))
+        print(request.POST.get('confirm'))
+        form = ChangePassForms(request.POST)
+        print(form)
+        if form.is_valid():
+            print("valid")
+            current_pass = form.cleaned_data['current_password']
+            password = form.cleaned_data['password']
+            user = UserProfile.objects.get(id=request.user.id)
+            if check_password(current_pass, user.password):
+                UserProfile.objects.filter(id=request.user.id).update(password=make_password(
+                            password, salt=None, hasher='default'))
+                # send_mail('Simorgh Hotel Reservation', 'your password has been changed.',
+                #                   '', [user.email],
+                #                   fail_silently=False)
+                return JsonResponse({'status': 3})
+            else:
+                return JsonResponse({'status': 1})
+        else:
+            return JsonResponse({'status': 2})
 
 
 @csrf_exempt

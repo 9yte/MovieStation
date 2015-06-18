@@ -18,3 +18,18 @@ class RegisterForm(forms.ModelForm):
         if password1 != password2:
             raise forms.ValidationError("Your passwords do not match")
         return password2
+
+
+class ChangePassForms(forms.Form):
+    current_password = forms.CharField(widget=forms.PasswordInput)
+    password = forms.CharField(widget=forms.PasswordInput, min_length=6)
+    confirm = forms.CharField(widget=forms.PasswordInput, min_length=6)
+
+    def clean_confirm(self):
+        password1 = self.cleaned_data.get('password')
+        password2 = self.cleaned_data.get('confirm')
+        if not password2:
+            raise forms.ValidationError("You must confirm your password")
+        if password1 != password2:
+            raise forms.ValidationError("Your passwords do not match")
+        return password2

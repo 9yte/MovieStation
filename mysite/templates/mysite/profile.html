@@ -38,12 +38,12 @@
             <div class="col-lg-2">
                 {% if owner %}
                     <button href="#edit-tab" data-toggle="tab" class="btn btn-sm btn-primary btn-second-color"
-                            style="float: right; font-size: 10px"
+                            style="float: right;font-size: 10px"
                             id="editProfile">Edit profile
                     </button>
                     <button href="#password-tab" data-toggle="tab" class="btn btn-sm btn-danger btn-red"
-                            style="float: right ; font-size: 10px"
-                            id="editProfile">Change Password
+                            style="float: right ;font-size: 10px; display: none"
+                            id="changePassword">Change Password
                     </button>
                 {% endif %}
             </div>
@@ -153,7 +153,8 @@
                         <div class="form-group">
                             <div id="datetimepicker" class="input-append date">
                                 <input data-format="yyyy-MM-dd" type="text" name="birth_date" id="date"
-                                       class="form-control input-sm color_tooltip my_input" value="{{ user.birth_date}}"
+                                       class="form-control input-sm color_tooltip my_input"
+                                       value="{{ user.birth_date }}"
                                        placeholder="{{ user.birth_date }}"
                                        data-toggle="tooltip" data-animation="true"
                                        data-placement="bottom" title="Please enter your birthdate" required>
@@ -170,6 +171,57 @@
                                 <button type="submit" id="edit" username="{{ user.username }}"
                                         class="btn btn-form pull-left signup">
                                     Save
+                                </button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="tab-pane" id="password-tab">
+        <div class="container-fluid" id="password_message">
+            <div class="media col-lg-6 col-lg-offset-3" style="margin-top: 15px">
+                <div class="panel-body">
+                    <h4 class="tab-title red">Change password</h4>
+
+                    <form onsubmit="return false;" method="post" role="form" action="#" data-toggle="validator">
+                        {% csrf_token %}
+                        <div class="form-group">
+                            <input type="password" name="current_password" id="current_password"
+                                   class="form-control input-sm color_tooltip my_input" placeholder="Current password"
+                                   data-toggle="tooltip" data-animation="true"
+                                   data-placement="bottom"
+                                   title="Please enter your current password"
+                                   required>
+
+                            <div class="help-block with-errors"></div>
+                        </div>
+                        <div class="form-group">
+                            <input type="password" name="password" id="new_password"
+                                   class="form-control input-sm color_tooltip my_input" placeholder="New password"
+                                   data-toggle="tooltip" data-animation="true"
+                                   data-placement="bottom"
+                                   title="Please enter new password with Minimum of 6 characters"
+                                   data-minlength="6" required>
+
+                            <div class="help-block with-errors"></div>
+                        </div>
+                        <div class="form-group">
+                            <input type="password" name="confirm" id="password_confirm"
+                                   class="form-control input-sm color_tooltip my_input" placeholder="Confirm your password"
+                                   data-toggle="tooltip" data-animation="true"
+                                   data-placement="bottom" title="Please confirm your password"
+                                   data-match="#new_password" data-match-error="Whoops, these don't match"
+                                   required>
+
+                            <div class="help-block with-errors"></div>
+                        </div>
+                        <div class="btn-group" role="group" aria-label="...">
+                            <div class="btn-group" role="group">
+                                <button type="submit" id="change_password" username="{{ user.username }}"
+                                        class="btn btn-form pull-left signup">
+                                    Change
                                 </button>
                             </div>
                         </div>
