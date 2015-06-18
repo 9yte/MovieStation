@@ -1,7 +1,11 @@
+from django.core.serializers import json
+from django.http import JsonResponse, HttpResponse
 from django.shortcuts import render
 from django.shortcuts import redirect
+from django.core import serializers
 
 # Create your views here.
+from django.views.decorators.csrf import csrf_exempt
 
 from .models import Movie
 from post.models import Post
@@ -37,3 +41,28 @@ def show_movie(request, movie_name):
 
 def mainpage(request):
     return redirect('/mainpage')
+
+
+@csrf_exempt
+def suggestion(request, number):
+    print('Get Suggestion Movies')
+    if request.method == 'POST':
+        print(request.method)
+        user = UserProfile.objects.get(id=request.user.id)
+
+        all_movies = Movie.objects.all()
+        print('all_movies : ')
+        movies = []
+        for movie in all_movies:
+            print(movie)
+            if len(Post.objects.filter(author=user, movie=movie)) != 0:
+                continue
+            movies.append(movie)
+            print(movie)
+            print('added')
+            if len(movies) == number:
+                break
+        print(len(movies))
+        new_list = [serializers.serialize('json', [o]) for o in movies]
+        print('send')
+        return JsonResponse(dict(status=True, Movies=new_list))
