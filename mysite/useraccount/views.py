@@ -34,7 +34,7 @@ def register(request):
     print("hi")
     if request.method == "POST":
         print(request.POST)
-        form = RegisterForm(request.POST)
+        form = RegisterForm(request.POST, request.FILES)
         print(form)
         if form.is_valid():
             user = UserProfile.objects.create_user(form.cleaned_data['username'], form.cleaned_data['email'],
@@ -42,6 +42,7 @@ def register(request):
             user.birth_date = form.cleaned_data['birth_date']
             user.nickname = form.cleaned_data['username']
             user.activation_code = "1"
+            user.avatar = form.cleaned_data['avatar']
             # user.activation_code = hashlib.sha224(user.username + user.password).hexdigest()
             # send_mail('Simorgh Hotel Reservation', "127.0.0.1:8000/activation/?activation=" + user.activation_code,
             # '', [user.email],
@@ -58,13 +59,11 @@ def register(request):
 
 
 def login(request):
-    print(request.user.id)
     if request.method == "POST":
         username = request.POST.get("UserName", "")
         password = request.POST.get("password", "")
         user = authenticate(username=username, password=password)
         if user is not None:
-            print("User accepted")
             a_login(request, user)
             return redirect('/home')
         else:
@@ -119,13 +118,8 @@ def show_profile(request, username):
 @csrf_exempt
 def change_password(request):
     if request.method == 'POST':
-        print(request.POST.get('current_password'))
-        print(request.POST.get('password'))
-        print(request.POST.get('confirm'))
         form = ChangePassForm(request.POST)
-        print(form)
         if form.is_valid():
-            print("valid")
             current_pass = form.cleaned_data['current_password']
             password = form.cleaned_data['password']
             user = UserProfile.objects.get(id=request.user.id)

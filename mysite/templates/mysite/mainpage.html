@@ -74,7 +74,7 @@
                     </div>
                     <hr class="divider">
                     <div class="panel-body">
-                        <form method="post" role="form" action="/user/register" data-toggle="validator" id="signup">
+                        <form method="post" role="form" action="/user/register" data-toggle="validator" id="signup" enctype="multipart/form-data">
                             {% csrf_token %}
                             <div class="form-group">
                                 <input type="text" name="username"
@@ -112,6 +112,15 @@
                                        data-toggle="tooltip" data-animation="true"
                                        data-placement="bottom" title="Please enter your email"
                                        data-error="Bruh, that email address is invalid" required>
+
+                                <div class="help-block with-errors"></div>
+                            </div>
+                            <div class="form-group">
+                                <input type="file" name="avatar" id="avatar"
+                                       class="form-control input-sm color_tooltip my_input"
+                                       data-toggle="tooltip" data-animation="true"
+                                       data-placement="bottom" title="Please select your avatar"
+                                       required>
 
                                 <div class="help-block with-errors"></div>
                             </div>
