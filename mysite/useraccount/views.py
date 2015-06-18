@@ -2,6 +2,7 @@ from django.shortcuts import render
 from django.contrib.auth import authenticate
 from django.contrib.auth import login as a_login
 from django.contrib.auth import logout as a_logout
+import re
 from django.shortcuts import redirect
 from django.shortcuts import HttpResponse
 from django.contrib.auth.hashers import *
@@ -157,12 +158,19 @@ def edit(request):
             nickname = form.cleaned_data["nickname"]
             email = form.cleaned_data["email"]
             avatar = form.cleaned_data["avatar"]
-            birth_date = request.POST.get("birth_date")
-            birth_date = datetime.strptime(birth_date, "%B %d, %Y")
-            birth_date = birth_date.strftime("%Y-%m-%d")
+            birth_date = request.POST.get('birth_date')
+            if re.search(r',', birth_date):
+                try:
+                    birth_date = datetime.strptime(birth_date, "%B %d, %Y")
+                except:
+                    birth_date = datetime.strptime(birth_date, "%b. %d, %Y")
+                birth_date = birth_date.strftime("%Y-%m-%d")
             user = UserProfile.objects.get(id=request.user.id)
-            user.avatar = avatar
-            UserProfile.objects.filter(id=request.user.id).update(nickname=nickname, email=email, birth_date=birth_date)
+            if avatar is not None:
+                user.avatar = avatar
+            user.birth_date = birth_date
+            user.nickname = nickname
+            user.email = email
             user.save()
             return JsonResponse({'status': 'ok', 'url': user.avatar.url})
 
