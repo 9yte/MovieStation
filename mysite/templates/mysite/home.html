@@ -41,60 +41,45 @@
                                         </p>
                                         {% if post.liked %}
                                             <div class="hr second-color text-left"><span
-                                                    class="glyphicon glyphicon-comment"></span>12 Commnents<span
+                                                    class="glyphicon glyphicon-comment"></span><span>{{ post.comments_num }} Comments</span><span
                                                     class="glyphicon glyphicon-star star-like"
                                                     post-id="{{ post.id }}"></span><span>{{ post.likes }} Favourites</span>
                                             </div>
                                         {% else %}
                                             <div class="hr second-color text-left"><span
-                                                    class="glyphicon glyphicon-comment"></span>12 Commnents<span
-                                                    class="glyphicon glyphicon-star-empty star-like"
-                                                    post-id="{{ post.id }}"></span><span>{{ post.likes }} Favourites</span>
+                                                    class="glyphicon glyphicon-comment"></span>{{ post.comments_num }}
+                                                Comments</span><span
+                                                        class="glyphicon glyphicon-star-empty star-like"
+                                                        post-id="{{ post.id }}"></span><span>{{ post.likes }} Favourites</span>
                                             </div>
                                         {% endif %}
                                         <!--<div class="comment">-->
+                                        {% for c in post.comments %}
+                                            <div class="media">
+                                                <div class="media-left media-top my-media">
+                                                    <a href="/profile/{{ c.author.username }}">
+                                                        <img class="media-object img-circle"
+                                                             src="{{ c.author.avatar.url }}" alt="author avatar">
+                                                    </a>
+                                                </div>
+                                                <div class="media-body">
+                                                    {{ c.text }}
+                                                </div>
+                                            </div>
+                                            <div class="hr second-color small-divider text-right"><span
+                                                    class="glyphicon glyphicon-time" aria-hidden="true"></span><a
+                                                    href="/post"> {{ c.date_time }}</a></div>
+                                        {% endfor %}
                                         <div class="media">
                                             <div class="media-left media-top my-media">
-                                                <a href="#">
+                                                <a href="/profile/{{ user.username }}">
                                                     <img class="media-object img-circle"
-                                                         src="{% static 'img/peyman.jpg' %}" alt="...">
-                                                </a>
-                                            </div>
-                                            <div class="media-body">
-                                                the end of earth will not be the end of us!the end of earth will not be
-                                                the end of us!the end of earth will not be the end of us!the end of
-                                                earth will not be the end of us!
-                                            </div>
-                                        </div>
-                                        <div class="hr second-color small-divider text-right"><span
-                                                class="glyphicon glyphicon-time" aria-hidden="true"></span><a
-                                                href="/post"> 25 Nov 2014</a></div>
-                                        <div class="media">
-                                            <div class="media-left media-top my-media">
-                                                <a href="#">
-                                                    <img class="media-object img-circle"
-                                                         src="{% static 'img/peyman.jpg' %}" alt="...">
-                                                </a>
-                                            </div>
-                                            <div class="media-body">
-                                                the end of earth will not be the end of us!the end of earth will not be
-                                                the end of us!the end of earth will not be the end of us!the end of
-                                                earth will not be the end of us!
-                                            </div>
-                                        </div>
-                                        <div class="hr second-color small-divider text-right"><span
-                                                class="glyphicon glyphicon-time" aria-hidden="true"></span><a
-                                                href="/post"> 25 Nov 2014</a></div>
-                                        <div class="media">
-                                            <div class="media-left media-top my-media">
-                                                <a href="#">
-                                                    <img class="media-object img-circle"
-                                                         src="{% static 'img/peyman.jpg' %}" alt="...">
+                                                         src="{{ user.avatar.url }}" alt="user avatar">
                                                 </a>
                                             </div>
                                             <div class="media-body">
                                                 <div class="input-group col-lg-12 col-xs-12">
-                                                    <textarea type="text" class="form-control comment"
+                                                    <textarea type="text" class="form-control comment" post-id="{{ post.id }}"
                                                               placeholder="Add comment..."></textarea>
                                                 </div>
                                             </div>
