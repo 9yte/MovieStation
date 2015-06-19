@@ -9,5 +9,6 @@ from . import views
 
 urlpatterns = patterns('',
                        url(r'^(?P<movie_name>\w+)$', views.show_movie),
+                       url(r'^suggestions/(?P<number>\d+)$', views.suggestion),
                        url(r'^', views.mainpage),
 )

@@ -297,10 +297,14 @@
 {% endblock %}
 <div class="col-xs-3 section">
     <div class="panel panel-default r">
+        <!--TODO Ajax for Suggestion Movies-->
         <div class="panel-body">
             <h5>Movies you may interest!</h5>
             <hr class="divider">
-            <div class="media">
+            <div id="movie-interest">
+
+            </div>
+            <!--<div class="media">
                 <div class="media-left media-top popular-movie">
                     <a href="movieprofile">
                         <img class="media-object img-rounded" src="{% static 'img/Interstellar1.jpg' %}" alt="...">
@@ -334,7 +338,7 @@
                     <h6 class="media-heading">Interstellar</h6>
                     4 follower favourites this movie!
                 </div>
-            </div>
+            </div>-->
         </div>
     </div>
     <div class="panel panel-default r">
@@ -372,5 +376,6 @@
 <script type="text/javascript" src="{% static 'js/bootstrap/bootstrap.min.js' %}"></script>
 <script type="text/javascript" src="{% static 'js/bootstrap/selectize.min.js' %}"></script>
 <script type="text/javascript" src="{% static 'js/search.js' %}"></script>
+<script type="text/javascript" src="{% static 'js/suggestion.js' %}"></script>
 
 </body>
