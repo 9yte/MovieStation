@@ -2,86 +2,119 @@
 {% load static %}
 {% block content %}
 
-<link rel="stylesheet" type="text/css" href="{% static 'css/timeline_style.css' %}">
-<link rel="stylesheet" type="text/css" href="{% static 'css/popover.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'css/timeline_style.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'css/popover.css' %}">
 
-<link rel="stylesheet" href="{% static 'css/star/star-rating.css' %}" media="all" rel="stylesheet" type="text/css"/>
+    <link rel="stylesheet" href="{% static 'css/star/star-rating.css' %}" media="all" rel="stylesheet" type="text/css"/>
 
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
-<script src="{% static 'js/star/star-rating.js' %}" type="text/javascript"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
+    <script src="{% static 'js/star/star-rating.js' %}" type="text/javascript"></script>
 
-<div class="col-xs-6 section">
-    <div class="panel panel-default" id="m">
-        <div  class="tab-content">
-            <div class="tab-pane active" id="post-tab">
-                {% for post in posts %}
-                <div class="panel-body">
-                    <a href="profile/{{ post.author.username }}"><img class="img-responsive col-lg-3 pro-pic" src="{{ post.author.avatar.url }}"></a>
-                    <h5><a href="profile.html"> {{ post.author.nickname }}</a><span class="text-muted date"><span class="glyphicon glyphicon-time" aria-hidden="true"></span><a href="/post" class="text-muted">{{ post.date_time }}</a></span>
-                    </h5>
-                    <span tabindex="0" id="movie-info1" class="color-popover" data-toggle="popover" data-trigger="hover" data-content="{{ post.movie.description }}">{{ post.movie.name }}</span>
-                    <!--<hr class="divider small-divider">-->
-                    <div class="col-sm-12 col-md-12">
-                        <div class="thumbnail">
-                            <img src="{{ post.movie.cover_photo.url }}" alt="{{ post.movie.name }} cover photo">
-                            <div class="caption">
-                                <input class="postRate" value="{{ post.rate }}" type="number"  readonly="true" data-stars="10"
-                                       class="rating" min=0 max=10 step=0.2 data-size="xs">
-                                <p>
-                                    {{ post.text }}
-                                </p>
-                                <div class="hr second-color text-left"><span class="glyphicon glyphicon-comment"></span>12 Commnets<span class="glyphicon glyphicon-star-empty star-like"></span>10 Favourites</div>
-                                <!--<div class="comment">-->
-                                <div class="media">
-                                    <div class="media-left media-top my-media">
-                                        <a href="#">
-                                            <img class="media-object img-circle" src="{% static 'img/peyman.jpg' %}" alt="...">
-                                        </a>
-                                    </div>
-                                    <div class="media-body">
-                                        the end of earth will not be the end of us!the end of earth will not be the end of us!the end of earth will not be the end of us!the end of earth will not be the end of us!
-                                    </div>
-                                </div>
-                                <div class="hr second-color small-divider text-right"><span class="glyphicon glyphicon-time" aria-hidden="true"></span><a href="/post"> 25 Nov 2014</a></div>
-                                <div class="media">
-                                    <div class="media-left media-top my-media">
-                                        <a href="#">
-                                            <img class="media-object img-circle" src="{% static 'img/peyman.jpg' %}" alt="...">
-                                        </a>
-                                    </div>
-                                    <div class="media-body">
-                                        the end of earth will not be the end of us!the end of earth will not be the end of us!the end of earth will not be the end of us!the end of earth will not be the end of us!
-                                    </div>
-                                </div>
-                                <div class="hr second-color small-divider text-right"><span class="glyphicon glyphicon-time" aria-hidden="true"></span><a href="/post"> 25 Nov 2014</a></div>
-                                <div class="media">
-                                    <div class="media-left media-top my-media">
-                                        <a href="#">
-                                            <img class="media-object img-circle" src="{% static 'img/peyman.jpg' %}" alt="...">
-                                        </a>
-                                    </div>
-                                    <div class="media-body">
-                                        <div class="input-group col-lg-12 col-xs-12">
-                                            <textarea type="text" class="form-control comment" placeholder="Add comment..."></textarea>
+    <div class="col-xs-6 section">
+        <div class="panel panel-default" id="m">
+            <div class="tab-content">
+                <div class="tab-pane active" id="post-tab">
+                    {% for post in posts %}
+                        <div class="panel-body">
+                            <a href="profile/{{ post.author.username }}"><img class="img-responsive col-lg-3 pro-pic"
+                                                                              src="{{ post.author.avatar.url }}"></a>
+                            <h5><a href="profile.html"> {{ post.author.nickname }}</a><span
+                                    class="text-muted date"><span class="glyphicon glyphicon-time"
+                                                                  aria-hidden="true"></span><a href="/post"
+                                                                                               class="text-muted">{{ post.date_time }}</a></span>
+                            </h5>
+                            <span tabindex="0" id="movie-info1" class="color-popover" data-toggle="popover"
+                                  data-trigger="hover"
+                                  data-content="{{ post.movie.description }}">{{ post.movie.name }}</span>
+                            <!--<hr class="divider small-divider">-->
+                            <div class="col-sm-12 col-md-12">
+                                <div class="thumbnail">
+                                    <img src="{{ post.movie.cover_photo.url }}" alt="{{ post.movie.name }} cover photo">
+
+                                    <div class="caption">
+                                        <input class="postRate" value="{{ post.rate }}" type="number" readonly="true"
+                                               data-stars="10"
+                                               class="rating" min=0 max=10 step=0.2 data-size="xs">
+
+                                        <p>
+                                            {{ post.text }}
+                                        </p>
+                                        {% if post.liked %}
+                                            <div class="hr second-color text-left"><span
+                                                    class="glyphicon glyphicon-comment"></span>12 Commnents<span
+                                                    class="glyphicon glyphicon-star star-like"
+                                                    post-id="{{ post.id }}"></span><span>{{ post.likes }} Favourites</span>
+                                            </div>
+                                        {% else %}
+                                            <div class="hr second-color text-left"><span
+                                                    class="glyphicon glyphicon-comment"></span>12 Commnents<span
+                                                    class="glyphicon glyphicon-star-empty star-like"
+                                                    post-id="{{ post.id }}"></span><span>{{ post.likes }} Favourites</span>
+                                            </div>
+                                        {% endif %}
+                                        <!--<div class="comment">-->
+                                        <div class="media">
+                                            <div class="media-left media-top my-media">
+                                                <a href="#">
+                                                    <img class="media-object img-circle"
+                                                         src="{% static 'img/peyman.jpg' %}" alt="...">
+                                                </a>
+                                            </div>
+                                            <div class="media-body">
+                                                the end of earth will not be the end of us!the end of earth will not be
+                                                the end of us!the end of earth will not be the end of us!the end of
+                                                earth will not be the end of us!
+                                            </div>
+                                        </div>
+                                        <div class="hr second-color small-divider text-right"><span
+                                                class="glyphicon glyphicon-time" aria-hidden="true"></span><a
+                                                href="/post"> 25 Nov 2014</a></div>
+                                        <div class="media">
+                                            <div class="media-left media-top my-media">
+                                                <a href="#">
+                                                    <img class="media-object img-circle"
+                                                         src="{% static 'img/peyman.jpg' %}" alt="...">
+                                                </a>
+                                            </div>
+                                            <div class="media-body">
+                                                the end of earth will not be the end of us!the end of earth will not be
+                                                the end of us!the end of earth will not be the end of us!the end of
+                                                earth will not be the end of us!
+                                            </div>
+                                        </div>
+                                        <div class="hr second-color small-divider text-right"><span
+                                                class="glyphicon glyphicon-time" aria-hidden="true"></span><a
+                                                href="/post"> 25 Nov 2014</a></div>
+                                        <div class="media">
+                                            <div class="media-left media-top my-media">
+                                                <a href="#">
+                                                    <img class="media-object img-circle"
+                                                         src="{% static 'img/peyman.jpg' %}" alt="...">
+                                                </a>
+                                            </div>
+                                            <div class="media-body">
+                                                <div class="input-group col-lg-12 col-xs-12">
+                                                    <textarea type="text" class="form-control comment"
+                                                              placeholder="Add comment..."></textarea>
+                                                </div>
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
+                                <hr class="divider">
                             </div>
                         </div>
-                        <hr class="divider">
-                    </div>
+                    {% endfor %}
                 </div>
-                {% endfor %}
+                {% block other_tab %}
+                {% endblock %}
             </div>
-            {% block other_tab %}
-            {% endblock %}
+
         </div>
-
     </div>
-</div>
 
-<script type="text/javascript" src="{% static 'js/chat.js' %}"></script>
-<script type="text/javascript" src="{% static 'js/comment.js' %}"></script>
-<script type="text/javascript" src="{% static 'js/like.js' %}"></script>
-<script type="text/javascript" src="{% static 'js/movie_info.js' %}"></script>
+    <script type="text/javascript" src="{% static 'js/chat.js' %}"></script>
+    <script type="text/javascript" src="{% static 'js/comment.js' %}"></script>
+    <script type="text/javascript" src="{% static 'js/like.js' %}"></script>
+    <script type="text/javascript" src="{% static 'js/movie_info.js' %}"></script>
 {% endblock content %}

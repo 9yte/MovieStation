@@ -26,6 +26,7 @@ class Comment(models.Model):
 class Favourite(models.Model):
     user = models.ForeignKey('useraccount.UserProfile')
     post = models.ForeignKey(Post)
+    date_time = models.DateTimeField(blank=False, null=False)
 
     def __str__(self):
         return "{}".format(self.user.nickname)

@@ -1,15 +1,3 @@
-//$("#edit").click(function () {
-//    alert($("input[name='avatar']")[0].files[0]);
-//    $.post("/user/edit", {nickname: $("input[name='nickname']").val(), email: $("input[name='email']").val(), birth_date: $("input[name='birth_date']").val(), avatar: $("input[name='avatar']")[0].files[0]}, function (data) {
-//        if (data.status == 'ok') {
-//            addMessage("Updating profile done successfully!", "success", "message");
-//            $('.nickname').text($("input[name='nickname']").val());
-//        }
-//        else {
-//            addMessage("Problem with updating profile!", "danger", "message");
-//        }
-//    });
-//});
 $("#edit").click(function () {
     var form = new FormData();
     form.append("nickname", $("input[name='nickname']").val());

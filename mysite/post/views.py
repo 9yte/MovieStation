@@ -8,11 +8,37 @@ from useraccount.models import UserProfile
 from movie.models import Movie
 from django.contrib import messages
 from datetime import datetime
-# from django.shortcuts import HttpResponse
+from django.views.decorators.csrf import csrf_exempt
+from django.http.response import JsonResponse
+from .models import Favourite, Comment
 
 
-def show_post(request):
+def show_post(request, post_id):
     return render(request, "mysite/post.html")
+
+
+@csrf_exempt
+@login_required(login_url='')
+def like(request, post_id):
+    if request.method == 'POST':
+        try:
+            p = Post.objects.get(id=post_id)
+            user = UserProfile.objects.get(id=request.user.id)
+            l = Favourite.objects.filter(user=user, post=p)
+            req = request.POST.get('req')
+            if req == '0' and len(l) == 0:  # if the user wants to like a post that didn't like it before!
+                print(3)
+                fav = Favourite.objects.create(post=p, user=user, date_time=datetime.now())
+                fav.save()
+                l = Favourite.objects.filter(post=p)
+                return JsonResponse({'status': 'like', 'likes': len(l)})
+            elif req == '1' and len(l) == 1:  # if the user wants to unlike a post that like it before!
+                fav = Favourite.objects.get(post=p, user=user)
+                fav.delete()
+                l = Favourite.objects.filter(post=p)
+                return JsonResponse({'status': 'unlike', 'likes': len(l)})
+        except Post.DoesNotExist:
+            pass
 
 
 @login_required(login_url='')

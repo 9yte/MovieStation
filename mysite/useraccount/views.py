@@ -14,8 +14,9 @@ from django.http.response import HttpResponse, JsonResponse
 # import models
 from django.views.decorators.csrf import csrf_exempt
 from .models import UserProfile
+from post.models import Comment, Favourite
 from post.models import Post
-from datetime import datetime, date
+from datetime import datetime
 
 # import forms
 from .forms import RegisterForm, ChangePassForm, EditForm
@@ -89,6 +90,11 @@ def homepage(request):
         posts += user_posts
     posts += Post.objects.filter(author=user)
     posts.sort(key=lambda x: x.date_time, reverse=True)
+    for post in posts:
+        x = len(Favourite.objects.filter(post=post))
+        post.likes = x
+        post.liked = (len(Favourite.objects.filter(post=post, user=user)) == 1)
+    print("ladsjkdsakdsa")
     return render(request, "mysite/home.html", {"posts": posts})
 
 

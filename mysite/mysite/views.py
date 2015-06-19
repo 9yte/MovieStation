@@ -1,8 +1,6 @@
 __author__ = 'hojjat'
 from django.shortcuts import render
 from django.shortcuts import redirect
-# from django.shortcuts import HttpResponse
-
 
 def mainpage(request):
     print("mainpage")
