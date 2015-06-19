@@ -42,7 +42,7 @@
                                         </p>
                                         {% if post.liked %}
                                             <div class="hr second-color text-left"><span
-                                                    class="glyphicon glyphicon-comment"></span><span>{{ post.comments_num }} Comments</span><span
+                                                    class="glyphicon glyphicon-comment"></span><span p-id="{{ post.id }}">{{ post.comments_num }} Comments</span><span
                                                     class="glyphicon glyphicon-star star-like"
                                                     post-id="{{ post.id }}"></span><span>{{ post.likes }} Favourites</span>
                                             </div>
