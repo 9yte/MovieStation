@@ -9,8 +9,9 @@ from movie.models import Movie
 from django.contrib import messages
 from datetime import datetime
 from django.views.decorators.csrf import csrf_exempt
-from django.http.response import JsonResponse
+from django.http.response import JsonResponse, HttpResponse
 from .models import Favourite, Comment
+import json
 
 
 def show_post(request, post_id):
@@ -37,8 +38,27 @@ def like(request, post_id):
                 fav.delete()
                 l = Favourite.objects.filter(post=p)
                 return JsonResponse({'status': 'unlike', 'likes': len(l)})
-        except Post.DoesNotExist:
-            pass
+        except:
+            return JsonResponse({'status': 'wrong request'})
+
+
+@csrf_exempt
+@login_required(login_url='')
+def comment(request, post_id):
+    if request.method == 'POST':
+        try:
+            p = Post.objects.get(id=post_id)
+            user = UserProfile.objects.get(id=request.user.id)
+            text = request.POST.get('text')
+            cm = Comment.objects.create(author=user, post=p, text=text, date_time=datetime.now())
+            cms = Comment.objects.filter(post=p)
+            print("kdsajkjksadkjskajd")
+            json_data = json.dumps({'status': 'ok', 'comment': cm, 'comments_num': len(cms)})
+            print("jdsajsadjkjksadkjsadhjkkjsadkj")
+            return HttpResponse(json_data, 'application/json')
+            # return JsonResponse({'status': 'ok', 'text': cm.text, 'comments_num': len(cms)})
+        except:
+            return JsonResponse({'status': 'false', 'text': cm.text, 'comments_num': len(cms)})
 
 
 @login_required(login_url='')

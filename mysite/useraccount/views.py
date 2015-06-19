@@ -81,7 +81,7 @@ def logout(request):
 
 
 @login_required(login_url='/')
-def homepage(request):
+def homepage(request, number_of_posts=10):
     user = UserProfile.objects.get(id=request.user.id)
     followings = user.followings.all()
     posts = []
@@ -90,12 +90,20 @@ def homepage(request):
         posts += user_posts
     posts += Post.objects.filter(author=user)
     posts.sort(key=lambda x: x.date_time, reverse=True)
+    counter = 0
+    final_posts = []
     for post in posts:
+        if counter >= number_of_posts:
+            break
         x = len(Favourite.objects.filter(post=post))
+        cms = Comment.objects.filter(post=post)
         post.likes = x
+        post.comments = cms
+        post.comments_num = len(cms)
         post.liked = (len(Favourite.objects.filter(post=post, user=user)) == 1)
-    print("ladsjkdsakdsa")
-    return render(request, "mysite/home.html", {"posts": posts})
+        final_posts.append(post)
+        counter += 1
+    return render(request, "mysite/home.html", {"posts": final_posts})
 
 
 @login_required(login_url='/')
