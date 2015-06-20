@@ -64,6 +64,8 @@ def comment(request, post_id):
             # print(cm_json)
             list = [{'username': cm.author.username, 'date_time': str(cm.date_time), 'text': cm.text,
                      'avatar_url': cm.author.avatar.url}]
+            print("%%%%%%%%%%%%%%%%5")
+            print(cm.author.avatar.url)
             cm_json = json.dumps(list)
             return JsonResponse(dict(status='ok', comment=cm_json, comments_num=len(cms)))
         except:
