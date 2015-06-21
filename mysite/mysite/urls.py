@@ -9,6 +9,7 @@ from . import views
 
 urlpatterns = patterns('', url(r'^admin', include(admin.site.urls)),
                        url(r'^movieprofile/', include('movie.urls')),
+                       url(r'^search', include('search.urls')),
                        url(r'^user', include('useraccount.urls')),
                        url(r'^home$', include('useraccount.urls')),
                        url(r'^profile', include('useraccount.urls')),

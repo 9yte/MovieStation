@@ -42,6 +42,7 @@ INSTALLED_APPS = (
     'useraccount',
     'movie',
     'post',
+    'search',
 )
 
 MIDDLEWARE_CLASSES = (
