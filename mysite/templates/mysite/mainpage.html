@@ -1,48 +1,169 @@
-<div class="panel-body post-body" date_time="2015-06-17 07:49:31.605190+00:00"><a
-        href="profile//media/avatars/peyman_7Avdopf.jpg"><img class="img-responsive col-lg-3 pro-pic"
-                                                              src="/media/avatars/peyman_7Avdopf.jpg"></a><h5><a
-        href="/profile/kiana">kiana</a><span class="text-muted date"><span class="glyphicon glyphicon-time"
-                                                                           aria-hidden="true"></span><a href="/post/1"
-                                                                                                        class="text-muted">2015-06-17
-    07:49:31.605190+00:00</a></span></h5><span tabindex="0" id="movie-info1" class="color-popover" data-toggle="popover"
-                                               data-trigger="hover"
-                                               data-content="Interstellar is a 2014 science fiction epic film directed by Christopher Nolan, starring Matthew McConaughey, Anne Hathaway, Jessica Chastain and Michael Caine. The film features a crew of astronauts who travel through a wormhole in search of a new home for humanity. Brothers Christopher and Jonathan Nolan wrote the screenplay, which has its origins in a script Jonathan developed in 2007. Christopher Nolan produced the film with his wife Emma Thomas through their production company Syncopy and with Lynda Obst through Lynda Obst Productions.">Interstellar</span>
+{% extends 'mysite/base.html' %}
+{% load static %}
+{% block loginForm %}
+    <link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap-theme.min.css">
+    {% comment %}<link href="{% static 'toastr-master/toastr.css' %}" rel="stylesheet">
+    <script src="{% static 'toastr-master/toastr.js' %}"></script>{% endcomment %}
 
-    <div class="col-sm-12 col-md-12">
-        <div class="thumbnail"><img src="/media/movie_covers/Interstellar.jpg" alt="Interstellar cover photo">
+    <div class="row">
+        <div class="col-lg-9" id="web_desc">
+        </div>
+        <div class="col-lg-3" id="forms">
+            <div class="row centered-form">
+                <div class="panel panel-default">
+                    <div class="panel-body">
+                        <form method="post" role="form" action="/user/login" data-toggle="validator" id="signin">
+                            {% csrf_token %}
+                            <div class="form-group">
+                                <input type="text" name="UserName"
+                                       class="form-control input-sm color_tooltip my_input" placeholder="username"
+                                       data-toggle="tooltip" data-animation="true"
+                                       data-placement="bottom" title="Please enter your username">
+                                <input type="password" name="password"
+                                       class="form-control input-sm color_tooltip my_input" placeholder="password"
+                                       data-toggle="tooltip" data-animation="true"
+                                       data-placement="bottom" title="Please enter your password">
+                            </div>
+                            {% if messages %}
+                                {% for message in messages %}
+                                    <p class="small red">{{ message }}</p>
+                                {% endfor %}
+                            {% endif %}
+                            <div class="btn-group" role="group" aria-label="...">
+                                <div class="btn-group" role="group">
+                                    <button type="submit" class="btn btn-form pull-left" id="sign-in-btn">
+                                        Sign In
+                                    </button>
+                                </div>
 
-            <div class="caption"><input class="postRate" value="9.6" type="number" readonly="true" data-stars="10"
-                                        class="rating" min=0 max=10 step=0.2 data-size="xs">
+                            </div>
+                            <a class="forgot" data-toggle="modal" data-target="#myDesc">forgot password?</a>
 
-                <p>This is a good film</p>
-
-                <div class="hr second-color text-left"><span class="glyphicon glyphicon-comment"></span><span p-id="1">1 Comments</span><span
-                        class="glyphicon glyphicon-star-empty star-like" post-id="1"></span><span>0 Favourites</span>
-                </div>
-                <div class="media">
-                    <div class="media-left media-top my-media"><a href="/profile/kiana"><img
-                            class="media-object img-circle" src="/media/avatars/peyman_7Avdopf.jpg" alt="author avatar"></a>
+                            <div class="container">
+                                <div class="modal fade" id="myDesc" tabindex="-1" role="dialog"
+                                     aria-labelledby="myModalLabel"
+                                     aria-hidden="true">
+                                    <div class="modal-dialog modal-sm">
+                                        <div class="modal-content">
+                                            <div class="modal-header">
+                                                <button type="button" class="close" data-dismiss="modal"
+                                                        aria-label="Close"><span aria-hidden="true">
+                                   &times;</span></button>
+                                                <h4 class="modal-title" id="myModalLabel">Forgot Password!</h4>
+                                            </div>
+                                            <form class="mine" method="post" action="/signin/modal">
+                                                {% csrf_token %}
+                                                <div class="modal-body">
+                                                    <input type="text" name="username"
+                                                           class="form-control input-sm color_tooltip my_input"
+                                                           placeholder="username"
+                                                           data-toggle="tooltip" data-animation="true"
+                                                           data-placement="bottom" title="Please enter your username">
+                                                </div>
+                                                <div class="modal-footer ">
+                                                    <button type="button" class="btn btn-success btn-form"
+                                                            onclick="return submitPost()" id="post-desc">Post
+                                                    </button>
+                                                </div>
+                                            </form>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </form>
                     </div>
-                    <div class="media-body">Hi
-                    </div>
-                </div>
-                <div class="hr second-color small-divider text-right"><span class="glyphicon glyphicon-time"
-                                                                            aria-hidden="true"></span>2015-06-20
-                    19:57:46.210769+00:00
-                </div>
-                <div class="media">
-                    <div class="media-left media-top my-media"><a href="/profile/kiana"><img
-                            class="media-object img-circle" src="/media/avatars/peyman_7Avdopf.jpg"
-                            alt="user avatar"></a></div>
-                    <div class="media-body">
-                        <div class="input-group col-lg-12 col-xs-12"><textarea type="text" class="form-control comment"
-                                                                               post-id="1"
-                                                                               placeholder="Add comment..."></textarea>
-                        </div>
+                    <hr class="divider">
+                    <div class="panel-body">
+                        <form method="post" role="form" action="/user/register" data-toggle="validator" id="signup" enctype="multipart/form-data">
+                            {% csrf_token %}
+                            <div class="form-group">
+                                <input type="text" name="username"
+                                       class="form-control input-sm color_tooltip my_input" placeholder="username"
+                                       data-toggle="tooltip" data-animation="true"
+                                       data-placement="bottom"
+                                       title="Please enter your username, only a to z and numeric character"
+                                       pattern="^([_A-z0-9]){3,}$" maxlength="20" required>
+
+                                <div class="help-block with-errors"></div>
+                            </div>
+                            <div class="form-group">
+                                <input type="password" name="password" id="password_signup"
+                                       class="form-control input-sm color_tooltip my_input" placeholder="password"
+                                       data-toggle="tooltip" data-animation="true"
+                                       data-placement="bottom"
+                                       title="Please enter your password with Minimum of 6 characters"
+                                       data-minlength="6" required>
+
+                                <div class="help-block with-errors"></div>
+                            </div>
+                            <div class="form-group">
+                                <input type="password" name="confirm" id="password_confirm"
+                                       class="form-control input-sm color_tooltip my_input" placeholder="confirm"
+                                       data-toggle="tooltip" data-animation="true"
+                                       data-placement="bottom" title="Please confirm your password"
+                                       data-match="#password_signup" data-match-error="Whoops, these don't match"
+                                       required>
+
+                                <div class="help-block with-errors"></div>
+                            </div>
+                            <div class="form-group">
+                                <input type="email" name="email" id="email"
+                                       class="form-control input-sm color_tooltip my_input" placeholder="email"
+                                       data-toggle="tooltip" data-animation="true"
+                                       data-placement="bottom" title="Please enter your email"
+                                       data-error="Bruh, that email address is invalid" required>
+
+                                <div class="help-block with-errors"></div>
+                            </div>
+                            <div class="form-group">
+                                <input type="file" name="avatar" id="avatar"
+                                       class="form-control input-sm color_tooltip my_input"
+                                       data-toggle="tooltip" data-animation="true"
+                                       data-placement="bottom" title="Please select your avatar"
+                                       required>
+
+                                <div class="help-block with-errors"></div>
+                            </div>
+                            <div class="form-group">
+                                <div id="datetimepicker1" class="input-append date">
+                                    <input data-format="dd/MM/yyyy" type="text" name="birth_date" id="date"
+                                           class="form-control input-sm color_tooltip my_input" placeholder="birthdate"
+                                           data-toggle="tooltip" data-animation="true"
+                                           data-placement="bottom" title="Please enter your birthdate" required>
+                                <span class="add-on">
+                                  <i data-time-icon="icon-time" data-date-icon="icon-calendar">
+                                      <span class="glyphicon glyphicon-calendar color"></span>
+                                  </i>
+                                </span>
+                                </div>
+                                <div class="help-block with-errors"></div>
+                            </div>
+                            <div class="btn-group" role="group" aria-label="...">
+                                <div class="btn-group" role="group">
+                                    <button type="submit" class="btn btn-form pull-left signup">
+                                        Sign Up
+                                    </button>
+                                </div>
+                            </div>
+                        </form>
                     </div>
                 </div>
             </div>
         </div>
-        <hr class="divider">
     </div>
-</div>
+    <script type="text/javascript" src="{% static 'js/validator.js' %}"></script>
+    <script type="text/javascript" src="{% static 'js/form.js' %}"></script>
+    <script type="text/javascript" src="{% static 'js/bootstrap/bootstrap-datetimepicker.min.js' %}"></script>
+
+    <script type="text/javascript">
+        $(function () {
+            $('#datetimepicker1').datetimepicker({
+                language: 'pt-BR'
+            });
+        });
+        function submitPost() {
+            $('#myDesc').modal('hide');
+        }
+
+    </script>
+{% endblock loginForm %}

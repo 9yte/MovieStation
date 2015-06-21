@@ -15,8 +15,25 @@ import json
 from django.core import serializers
 
 
+@login_required(login_url='')
 def show_post(request, post_id):
-    return render(request, "mysite/post.html")
+    user = UserProfile.objects.get(id=request.user.id)
+    posts = Post.objects.filter(id=post_id)
+    if len(posts) == 1:
+        final_posts = []
+        followings = user.followings.all()
+        if posts[0].author in followings:
+            for post in posts:
+                x = len(Favourite.objects.filter(post=post))
+                cms = Comment.objects.filter(post=post)
+                post.likes = x
+                post.comments = cms
+                post.comments_num = len(cms)
+                post.liked = (len(Favourite.objects.filter(post=post, user=user)) == 1)
+                final_posts.append(post)
+            return render(request, "mysite/post.html",
+                          {'posts': final_posts, 'user': user})
+    return redirect("/home")
 
 
 @csrf_exempt

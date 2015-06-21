@@ -17,7 +17,7 @@
                 <div class="tab-pane active" id="post-tab">
                     {% for post in posts %}
                         <div class="panel-body post-body" date_time="{{ post.date_time }}">
-                            <a href="profile/{{ post.author.username }}"><img class="img-responsive col-lg-3 pro-pic"
+                            <a href="/profile/{{ post.author.username }}"><img class="img-responsive col-lg-3 pro-pic"
                                                                               src="{{ post.author.avatar.url }}"></a>
                             <h5><a href="/profile/{{ post.author.username }}"> {{ post.author.nickname }}</a><span
                                     class="text-muted date"><span class="glyphicon glyphicon-time"
@@ -103,5 +103,7 @@
     <script type="text/javascript" src="{% static 'js/comment.js' %}"></script>
     <script type="text/javascript" src="{% static 'js/like.js' %}"></script>
     <script type="text/javascript" src="{% static 'js/movie_info.js' %}"></script>
+    {% if is_scroll %}
     <script type="text/javascript" src="{% static 'js/getPost.js' %}"></script>
+    {% endif %}
 {% endblock content %}

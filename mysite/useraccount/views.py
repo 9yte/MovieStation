@@ -103,7 +103,7 @@ def homepage(request, number_of_posts=2):
         post.liked = (len(Favourite.objects.filter(post=post, user=user)) == 1)
         final_posts.append(post)
         counter += 1
-    return render(request, "mysite/home.html", {"posts": final_posts})
+    return render(request, "mysite/home.html", {"posts": final_posts, "is_scroll": True})
 
 
 @login_required(login_url='/')

@@ -12,7 +12,7 @@ window.onscroll = function (ev) {
                 for (var i = 0; i < len; i++) {
                     p = posts[i];
                     var c = '<div class="panel-body post-body" date_time="' + p.date_time + '">';
-                    c += '<a href="profile/' + p.username + '"><img class="img-responsive col-lg-3 pro-pic"';
+                    c += '<a href="/profile/' + p.username + '"><img class="img-responsive col-lg-3 pro-pic"';
                     c += 'src="' + p.avatar_url + '"></a>';
                     c += '<h5><a href="/profile/' + p.username + '">' + p.nickname + '</a><span ';
                     c += 'class="text-muted date"><span class="glyphicon glyphicon-time"';
@@ -86,6 +86,28 @@ window.onscroll = function (ev) {
                                 $(parent).before(c);
                                 $(x).val(null);
                                 $("span[p-id=" + p_id + "]").text(data.comments_num + " Comments");
+                            }
+                        });
+                    }
+                });
+                $('.star-like').click(function (e) {
+                    e.preventDefault();
+                    var c = e.target;
+                    if ($(c).hasClass('glyphicon-star-empty')) {
+                        $.post("/post/" + $(c).attr('post-id') + "/like", {'req': 0}, function (data) {
+                            if (data.status == 'like') {// the user likes the post
+                                $(c).removeClass('glyphicon-star-empty');
+                                $(c).addClass('glyphicon-star');
+                                $($(c).next()).text(data.likes + " Favourites");
+                            }
+                        });
+                    }
+                    else if ($(c).hasClass('glyphicon-star')) {
+                        $.post("/post/" + $(c).attr('post-id') + "/like", {'req': 1}, function (data) {
+                            if (data.status == 'unlike') {// the user unlikes the post
+                                $(c).removeClass('glyphicon-star');
+                                $(c).addClass('glyphicon-star-empty');
+                                $($(c).next()).text(data.likes + " Favourites");
                             }
                         });
                     }

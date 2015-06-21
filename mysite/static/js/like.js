@@ -1,4 +1,5 @@
 $('.star-like').click(function (e) {
+    e.preventDefault();
     var c = e.target;
     if ($(c).hasClass('glyphicon-star-empty')) {
         $.post("/post/" + $(c).attr('post-id') + "/like", {'req': 0}, function (data) {
