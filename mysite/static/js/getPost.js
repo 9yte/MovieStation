@@ -18,6 +18,7 @@ window.onscroll = function (ev) {
                     c += 'class="text-muted date"><span class="glyphicon glyphicon-time"';
                     c += 'aria-hidden="true"></span><a href="/post/' + p.id + '"';
                     c += 'class="text-muted">' + p.date_time + '</a></span></h5>';
+                    c += '<a href="/movieprofile/'+ p.movie_name + '">';
                     c += '<span tabindex="0" id="movie-info1" class="color-popover" data-toggle="popover" data-trigger="hover"';
                     c += 'data-content="' + p.description + '">' + p.movie_name + '</span>';
                     c += '<div class="col-sm-12 col-md-12"><div class="thumbnail">';

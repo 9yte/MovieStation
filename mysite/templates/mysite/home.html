@@ -24,9 +24,9 @@
                                                                   aria-hidden="true"></span><a href="/post/{{ post.id }}"
                                                                                                class="text-muted">{{ post.date_time }}</a></span>
                             </h5>
-                            <span tabindex="0" id="movie-info{{ post.id }}" class="color-popover" data-toggle="popover"
+                            <a href="/movieprofile/{{ post.movie.name }}"><span tabindex="0" id="movie-info{{ post.id }}" class="color-popover" data-toggle="popover"
                                   data-trigger="hover"
-                                  data-content="{{ post.movie.description }}">{{ post.movie.name }}</span>
+                                  data-content="{{ post.movie.description }}">{{ post.movie.name }}</span></a>
                             <!--<hr class="divider small-divider">-->
                             <div class="col-sm-12 col-md-12">
                                 <div class="thumbnail">
