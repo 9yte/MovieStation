@@ -54,20 +54,60 @@ def comment(request, post_id):
             cm = Comment.objects.create(author=user, post=p, text=text, date_time=datetime.now())
             cm.save()
             cms = Comment.objects.filter(post=p)
-            # cm_json = {'username': cm.author.username, 'date_time': str(cm.date_time), 'text': cm.text,
-            # 'avatar_url': cm.author.avatar.url}
-            # print(cm_json)
-            # cm_json = serializers.serialize('json', [cm], fields=('date_time', 'text', 'author.username'))
-            # print(cm_json)
-            # cm_json[0].avatar_url = cm.author.avatar.url
-            # cm_json[0].nickname = cm.author.nickname
-            # print(cm_json)
-            list = [{'username': cm.author.username, 'date_time': str(cm.date_time), 'text': cm.text,
+            list = [{'username': cm.author.username, 'date_time': str(cm.date_time.strftime("%B %d, %Y, %I:%M %p")),
+                     'text': cm.text,
                      'avatar_url': cm.author.avatar.url}]
             cm_json = json.dumps(list)
             return JsonResponse(dict(status='ok', comment=cm_json, comments_num=len(cms)))
         except:
             return JsonResponse({'status': 'false', 'text': cm.text, 'comments_num': len(cms)})
+
+
+@csrf_exempt
+@login_required(login_url='')
+def get_post(request):
+    if request.method == "POST":
+        num = int(request.POST.get("num"))
+        last_date = request.POST.get("last_date")
+        user = UserProfile.objects.get(id=request.user.id)
+        followings = user.followings.all()
+        posts = []
+        try:
+            last_date = datetime.strptime(last_date, "%B %d, %Y, %I:%M a.m.")
+        except:
+            last_date = datetime.strptime(last_date, "%B %d, %Y, %I:%M p.m.")
+        for f in followings:
+            user_posts = Post.objects.filter(author=f, date_time__lt=last_date)
+            posts += user_posts
+        posts += Post.objects.filter(author=user, date_time__lt=last_date)
+        posts.sort(key=lambda x: x.date_time, reverse=True)
+        counter = 0
+        final_posts = []
+        final_comments = []
+        for p in posts:
+            if counter >= num:
+                break
+            x = len(Favourite.objects.filter(post=p))
+            cms = Comment.objects.filter(post=p)
+            f = {'likes': x, 'username': p.author.username, 'nickname': p.author.nickname,
+                 'avatar_url': p.author.avatar.url,
+                 'text': p.text, 'rate': p.rate, 'date_time': str(p.date_time.strftime("%B %d, %Y, %I:%M %p")),
+                 'id': p.id,
+                 'description': p.movie.description,
+                 'movie_url': p.movie.cover_photo.url,
+                 'movie_name': p.movie.name, 'comments_num': len(cms),
+                 'liked': (len(Favourite.objects.filter(post=p, user=user)) == 1)}
+            final_posts.append(f)
+            for cm in cms:
+                c = {'text': cm.text, 'date_time': str(cm.date_time.strftime("%B %d, %Y, %I:%M %p")),
+                     'avatar_url': cm.author.avatar.url,
+                     'username': cm.author.username, 'nickname': cm.author.nickname}
+                final_comments.append(c)
+            counter += 1
+        final_comments = json.dumps(final_comments)
+        final_posts = json.dumps(final_posts)
+        return JsonResponse(dict(status='ok', posts=final_posts, comments=final_comments, username=user.username,
+                                 avatar_url=user.avatar.url))
 
 
 @login_required(login_url='')

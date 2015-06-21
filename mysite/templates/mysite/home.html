@@ -16,15 +16,15 @@
             <div class="tab-content">
                 <div class="tab-pane active" id="post-tab">
                     {% for post in posts %}
-                        <div class="panel-body">
+                        <div class="panel-body post-body" date_time="{{ post.date_time }}">
                             <a href="profile/{{ post.author.username }}"><img class="img-responsive col-lg-3 pro-pic"
                                                                               src="{{ post.author.avatar.url }}"></a>
-                            <h5><a href="profile.html"> {{ post.author.nickname }}</a><span
+                            <h5><a href="/profile/{{ post.author.username }}"> {{ post.author.nickname }}</a><span
                                     class="text-muted date"><span class="glyphicon glyphicon-time"
-                                                                  aria-hidden="true"></span><a href="/post"
+                                                                  aria-hidden="true"></span><a href="/post/{{ post.id }}"
                                                                                                class="text-muted">{{ post.date_time }}</a></span>
                             </h5>
-                            <span tabindex="0" id="movie-info1" class="color-popover" data-toggle="popover"
+                            <span tabindex="0" id="movie-info{{ post.id }}" class="color-popover" data-toggle="popover"
                                   data-trigger="hover"
                                   data-content="{{ post.movie.description }}">{{ post.movie.name }}</span>
                             <!--<hr class="divider small-divider">-->
@@ -68,8 +68,8 @@
                                                 </div>
                                             </div>
                                             <div class="hr second-color small-divider text-right"><span
-                                                    class="glyphicon glyphicon-time" aria-hidden="true"></span><a
-                                                    href="/post"> {{ c.date_time }}</a></div>
+                                                    class="glyphicon glyphicon-time" aria-hidden="true"></span>
+                                                    {{ c.date_time }}</div>
                                         {% endfor %}
                                         <div class="media">
                                             <div class="media-left media-top my-media">
@@ -103,4 +103,5 @@
     <script type="text/javascript" src="{% static 'js/comment.js' %}"></script>
     <script type="text/javascript" src="{% static 'js/like.js' %}"></script>
     <script type="text/javascript" src="{% static 'js/movie_info.js' %}"></script>
+    <script type="text/javascript" src="{% static 'js/getPost.js' %}"></script>
 {% endblock content %}

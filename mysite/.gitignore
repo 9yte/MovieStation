@@ -7,3 +7,4 @@
 media/*
 .idea/*
 */migrations/*
+node_modules/*

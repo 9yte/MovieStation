@@ -81,7 +81,7 @@ def logout(request):
 
 
 @login_required(login_url='/')
-def homepage(request, number_of_posts=10):
+def homepage(request, number_of_posts=2):
     user = UserProfile.objects.get(id=request.user.id)
     followings = user.followings.all()
     posts = []
