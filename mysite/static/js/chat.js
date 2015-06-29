@@ -22,4 +22,5 @@ $(document).ready(function() {
     });
     console.log('send ajaxs');
     getMovies(3);
+    //getPeople(3);
 });

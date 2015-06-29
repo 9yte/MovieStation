@@ -17,6 +17,7 @@ from .models import UserProfile
 from post.models import Comment, Favourite
 from post.models import Post
 from datetime import datetime
+from django.core import serializers
 
 # import forms
 from .forms import RegisterForm, ChangePassForm, EditForm
@@ -158,7 +159,10 @@ def follow(request):
         username = request.POST.get('followed')
         user = UserProfile.objects.get(username=username)
         currentUser.followings.add(user)
-        user.followers.add(currentUser)
+        print(currentUser.username)
+        print("folows")
+        print(user.username)
+        #user.followers.add(currentUser)
         currentUser.save()
         user.save()
         return JsonResponse({'status': 'ok'})
@@ -196,7 +200,24 @@ def unfollow(request):
         username = request.POST.get('followed', '')
         user = UserProfile.objects.get(username=username)
         currentUser.followings.remove(user)
-        user.followers.remove(currentUser)
+        #user.followers.remove(currentUser)
         currentUser.save()
         user.save()
         return JsonResponse({'status': 'ok'})
+
+
+@csrf_exempt
+def suggest(request, number):
+    if request.method == 'POST':
+        Current_User = UserProfile.objects.get(id=request.user.id)
+        all_user = UserProfile.objects.all()[:10]
+        users = []
+        for user in all_user:
+            if len(Current_User.followings.filter(id=user.id)) != 0:
+                continue
+            users.append(user)
+            if len(users) == 3:
+                break
+        new_list = [serializers.serialize('json', [o]) for o in users]
+        return JsonResponse(dict(status=True, Peoples=new_list))
+
