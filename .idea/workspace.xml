@@ -2,13 +2,17 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="fceec738-e56c-4368-b972-f84f12727270" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/mysite/templates/mysite/base1.html" afterPath="$PROJECT_DIR$/mysite/templates/mysite/base1.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/mysite/static/js/chat.js" afterPath="$PROJECT_DIR$/mysite/static/js/chat.js" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/mysite/media/avatars/peyman.jpg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/mysite/useraccount/migrations/0001_initial.py" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/mysite/useraccount/migrations/0002_auto_20150612_0528.py" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/mysite/useraccount/migrations/0003_auto_20150612_0538.py" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/mysite/useraccount/migrations/0004_auto_20150612_0543.py" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/mysite/useraccount/migrations/0005_auto_20150612_0621.py" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/mysite/useraccount/migrations/0006_auto_20150612_0906.py" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/mysite/useraccount/migrations/0007_auto_20150612_1250.py" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/mysite/useraccount/migrations/__init__.py" afterPath="" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/mysite/useraccount/models.py" afterPath="$PROJECT_DIR$/mysite/useraccount/models.py" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/mysite/templates/mysite/profile.html" afterPath="$PROJECT_DIR$/mysite/templates/mysite/profile.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/mysite/static/js/suggestion.js" afterPath="$PROJECT_DIR$/mysite/static/js/suggestion.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/mysite/useraccount/urls.py" afterPath="$PROJECT_DIR$/mysite/useraccount/urls.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/mysite/movie/views.py" afterPath="$PROJECT_DIR$/mysite/movie/views.py" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/mysite/useraccount/views.py" afterPath="$PROJECT_DIR$/mysite/useraccount/views.py" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
@@ -33,10 +37,10 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
-      <file leaf-file-name="suggestion.js" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/mysite/static/js/suggestion.js">
+      <file leaf-file-name="urls.py" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/mysite/mysite/urls.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="55" column="57" selection-start="2719" selection-end="2719" vertical-scroll-proportion="0.0" vertical-offset="648" max-vertical-offset="1350">
+            <state line="12" column="53" selection-start="497" selection-end="497" vertical-scroll-proportion="0.0" vertical-offset="16" max-vertical-offset="450">
               <folding />
             </state>
           </provider>
@@ -45,25 +49,7 @@
       <file leaf-file-name="base1.html" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/mysite/templates/mysite/base1.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="361" column="46" selection-start="16212" selection-end="16212" vertical-scroll-proportion="0.0" vertical-offset="6126" max-vertical-offset="7002">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="views.py" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/mysite/movie/views.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="52" column="32" selection-start="1612" selection-end="1612" vertical-scroll-proportion="0.0" vertical-offset="777" max-vertical-offset="1170">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="urls.py" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/mysite/mysite/urls.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="12" column="53" selection-start="497" selection-end="497" vertical-scroll-proportion="0.0" vertical-offset="216" max-vertical-offset="522">
+            <state line="370" column="29" selection-start="16635" selection-end="16635" vertical-scroll-proportion="0.0" vertical-offset="6464" max-vertical-offset="7002">
               <folding />
             </state>
           </provider>
@@ -72,34 +58,29 @@
       <file leaf-file-name="views.py" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/mysite/useraccount/views.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="122" column="48" selection-start="4339" selection-end="4339" vertical-scroll-proportion="0.0" vertical-offset="2196" max-vertical-offset="3924">
-              <folding />
+            <state line="136" column="34" selection-start="4878" selection-end="4878" vertical-scroll-proportion="0.0" vertical-offset="2139" max-vertical-offset="4392">
+              <folding>
+                <element signature="e#0#35#0" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="models.py" pinned="false" current="true" current-in-tab="true">
+      <file leaf-file-name="models.py" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/mysite/useraccount/models.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="24" column="1" selection-start="1052" selection-end="1052" vertical-scroll-proportion="0.79915434" vertical-offset="0" max-vertical-offset="522">
-              <folding />
+            <state line="8" column="7" selection-start="227" selection-end="227" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="486">
+              <folding>
+                <element signature="e#0#28#0" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="chat.js" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/mysite/static/js/chat.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="24" column="6" selection-start="694" selection-end="694" vertical-scroll-proportion="0.0" vertical-offset="183" max-vertical-offset="576">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="profile.html" pinned="false" current="false" current-in-tab="false">
+      <file leaf-file-name="profile.html" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/mysite/templates/mysite/profile.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="105" column="61" selection-start="5013" selection-end="5013" vertical-scroll-proportion="0.0" vertical-offset="1719" max-vertical-offset="4752">
+            <state line="77" column="69" selection-start="3756" selection-end="3756" vertical-scroll-proportion="0.40152964" vertical-offset="1176" max-vertical-offset="4752">
               <folding />
             </state>
           </provider>
@@ -108,7 +89,7 @@
       <file leaf-file-name="home.html" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/mysite/templates/mysite/home.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" vertical-offset="835" max-vertical-offset="1998">
+            <state line="17" column="25" selection-start="757" selection-end="759" vertical-scroll-proportion="0.0" vertical-offset="141" max-vertical-offset="1998">
               <folding />
             </state>
           </provider>
@@ -132,7 +113,6 @@
   <component name="IdeDocumentHistory">
     <option name="changedFiles">
       <list>
-        <option value="$PROJECT_DIR$/mysite/mysite/urls.py" />
         <option value="$PROJECT_DIR$/mysite/useraccount/forms.py" />
         <option value="$PROJECT_DIR$/mysite/templates/mysite/mainpage.html" />
         <option value="$PROJECT_DIR$/mysite/static/css/profile.css" />
@@ -144,10 +124,11 @@
         <option value="$PROJECT_DIR$/mysite/templates/mysite/base1.html" />
         <option value="$PROJECT_DIR$/mysite/static/js/chat.js" />
         <option value="$PROJECT_DIR$/mysite/static/js/suggestion.js" />
-        <option value="$PROJECT_DIR$/mysite/templates/mysite/profile.html" />
         <option value="$PROJECT_DIR$/mysite/movie/views.py" />
-        <option value="$PROJECT_DIR$/mysite/useraccount/views.py" />
         <option value="$PROJECT_DIR$/mysite/useraccount/models.py" />
+        <option value="/usr/local/lib/python3.2/dist-packages/django/contrib/auth/__init__.py" />
+        <option value="$PROJECT_DIR$/mysite/useraccount/views.py" />
+        <option value="$PROJECT_DIR$/mysite/templates/mysite/profile.html" />
       </list>
     </option>
   </component>
@@ -234,180 +215,6 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Project" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="90110823-90105656-project2" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="mysite" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="useraccount" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Project" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="90110823-90105656-project2" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="mysite" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="templates" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="mysite" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Project" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="90110823-90105656-project2" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="mysite" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="static" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="js" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Project" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="90110823-90105656-project2" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="mysite" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="static" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Project" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="90110823-90105656-project2" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="mysite" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="post" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Project" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="90110823-90105656-project2" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="mysite" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="mysite" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Project" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="90110823-90105656-project2" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="mysite" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="movie" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Project" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="90110823-90105656-project2" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="mysite" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="media" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="movie_covers" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Project" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="90110823-90105656-project2" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="mysite" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="media" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
         </subPane>
       </pane>
       <pane id="Scope" />
@@ -417,7 +224,7 @@
     <property name="options.splitter.main.proportions" value="0.3" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="options.lastSelected" value="com.jetbrains.python.configuration.PyActiveSdkModuleConfigurable" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/../../HW2/git/pezzati-assignment2" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="FullScreen" value="true" />
     <property name="LayoutCode.rearrangeEntriesPython" value="false" />
     <property name="DefaultHtmlFileTemplate" value="Html5" />
@@ -626,20 +433,20 @@
     </todo-panel>
   </component>
   <component name="ToolWindowManager">
-    <frame x="-1" y="27" width="1368" height="742" extended-state="6" />
+    <frame x="-1" y="27" width="1368" height="742" extended-state="7" />
     <editor active="true" />
     <layout>
       <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3293919" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
-      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.11148649" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.7449324" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3293919" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.21212122" sideWeight="0.8885135" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.2659091" sideWeight="0.25506756" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
-      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3293919" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3293919" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
@@ -669,24 +476,9 @@
     <breakpoint-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/mysite/useraccount/forms.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="12" column="8" selection-start="312" selection-end="312" vertical-scroll-proportion="0.2890995" vertical-offset="94" max-vertical-offset="828" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/mysite/mysite/settings.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="-1.4075829" vertical-offset="594" max-vertical-offset="1926" />
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/mysite/movie/models.py">
       <provider selected="true" editor-type-id="text-editor">
         <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="409" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/mysite/post/views.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="66" column="36" selection-start="2841" selection-end="2841" vertical-scroll-proportion="0.0" vertical-offset="864" max-vertical-offset="1782" />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/mysite/static/js/search.js">
@@ -699,44 +491,48 @@
         <state line="10" column="48" selection-start="197" selection-end="197" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="306" />
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/mysite/templates/mysite/base1.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="361" column="46" selection-start="16212" selection-end="16212" vertical-scroll-proportion="0.0" vertical-offset="6126" max-vertical-offset="7002">
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/mysite/static/js/chat.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="24" column="6" selection-start="694" selection-end="694" vertical-scroll-proportion="0.0" vertical-offset="183" max-vertical-offset="576">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/mysite/templates/mysite/home.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" vertical-offset="835" max-vertical-offset="1998">
-          <folding />
-        </state>
+        <state line="24" column="6" selection-start="694" selection-end="694" vertical-scroll-proportion="0.0" vertical-offset="183" max-vertical-offset="576" />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/mysite/static/js/suggestion.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="55" column="57" selection-start="2719" selection-end="2719" vertical-scroll-proportion="0.0" vertical-offset="648" max-vertical-offset="1350">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/mysite/movie/views.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="52" column="32" selection-start="1612" selection-end="1612" vertical-scroll-proportion="0.0" vertical-offset="777" max-vertical-offset="1170">
-          <folding />
-        </state>
+        <state line="55" column="57" selection-start="2719" selection-end="2719" vertical-scroll-proportion="0.0" vertical-offset="648" max-vertical-offset="1350" />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/mysite/useraccount/urls.py">
       <provider selected="true" editor-type-id="text-editor">
         <state line="18" column="74" selection-start="706" selection-end="706" vertical-scroll-proportion="0.6946565" vertical-offset="15" max-vertical-offset="432" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/mysite/templates/mysite/home.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="17" column="25" selection-start="757" selection-end="759" vertical-scroll-proportion="0.0" vertical-offset="141" max-vertical-offset="1998">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/mysite/mysite/views.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="539" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/mysite/movie/views.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="58" column="55" selection-start="1853" selection-end="1853" vertical-scroll-proportion="0.76623374" vertical-offset="559" max-vertical-offset="1098" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/mysite/post/views.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="82" column="66" selection-start="3508" selection-end="3510" vertical-scroll-proportion="0.33203125" vertical-offset="1072" max-vertical-offset="1782" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/mysite/templates/mysite/base1.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="370" column="29" selection-start="16635" selection-end="16635" vertical-scroll-proportion="0.0" vertical-offset="6464" max-vertical-offset="7002">
+          <folding />
+        </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/mysite/mysite/urls.py">
@@ -746,23 +542,34 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/mysite/templates/mysite/profile.html">
+    <entry file="file:///usr/local/lib/python3.2/dist-packages/django/contrib/auth/__init__.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="105" column="61" selection-start="5013" selection-end="5013" vertical-scroll-proportion="0.0" vertical-offset="1719" max-vertical-offset="4752">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/mysite/useraccount/views.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="122" column="48" selection-start="4339" selection-end="4339" vertical-scroll-proportion="0.0" vertical-offset="2196" max-vertical-offset="3924">
+        <state line="75" column="98" selection-start="2551" selection-end="2551" vertical-scroll-proportion="0.432282" vertical-offset="919" max-vertical-offset="3690">
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/mysite/useraccount/models.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="24" column="1" selection-start="1052" selection-end="1052" vertical-scroll-proportion="0.79915434" vertical-offset="0" max-vertical-offset="522">
+        <state line="8" column="7" selection-start="227" selection-end="227" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="486">
+          <folding>
+            <element signature="e#0#28#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/mysite/useraccount/views.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="136" column="34" selection-start="4878" selection-end="4878" vertical-scroll-proportion="0.0" vertical-offset="2139" max-vertical-offset="4392">
+          <folding>
+            <element signature="e#0#35#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/mysite/templates/mysite/profile.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="77" column="69" selection-start="3756" selection-end="3756" vertical-scroll-proportion="0.40152964" vertical-offset="1176" max-vertical-offset="4752">
           <folding />
         </state>
       </provider>

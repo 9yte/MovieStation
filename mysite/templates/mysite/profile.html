@@ -57,8 +57,8 @@
                 </tr>
                 <tr>
                     <td class="second-color">{{ posts.count }}</td>
-                    <td class="second-color">{{ other.followers.count }}</td>
-                    <td class="second-color">{{ other.followings.count }}</td>
+                    <td class="second-color">{{ followers.count }}</td>
+                    <td class="second-color">{{ other.follow.count }}</td>
                 </tr>
             </table>
         </div>
@@ -74,7 +74,7 @@
         <h3 class="tab-title">Followers</h3>
 
         <div class="container-fluid">
-            {% for user in other.followers.all %}
+            {% for user in followers.all %}
                 <div class="media col-lg-6" style="margin-top: 15px">
                     <div class="media-left media-top popular-movie">
                         <a href="/profile/{{ user.username }}">
@@ -100,7 +100,7 @@
         <h3 class="tab-title">Following</h3>
 
         <div class="container-fluid">
-            {% for user in other.followings.all %}
+            {% for user in other.follow.all %}
                 <div class="media col-lg-6" style="margin-top: 15px">
                     <div class="media-left media-top popular-movie">
                         <a href="/profile/{{ user.username }}">

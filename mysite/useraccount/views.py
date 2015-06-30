@@ -13,7 +13,8 @@ from django.http.response import HttpResponse, JsonResponse
 
 # import models
 from django.views.decorators.csrf import csrf_exempt
-from .models import UserProfile
+from .models import UserProfile, Follow
+
 from post.models import Comment, Favourite
 from post.models import Post
 from datetime import datetime
@@ -65,6 +66,7 @@ def login(request):
     if request.method == "POST":
         username = request.POST.get("UserName", "")
         password = request.POST.get("password", "")
+
         user = authenticate(username=username, password=password)
         if user is not None:
             a_login(request, user)
@@ -84,7 +86,7 @@ def logout(request):
 @login_required(login_url='/')
 def homepage(request, number_of_posts=10):
     user = UserProfile.objects.get(id=request.user.id)
-    followings = user.followings.all()
+    followings = user.follow.all()
     posts = []
     for f in followings:
         user_posts = Post.objects.filter(author=f)
@@ -115,17 +117,28 @@ def show_profile(request, username):
     except:
         user = None
     if user is not None:
+        #print(user.username)
+        #print('followings')
+        #for user2 in user.follow.all():
+        #    print(user2.username)
+        #print('followers')
+        #for user2 in user.followed_by.all():
+        #    print(user2.username)
+
         posts = Post.objects.filter(author=user)
+        followers = UserProfile.objects.filter(follow=user)
         if user.username == nowUser.username:
             return render(request, "mysite/profile.html",
-                          {"user": nowUser, "owner": True, "other": user, "posts": posts})
+                          {"user": nowUser, "owner": True, "other": user, "posts": posts, "followers": followers})
         else:
-            if user in nowUser.followings.all():
+            if user in nowUser.follow.all():
                 return render(request, "mysite/profile.html",
-                              {"user": nowUser, "owner": False, "follows": True, "other": user, "posts": posts})
+                              {"user": nowUser, "owner": False, "follows": True, "other": user, "posts": posts
+                                  , "followers": followers})
             else:
                 return render(request, "mysite/profile.html",
-                              {"user": nowUser, "owner": False, "follows": False, "other": user, "posts": posts})
+                              {"user": nowUser, "owner": False, "follows": False, "other": user, "posts": posts
+                                  , "followers": followers})
     else:
         # TODO error page
         return HttpResponse("Error : cant find requsted user")
@@ -158,13 +171,14 @@ def follow(request):
         currentUser = UserProfile.objects.get(id=request.user.id)
         username = request.POST.get('followed')
         user = UserProfile.objects.get(username=username)
-        currentUser.followings.add(user)
+        #currentUser.follow.add(user)
+        Follow.objects.create(follower=currentUser, followed=user)
         print(currentUser.username)
         print("folows")
         print(user.username)
         #user.followers.add(currentUser)
-        currentUser.save()
-        user.save()
+        #currentUser.save()
+        #user.save()
         return JsonResponse({'status': 'ok'})
 
 
@@ -199,10 +213,11 @@ def unfollow(request):
         currentUser = UserProfile.objects.get(id=request.user.id)
         username = request.POST.get('followed', '')
         user = UserProfile.objects.get(username=username)
-        currentUser.followings.remove(user)
+        #currentUser.follow.remove(user)
+        Follow.objects.remove(follower=currentUser, followed=user)
         #user.followers.remove(currentUser)
-        currentUser.save()
-        user.save()
+        #currentUser.save()
+        #user.save()
         return JsonResponse({'status': 'ok'})
 
 
@@ -213,7 +228,7 @@ def suggest(request, number):
         all_user = UserProfile.objects.all()[:10]
         users = []
         for user in all_user:
-            if len(Current_User.followings.filter(id=user.id)) != 0:
+            if len(Current_User.follow.filter(id=user.id)) != 0:
                 continue
             users.append(user)
             if len(users) == 3:
