@@ -1,33 +1,37 @@
 var busy = false
 function getMovies(n) {
-    busy = true
-    $.post("/movieprofile/suggestions/" + n, {}, function(data){
-        if(data.status){
-            /*console.log(data.Movies.length);*/
-            for(var i = 0; i < data.Movies.length; i++){
-                /*console.log(JSON.parse(data.Movies[i])[0])*/
-                var mov = JSON.parse(data.Movies[i])[0];
-                var html = '<div class="media">'+
-                            '<div class="media-left media-top popular-movie">' +
-                                '<a href="/movieprofile/' + mov.fields.name + '">' +
-                                    '<img class="media-object img-rounded" src="/media/'+ mov.fields.cover_photo +'">' +
-                                '</a>' +
+    console.log("getMovies");
+    if($('div#movie-interest').attr('data-sugg') == 'not-set'){
+        console.log('send ajaxs');
+        busy = true
+        $.post("/movieprofile/suggestions/" + n, {}, function(data){
+            if(data.status){
+                /*console.log(data.Movies.length);*/
+                for(var i = 0; i < data.Movies.length; i++){
+                    /*console.log(JSON.parse(data.Movies[i])[0])*/
+                    var mov = JSON.parse(data.Movies[i])[0];
+                    var html = '<div class="media">'+
+                                '<div class="media-left media-top popular-movie">' +
+                                    '<a href="/movieprofile/' + mov.fields.name + '">' +
+                                        '<img class="media-object img-rounded" src="/media/'+ mov.fields.cover_photo +'">' +
+                                    '</a>' +
+                                '</div>' +
+                                '<div class="media-body">' +
+                                    '<a href="/movieprofile/'+ mov.fields.name + '" '+
+                                        '<h6 class="media-heading">' + mov.fields.name + '</h6>' +
+                                    '</a>' +
+                                '</div>' +
                             '</div>' +
-                            '<div class="media-body">' +
-                                '<a href="/movieprofile/'+ mov.fields.name + '" '+
-                                    '<h6 class="media-heading">' + mov.fields.name + '</h6>' +
-                                '</a>' +
-                            '</div>' +
-                        '</div>' +
-                        '<hr class="divider small-divider">';
-                var $html = $(html);
-                $('div#movie-interest').append($html);
-
+                            '<hr class="divider small-divider">';
+                    var $html = $(html);
+                    $('div#movie-interest').append($html);
+                    $('div#movie-interest').attr('data-sugg', 'set');
+                }
             }
-        }
-        busy = false;
-        getPeople(3);
-    });
+            busy = false;
+            getPeople(3);
+        });
+    }
 }
 
 function getPeople(n) {

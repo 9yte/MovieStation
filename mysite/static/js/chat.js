@@ -20,7 +20,5 @@ $(document).ready(function() {
             $(this).val(null);
         }
     });
-    console.log('send ajaxs');
     getMovies(3);
-    //getPeople(3);
 });
