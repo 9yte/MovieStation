@@ -213,11 +213,13 @@ def suggest(request, number):
         all_user = UserProfile.objects.all()[:10]
         users = []
         for user in all_user:
+            if user.username == Current_User.username or user.username == 'admin':
+                continue
             if len(Current_User.follow.filter(id=user.id)) != 0:
                 continue
             users.append(user)
             if len(users) == 3:
                 break
-        new_list = [serializers.serialize('json', [o]) for o in users]
-        return JsonResponse(dict(status=True, Peoples=new_list))
+    new_list = [serializers.serialize('json', [o]) for o in users]
+    return JsonResponse(dict(status=True, Peoples=new_list))
 

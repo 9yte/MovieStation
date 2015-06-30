@@ -74,27 +74,29 @@
         <h3 class="tab-title">Followers</h3>
 
         <div class="container-fluid">
-            {% for user in followers.all %}
+            {% for user1 in followers.all %}
                 <div class="media col-lg-6" style="margin-top: 15px">
                     <div class="media-left media-top popular-movie">
-                        <a href="/profile/{{ user.username }}">
-                            <img class="media-object img-rounded" src="{{ user.avatar.url }}" alt="...">
+                        <a href="/profile/{{ user1.username }}">
+                            <img class="media-object img-rounded" src="{{ user1.avatar.url }}" alt="...">
                         </a>
                     </div>
                     <div class="media-body">
-                        <h5 class="media-heading">{{ user.username }}</h5>
+                        <h5 class="media-heading">{{ user1.username }}</h5>
 
                         <div>
-                            @{{ user.username }}
-                            {% if user in other.follow.all %}
-                                <button class="btn btn-success follow-btn follow" data-follow="unfollow"
-                                        data-user="{{ user.username }}">unfollow
-                                </button>
-                            {% endif %}
-                            {% if user not in other.follow.all %}
-                                <button class="btn btn-success follow-btn follow" data-follow="follow"
-                                        data-user="{{ user.username }}">follow
-                                </button>
+                            @{{ user1.username }}
+                            {% if user1.username != user.username %}
+                                {% if user1 in other.follow.all %}
+                                    <button class="btn btn-success follow-btn follow" data-follow="unfollow"
+                                            data-user="{{ user1.username }}">unfollow
+                                    </button>
+                                {% endif %}
+                                {% if user1 not in other.follow.all %}
+                                    <button class="btn btn-success follow-btn follow" data-follow="follow"
+                                            data-user="{{ user1.username }}">follow
+                                    </button>
+                                {% endif %}
                             {% endif %}
 
                         </div>
@@ -108,21 +110,23 @@
         <h3 class="tab-title">Following</h3>
 
         <div class="container-fluid">
-            {% for user in other.follow.all %}
+            {% for user1 in other.follow.all %}
                 <div class="media col-lg-6" style="margin-top: 15px">
                     <div class="media-left media-top popular-movie">
-                        <a href="/profile/{{ user.username }}">
-                            <img class="media-object img-rounded" src="{{ user.avatar.url }}" alt="...">
+                        <a href="/profile/{{ user1.username }}">
+                            <img class="media-object img-rounded" src="{{ user1.avatar.url }}" alt="...">
                         </a>
                     </div>
                     <div class="media-body">
-                        <h5 class="media-heading">{{ user.username }}</h5>
+                        <h5 class="media-heading">{{ user1.username }}</h5>
 
                         <div>
-                            @{{ user.username }}
-                            <button class="btn btn-success follow-btn follow" data-follow="unfollow"
-                                    data-user="{{ user.username }}">unfollow
-                            </button>
+                            @{{ user1.username }}
+                            {% if user1.username != user.username %}
+                                <button class="btn btn-success follow-btn follow" data-follow="unfollow"
+                                        data-user="{{ user1.username }}">unfollow
+                                </button>
+                            {% endif %}
                         </div>
                     </div>
                 </div>
