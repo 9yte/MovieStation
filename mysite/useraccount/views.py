@@ -13,10 +13,12 @@ from django.http.response import HttpResponse, JsonResponse
 
 # import models
 from django.views.decorators.csrf import csrf_exempt
-from .models import UserProfile
+from .models import UserProfile, Follow
+
 from post.models import Comment, Favourite
 from post.models import Post
 from datetime import datetime
+from django.core import serializers
 
 # import forms
 from .forms import RegisterForm, ChangePassForm, EditForm
@@ -64,6 +66,7 @@ def login(request):
     if request.method == "POST":
         username = request.POST.get("UserName", "")
         password = request.POST.get("password", "")
+
         user = authenticate(username=username, password=password)
         if user is not None:
             a_login(request, user)
@@ -83,7 +86,7 @@ def logout(request):
 @login_required(login_url='/')
 def homepage(request, number_of_posts=2):
     user = UserProfile.objects.get(id=request.user.id)
-    followings = user.followings.all()
+    followings = user.follow.all()
     posts = []
     for f in followings:
         user_posts = Post.objects.filter(author=f)
@@ -115,16 +118,19 @@ def show_profile(request, username):
         user = None
     if user is not None:
         posts = Post.objects.filter(author=user)
+        followers = UserProfile.objects.filter(follow=user)
         if user.username == nowUser.username:
             return render(request, "mysite/profile.html",
-                          {"user": nowUser, "owner": True, "other": user, "posts": posts})
+                          {"user": nowUser, "owner": True, "other": user, "posts": posts, "followers": followers})
         else:
-            if user in nowUser.followings.all():
+            if user in nowUser.follow.all():
                 return render(request, "mysite/profile.html",
-                              {"user": nowUser, "owner": False, "follows": True, "other": user, "posts": posts})
+                              {"user": nowUser, "owner": False, "follows": True, "other": user, "posts": posts
+                                  , "followers": followers})
             else:
                 return render(request, "mysite/profile.html",
-                              {"user": nowUser, "owner": False, "follows": False, "other": user, "posts": posts})
+                              {"user": nowUser, "owner": False, "follows": False, "other": user, "posts": posts
+                                  , "followers": followers})
     else:
         # TODO error page
         return HttpResponse("Error : cant find requsted user")
@@ -157,10 +163,7 @@ def follow(request):
         currentUser = UserProfile.objects.get(id=request.user.id)
         username = request.POST.get('followed')
         user = UserProfile.objects.get(username=username)
-        currentUser.followings.add(user)
-        user.followers.add(currentUser)
-        currentUser.save()
-        user.save()
+        Follow.objects.create(follower=currentUser, followed=user)
         return JsonResponse({'status': 'ok'})
 
 
@@ -195,8 +198,28 @@ def unfollow(request):
         currentUser = UserProfile.objects.get(id=request.user.id)
         username = request.POST.get('followed', '')
         user = UserProfile.objects.get(username=username)
-        currentUser.followings.remove(user)
-        user.followers.remove(currentUser)
-        currentUser.save()
-        user.save()
+        #currentUser.follow.remove(user)
+        if len(Follow.objects.filter(follower=currentUser, followed=user)) == 0:
+            return
+        f = Follow.objects.filter(follower=currentUser, followed=user)
+        f.delete();
         return JsonResponse({'status': 'ok'})
+
+
+@csrf_exempt
+def suggest(request, number):
+    if request.method == 'POST':
+        Current_User = UserProfile.objects.get(id=request.user.id)
+        all_user = UserProfile.objects.all()[:10]
+        users = []
+        for user in all_user:
+            if user.username == Current_User.username or user.username == 'admin':
+                continue
+            if len(Current_User.follow.filter(id=user.id)) != 0:
+                continue
+            users.append(user)
+            if len(users) == 3:
+                break
+    new_list = [serializers.serialize('json', [o]) for o in users]
+    return JsonResponse(dict(status=True, Peoples=new_list))
+
