@@ -117,14 +117,6 @@ def show_profile(request, username):
     except:
         user = None
     if user is not None:
-        #print(user.username)
-        #print('followings')
-        #for user2 in user.follow.all():
-        #    print(user2.username)
-        #print('followers')
-        #for user2 in user.followed_by.all():
-        #    print(user2.username)
-
         posts = Post.objects.filter(author=user)
         followers = UserProfile.objects.filter(follow=user)
         if user.username == nowUser.username:
@@ -171,14 +163,7 @@ def follow(request):
         currentUser = UserProfile.objects.get(id=request.user.id)
         username = request.POST.get('followed')
         user = UserProfile.objects.get(username=username)
-        #currentUser.follow.add(user)
         Follow.objects.create(follower=currentUser, followed=user)
-        print(currentUser.username)
-        print("folows")
-        print(user.username)
-        #user.followers.add(currentUser)
-        #currentUser.save()
-        #user.save()
         return JsonResponse({'status': 'ok'})
 
 
@@ -214,10 +199,10 @@ def unfollow(request):
         username = request.POST.get('followed', '')
         user = UserProfile.objects.get(username=username)
         #currentUser.follow.remove(user)
-        Follow.objects.remove(follower=currentUser, followed=user)
-        #user.followers.remove(currentUser)
-        #currentUser.save()
-        #user.save()
+        if len(Follow.objects.filter(follower=currentUser, followed=user)) == 0:
+            return
+        f = Follow.objects.filter(follower=currentUser, followed=user)
+        f.delete();
         return JsonResponse({'status': 'ok'})
 
 

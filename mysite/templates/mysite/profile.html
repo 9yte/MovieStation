@@ -86,9 +86,17 @@
 
                         <div>
                             @{{ user.username }}
-                            <button class="btn btn-success follow-btn follow" data-follow="follow"
-                                    data-user="{{ user.username }}">follow
-                            </button>
+                            {% if user in other.follow.all %}
+                                <button class="btn btn-success follow-btn follow" data-follow="unfollow"
+                                        data-user="{{ user.username }}">unfollow
+                                </button>
+                            {% endif %}
+                            {% if user not in other.follow.all %}
+                                <button class="btn btn-success follow-btn follow" data-follow="follow"
+                                        data-user="{{ user.username }}">follow
+                                </button>
+                            {% endif %}
+
                         </div>
                     </div>
                 </div>

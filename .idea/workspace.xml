@@ -2,19 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="fceec738-e56c-4368-b972-f84f12727270" name="Default" comment="">
-      <change type="DELETED" beforePath="$PROJECT_DIR$/mysite/media/avatars/peyman.jpg" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/mysite/useraccount/migrations/0001_initial.py" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/mysite/useraccount/migrations/0002_auto_20150612_0528.py" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/mysite/useraccount/migrations/0003_auto_20150612_0538.py" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/mysite/useraccount/migrations/0004_auto_20150612_0543.py" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/mysite/useraccount/migrations/0005_auto_20150612_0621.py" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/mysite/useraccount/migrations/0006_auto_20150612_0906.py" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/mysite/useraccount/migrations/0007_auto_20150612_1250.py" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/mysite/useraccount/migrations/__init__.py" afterPath="" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/mysite/useraccount/models.py" afterPath="$PROJECT_DIR$/mysite/useraccount/models.py" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/mysite/templates/mysite/profile.html" afterPath="$PROJECT_DIR$/mysite/templates/mysite/profile.html" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/mysite/useraccount/views.py" afterPath="$PROJECT_DIR$/mysite/useraccount/views.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="Project.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -55,10 +44,10 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="views.py" pinned="false" current="false" current-in-tab="false">
+      <file leaf-file-name="views.py" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/mysite/useraccount/views.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="136" column="34" selection-start="4878" selection-end="4878" vertical-scroll-proportion="0.0" vertical-offset="2139" max-vertical-offset="4392">
+            <state line="118" column="24" selection-start="4038" selection-end="4038" vertical-scroll-proportion="1.3239075" vertical-offset="1609" max-vertical-offset="4122">
               <folding>
                 <element signature="e#0#35#0" expanded="true" />
               </folding>
@@ -77,10 +66,10 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="profile.html" pinned="false" current="true" current-in-tab="true">
+      <file leaf-file-name="profile.html" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/mysite/templates/mysite/profile.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="77" column="69" selection-start="3756" selection-end="3756" vertical-scroll-proportion="0.40152964" vertical-offset="1176" max-vertical-offset="4752">
+            <state line="88" column="58" selection-start="4309" selection-end="4309" vertical-scroll-proportion="-8.666667" vertical-offset="1350" max-vertical-offset="4896">
               <folding />
             </state>
           </provider>
@@ -127,8 +116,8 @@
         <option value="$PROJECT_DIR$/mysite/movie/views.py" />
         <option value="$PROJECT_DIR$/mysite/useraccount/models.py" />
         <option value="/usr/local/lib/python3.2/dist-packages/django/contrib/auth/__init__.py" />
-        <option value="$PROJECT_DIR$/mysite/useraccount/views.py" />
         <option value="$PROJECT_DIR$/mysite/templates/mysite/profile.html" />
+        <option value="$PROJECT_DIR$/mysite/useraccount/views.py" />
       </list>
     </option>
   </component>
@@ -437,11 +426,11 @@
     <editor active="true" />
     <layout>
       <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3293919" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
-      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.7449324" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.27195945" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3293919" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.2659091" sideWeight="0.25506756" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.2659091" sideWeight="0.7280405" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
@@ -558,19 +547,19 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/mysite/useraccount/views.py">
+    <entry file="file://$PROJECT_DIR$/mysite/templates/mysite/profile.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="136" column="34" selection-start="4878" selection-end="4878" vertical-scroll-proportion="0.0" vertical-offset="2139" max-vertical-offset="4392">
-          <folding>
-            <element signature="e#0#35#0" expanded="true" />
-          </folding>
+        <state line="88" column="58" selection-start="4309" selection-end="4309" vertical-scroll-proportion="-8.666667" vertical-offset="1350" max-vertical-offset="4896">
+          <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/mysite/templates/mysite/profile.html">
+    <entry file="file://$PROJECT_DIR$/mysite/useraccount/views.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="77" column="69" selection-start="3756" selection-end="3756" vertical-scroll-proportion="0.40152964" vertical-offset="1176" max-vertical-offset="4752">
-          <folding />
+        <state line="118" column="24" selection-start="4038" selection-end="4038" vertical-scroll-proportion="1.3239075" vertical-offset="1609" max-vertical-offset="4122">
+          <folding>
+            <element signature="e#0#35#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
