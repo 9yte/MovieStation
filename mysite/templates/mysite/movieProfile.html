@@ -98,49 +98,22 @@
                 </div>
             </div>
             <div class="panel-body">
-                <h3>Cast</h3>
-                <ul>
-                    <li>Kelly Macdonald as Merida</li>
-                    <li>Emma Thompson as Queen Elinor</li>
-                </ul>
                 <div class="divider"></div>
-                <h3>Producers</h3>
-                <ul>
-                    <li>Directed by Mark Andrews and Brenda Chapman</li>
-                    <li>Produced by Katherine Sarafian</li>
-                </ul>
-                <div class="divider"></div>
-                <h3>Awards</h3>
                 <table class="table awards">
-                    <tr class="table-header">
-                        <th>#</th>
-                        <th>Award</th>
-                        <th>Candidate for</th>
-                        <th>year</th>
-                        <th>Result</th>
-                    </tr>
-                    <tr>
-                        <td>1</td>
-                        <td>Oscar</td>
-                        <td>Best Graphic of 2011</td>
-                        <td>2012</td>
-                        <td>
-                            <div>
-                                Won
-                            </div>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>2</td>
-                        <td>Oscar</td>
-                        <td>Best Sound track of 2011</td>
-                        <td>2012</td>
-                        <td>
-                            <div>
-                                Nominated
-                            </div>
-                        </td>
-                    </tr>
+                    {% if movie.crews.all|length > 0 %}
+                        <tr class="table-header">
+                            <th>#</th>
+                            <th>Cast And Crew</th>
+                            <th>role</th>
+                        </tr>
+                    {% endif %}
+                    {% for c in movie.crews.all %}
+                        <tr>
+                            <td>{{ forloop.counter }}</td>
+                            <td>{{ c.first_name }} {{ c.last_name }}</td>
+                            <td>{{ c.role }}</td>
+                        </tr>
+                    {% endfor %}
                 </table>
             </div>
         </div>

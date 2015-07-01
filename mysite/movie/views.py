@@ -26,16 +26,11 @@ def show_movie(request, movie_name):
     if len(prev_post) == 1:
         user_rate = prev_post[0].rate
     can_post = user and (len(prev_post) == 0)
-    print(can_post)
     if movie is not None:
         return render(request, "mysite/movieProfile.html",
                       {'user': user, 'movie': movie, 'can_post': can_post, 'user_rate': user_rate})
     else:
-        return redirect('/mainpage')
-
-
-def mainpage(request):
-    return redirect('/mainpage')
+        return redirect('/')
 
 
 @csrf_exempt
