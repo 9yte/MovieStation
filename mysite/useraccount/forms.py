@@ -1,10 +1,11 @@
 from django import forms
 from .models import UserProfile
-# from captcha.fields import CaptchaField
+from captcha.fields import CaptchaField
+
 
 class RegisterForm(forms.ModelForm):
     confirm = forms.CharField(widget=forms.PasswordInput)
-
+    captcha = CaptchaField()
     class Meta:
         model = UserProfile
         fields = ['username', 'email', 'password', 'confirm',

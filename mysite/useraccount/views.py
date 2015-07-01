@@ -54,11 +54,9 @@ def register(request):
             return redirect("/home")
         else:
             print("not valid")
-            form = RegisterForm()
-            return render(request, "mysite/mainpage.html")
+            return redirect("/")
     else:
-        form = RegisterForm()
-        return render(request, "mysite/mainpage.html")
+        return redirect("/")
 
 
 def login(request):
