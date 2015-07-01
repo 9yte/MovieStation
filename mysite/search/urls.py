@@ -9,4 +9,5 @@ from . import views
 
 urlpatterns = patterns('',
                        url(r'^/$', views.search),
+                       url(r'^/result$', views.search_result),
 )

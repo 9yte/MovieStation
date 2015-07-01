@@ -6,5 +6,5 @@
 *.iml
 media/*
 .idea/*
-*/migrations/*
+*/migrations
 node_modules/*

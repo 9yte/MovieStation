@@ -1,10 +1,10 @@
 {% extends 'mysite/home.html' %}
-{%  load static %}
+{% load static %}
 {% block profile %}
     <link rel="stylesheet" type="text/css" href="{% static 'css/profileTable.css' %}">
     <div class="panel panel-default">
         <div class="panel-body">
-            <h4>Results of Interstular</h4>
+            <h4>Results of "{{ query }}"</h4>
             <br>
             <table class="table">
                 <tr>
@@ -13,9 +13,9 @@
                     <th><a href="#movies-tab" data-toggle="tab" class="text-muted small-font">MOVIES</a></th>
                 </tr>
                 <tr>
-                    <td class="second-color">2</td>
-                    <td class="second-color">4</td>
-                    <td class="second-color">6</td>
+                    <td class="second-color">{{ posts.count }}</td>
+                    <td class="second-color">{{ users.count }}</td>
+                    <td class="second-color">{{ movies.count }}</td>
                 </tr>
             </table>
         </div>
@@ -27,95 +27,56 @@
 
     <div class="tab-pane" id="people-tab">
         <table class="table">
-            <tr>
-                <td>
-                    <div class="media">
-                        <div class="media-left media-top popular-movie">
-                            <a href="#">
-                                <img class="media-object img-rounded" src="{% static 'img/peyman.jpg' %}" alt="...">
-                            </a>
-                        </div>
-                        <div class="media-body">
-                            <h5 class="media-heading">Peyman Ezzati</h5>
-                            <p>@pezzati</p>
-                            <p>21</p>
-                        </div>
+        <tr>
+            {% for user in users %}
+            <td>
+                <div class="media">
+                    <div class="media-left media-top popular-movie">
+                        <a href="/profile/{{ user.username }}">
+                            <img class="media-object img-rounded" src="{{ user.avatar.url }}" alt="{{ user.username }}">
+                        </a>
                     </div>
-                </td>
-                <td>
-                    <div class="media">
-                        <div class="media-left media-top popular-movie">
-                            <a href="#">
-                                <img class="media-object img-rounded" src="{% static 'img/peyman.jpg' %}" alt="...">
-                            </a>
-                        </div>
-                        <div class="media-body">
-                            <h5 class="media-heading">Peyman Ezzati</h5>
-                            <p>@pezzati</p>
-                            <p>21</p>
-                        </div>
+                    <div class="media-body">
+                        <h5 class="media-heading">{{ user.nickname }}</h5>
+                        <p>@{{ user.username }}</p>
                     </div>
-                </td>
-            </tr>
-            <tr>
-                <td>
-                    <div class="media">
-                        <div class="media-left media-top popular-movie">
-                            <a href="#">
-                                <img class="media-object img-rounded" src="{% static 'img/peyman.jpg' %}" alt="...">
-                            </a>
-                        </div>
-                        <div class="media-body">
-                            <h5 class="media-heading">Peyman Ezzati</h5>
-                            <p>@pezzati</p>
-                            <p>21</p>
-                        </div>
-                    </div>
-                </td>
-                <td>
-                    <div class="media">
-                        <div class="media-left media-top popular-movie">
-                            <a href="#">
-                                <img class="media-object img-rounded" src="{% static 'img/peyman.jpg' %}" alt="...">
-                            </a>
-                        </div>
-                        <div class="media-body">
-                            <h5 class="media-heading">Peyman Ezzati</h5>
-                            <p>@pezzati</p>
-                            <p>21</p>
-                        </div>
-                    </div>
-                </td>
-            </tr>
+                </div>
+            </td>
+            {% if forloop.counter|divisibleby:2 %}
+                <tr></tr>
+            {% endif %}
+            {% endfor %}
+        </tr>
         </table>
     </div><!-- people tab -->
 
 
     <div class="tab-pane" id="movies-tab">
         <table class="table">
-            <tr>
-                <td>
-                    <div class="media">
-                        <div class="media-left media-top popular-movie">
-                            <a href="#">
-                                <img class="media-object img-rounded" src="{% static 'img/Brave.jpg' %}" alt="...">
-                            </a>
+            {% for movie in movies %}
+                <tr>
+                    <td>
+                        <div class="media">
+                            <div class="media-left media-top popular-movie">
+                                <a href="/movieproflie/{{ movie.name }}">
+                                    <img class="media-object img-rounded" src="{{ movie.cover_photo.url }}" alt="{{ movie.name }}">
+                                </a>
+                            </div>
+                            <div class="media-body">
+                                <a href="movieProfile.html"><h3 class="media-heading">Brave 2012</h3></a>
+                                <input value="{{ movie.rate }}" type="number" readonly="true" data-stars="10"
+                                       class="rating movieRate" min=0 max=10 step=0.2 data-size="xs">
+                                <p>
+                                    {{ movie.description }}
+                                </p>
+                            </div>
                         </div>
-                        <div class="media-body">
-                            <a href="movieProfile.html"><h3 class="media-heading">Brave 2012</h3></a>
-                            <input  value="8.9" type="number"  readonly="true" data-stars="10" class="rating movieRate" min=0 max=10 step=0.2 data-size="xs">
-                            <p>Directed by Mark Andrews Brenda Chapman</p>
-                            <p>
-                                Brave is a 2012 American computer-animated fantasy comedy film produced by Pixar Animation
-                                Studios and released by Walt Disney Pictures.
-                            </p>
-                        </div>
-                    </div>
-                </td>
-            </tr>
+                    </td>
+                </tr>
+            {% endfor %}
         </table>
     </div>
 
-    <script src="{% static 'js/search.js'%}" type="text/javascript"></script>
+    <script src="{% static 'js/search.js' %}" type="text/javascript"></script>
 
 {% endblock other_tab %}
