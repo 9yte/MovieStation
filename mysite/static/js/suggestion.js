@@ -38,9 +38,7 @@ function getPeople(n) {
     busy = true
     $.post("/profile/suggestions/" + n, {}, function(data){
         if(data.status){
-            console.log(data.Peoples.length);
             for(var i = 0; i < data.Peoples.length; i++){
-                console.log(JSON.parse(data.Peoples[i])[0])
                 var person = JSON.parse(data.Peoples[i])[0];
                 console.log(person.fields.username);
                 var display_name;
@@ -66,6 +64,7 @@ function getPeople(n) {
 
             }
         }
+        getNotif();
         busy = false;
     });
 }

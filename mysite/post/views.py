@@ -1,3 +1,5 @@
+from django.core import serializers
+
 __author__ = 'hojjat'
 from django.shortcuts import render
 from django.shortcuts import redirect
@@ -173,3 +175,29 @@ def post(request, movie_id):
             return redirect("/movieprofile/" + movie.name)
     else:
         return redirect('')
+
+@csrf_exempt
+def getNotif(request):
+    print('GetNotif req')
+    if request.method == 'POST':
+        user = UserProfile.objects.get(id=request.user.id)
+        print('from ')
+        print(user.username)
+        comments = Comment.objects.filter(post__author__username=user.username).order_by('-date_time')[:4]
+        comment_owners = [o.author for o in comments]
+        print('comments founded')
+        print(comments)
+        likes = Favourite.objects.filter(post__author__username=user.username).order_by('-date_time')[:4]
+        like_owners = [o.user for o in likes]
+        print('likes founded')
+        print(likes)
+
+        new_comments = [serializers.serialize('json', [o]) for o in comments]
+        new_comment_owners = [serializers.serialize('json', [o]) for o in comment_owners]
+        new_likes = [serializers.serialize('json', [o]) for o in likes]
+        new_like_owners = [serializers.serialize('json', [o]) for o in like_owners]
+
+        return JsonResponse(dict(status=True, notif_comments=new_comments, cm_owners=new_comment_owners,
+                                 notif_likes=new_likes, like_owners=new_like_owners))
+
+    return JsonResponse(dict(status=False))
