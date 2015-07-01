@@ -3,3 +3,8 @@ table th, table td{
     padding-top: 2px !important;
     padding-bottom: 2px !important;
 }
+
+.btn-second-color{
+    background-color: #90A4AE !important;
+    border-color: #90A4AE !important;
+}

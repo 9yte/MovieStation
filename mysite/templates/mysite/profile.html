@@ -8,7 +8,7 @@
     <link rel="stylesheet" type="text/css" href="{% static 'css/profileTable.css' %}">
     <link rel="stylesheet" type="text/css" href="{% static 'css/bootstrap/bootstrap-datetimepicker.min.css' %}">
 
-    <div class="panel panel-default">
+    <div class="panel panel-default" id="user-id" user-id="{{ other.id }}">
         <div class="panel-body">
             <div class="media col-lg-10" style="padding-left: 0px">
                 <div class="media-left media-top popular-movie">
@@ -20,18 +20,6 @@
 
                     <div>
                         @{{ other.username }}
-                        {% if not owner %}
-                            {% if follows %}
-                                <button class="btn btn-default follow-btn follow"
-                                        data-follow="unfollow" data-user="{{ other.username }}">Unfollow
-                                </button>
-                            {% endif %}
-                            {% if not follows %}
-                                <button class="btn btn-default follow-btn follow"
-                                        data-follow="follow" data-user="{{ other.username }}">follow
-                                </button>
-                            {% endif %}
-                        {% endif %}
                     </div>
                 </div>
             </div>
@@ -45,6 +33,19 @@
                             style="float: right ;font-size: 10px; display: none"
                             id="changePassword">Change Password
                     </button>
+                {% else %}
+                    {% if follows %}
+                        <button class="btn btn-default follow-btn follow btn-second-color btn-primary"
+                                data-follow="unfollow" data-user="{{ other.username }}"
+                                style="float: right;">Unfollow
+                        </button>
+                    {% endif %}
+                    {% if not follows %}
+                        <button class="btn btn-default follow-btn follow btn-second-color btn-primary"
+                                data-follow="follow" data-user="{{ other.username }}"
+                                style="float: right;">follow
+                        </button>
+                    {% endif %}
                 {% endif %}
             </div>
             <br>
@@ -56,7 +57,7 @@
                     <th><a href="#following-tab" data-toggle="tab" class="text-muted small-font">FOLLOWINGS</a></th>
                 </tr>
                 <tr>
-                    <td class="second-color">{{ posts.count }}</td>
+                    <td class="second-color">{{ posts|length }}</td>
                     <td class="second-color">{{ followers.count }}</td>
                     <td class="second-color">{{ other.follow.count }}</td>
                 </tr>
@@ -88,12 +89,12 @@
                             @{{ user1.username }}
                             {% if user1.username != user.username %}
                                 {% if user1 in other.follow.all %}
-                                    <button class="btn btn-success follow-btn follow" data-follow="unfollow"
+                                    <button class="btn btn-second-color follow-btn follow" data-follow="unfollow"
                                             data-user="{{ user1.username }}">unfollow
                                     </button>
                                 {% endif %}
                                 {% if user1 not in other.follow.all %}
-                                    <button class="btn btn-success follow-btn follow" data-follow="follow"
+                                    <button class="btn btn-second-color follow-btn follow" data-follow="follow"
                                             data-user="{{ user1.username }}">follow
                                     </button>
                                 {% endif %}
@@ -123,7 +124,7 @@
                         <div>
                             @{{ user1.username }}
                             {% if user1.username != user.username %}
-                                <button class="btn btn-success follow-btn follow" data-follow="unfollow"
+                                <button class="btn btn-second-color follow-btn follow" data-follow="unfollow"
                                         data-user="{{ user1.username }}">unfollow
                                 </button>
                             {% endif %}
@@ -139,7 +140,8 @@
                 <div class="panel-body">
                     <h4 class="tab-title red">Edit your profile</h4>
 
-                    <form onsubmit="return false;" method="post" role="form" action="#" data-toggle="validator" enctype="multipart/form-data">
+                    <form onsubmit="return false;" method="post" role="form" action="#" data-toggle="validator"
+                          enctype="multipart/form-data">
                         {% csrf_token %}
                         <div class="form-group">
                             <input type="text" name="nickname"
@@ -168,7 +170,7 @@
                                    placeholder="{{ user.avatar.url }}"
                                    data-toggle="tooltip" data-animation="true"
                                    data-placement="bottom" title="Please select your avatar"
-                                   >
+                                    >
 
                             <div class="help-block with-errors"></div>
                         </div>
@@ -231,7 +233,8 @@
                         </div>
                         <div class="form-group">
                             <input type="password" name="confirm" id="password_confirm"
-                                   class="form-control input-sm color_tooltip my_input" placeholder="Confirm your password"
+                                   class="form-control input-sm color_tooltip my_input"
+                                   placeholder="Confirm your password"
                                    data-toggle="tooltip" data-animation="true"
                                    data-placement="bottom" title="Please confirm your password"
                                    data-match="#new_password" data-match-error="Whoops, these don't match"
@@ -260,7 +263,6 @@
         });
     </script>
     <!--<script type="text/javascript" src="{% static 'js/chat.js' %}"></script>-->
-    <script type="text/javascript" src="{% static 'js/comment.js' %}"></script>
     <script type="text/javascript" src="{% static 'js/like.js' %}"></script>
     <script type="text/javascript" src="{% static 'js/movie_info.js' %}"></script>
     <script type="text/javascript" src="{% static 'js/follow.js' %}"></script>

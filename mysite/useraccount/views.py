@@ -35,7 +35,6 @@ def activation(request):
 
 
 def register(request):
-    print("hi")
     if request.method == "POST":
         print(request.POST)
         form = RegisterForm(request.POST, request.FILES)
@@ -110,27 +109,41 @@ def homepage(request, number_of_posts=2):
 
 
 @login_required(login_url='/')
-def show_profile(request, username):
+def show_profile(request, username, number_of_posts=2):
     nowUser = UserProfile.objects.get(id=request.user.id)
     try:
         user = UserProfile.objects.get(username=username)
     except:
         user = None
     if user is not None:
-        posts = Post.objects.filter(author=user)
+        posts = Post.objects.filter(author=user).order_by('-date_time')
+        counter = 0
+        final_posts = []
+        for post in posts:
+            if counter >= number_of_posts:
+                break
+            x = len(Favourite.objects.filter(post=post))
+            cms = Comment.objects.filter(post=post)
+            post.likes = x
+            post.comments = cms
+            post.comments_num = len(cms)
+            post.liked = (len(Favourite.objects.filter(post=post, user=user)) == 1)
+            final_posts.append(post)
+            counter += 1
         followers = UserProfile.objects.filter(follow=user)
         if user.username == nowUser.username:
             return render(request, "mysite/profile.html",
-                          {"user": nowUser, "owner": True, "other": user, "posts": posts, "followers": followers})
+                          {"user": nowUser, "owner": True, "other": user, "posts": final_posts, "followers": followers,
+                           "is_scroll": True})
         else:
             if user in nowUser.follow.all():
                 return render(request, "mysite/profile.html",
-                              {"user": nowUser, "owner": False, "follows": True, "other": user, "posts": posts
-                                  , "followers": followers})
+                              {"user": nowUser, "owner": False, "follows": True, "other": user, "posts": final_posts
+                                  , "followers": followers, "is_scroll": True})
             else:
                 return render(request, "mysite/profile.html",
-                              {"user": nowUser, "owner": False, "follows": False, "other": user, "posts": posts
-                                  , "followers": followers})
+                              {"user": nowUser, "owner": False, "follows": False, "other": user, "posts": final_posts
+                                  , "followers": followers, "is_scroll": True})
     else:
         # TODO error page
         return HttpResponse("Error : cant find requsted user")
@@ -149,7 +162,7 @@ def change_password(request):
                     password, salt=None, hasher='default'))
                 # send_mail('Simorgh Hotel Reservation', 'your password has been changed.',
                 # '', [user.email],
-                #                   fail_silently=False)
+                # fail_silently=False)
                 return JsonResponse({'status': 3})
             else:
                 return JsonResponse({'status': 1})
@@ -163,8 +176,11 @@ def follow(request):
         currentUser = UserProfile.objects.get(id=request.user.id)
         username = request.POST.get('followed')
         user = UserProfile.objects.get(username=username)
-        Follow.objects.create(follower=currentUser, followed=user)
-        return JsonResponse({'status': 'ok'})
+        if len(Follow.objects.filter(follower=currentUser, followed=user)) == 0:
+            Follow.objects.create(follower=currentUser, followed=user)
+            return JsonResponse({'status': 'ok'})
+        else:
+            return JsonResponse({'false': 'ok'})
 
 
 @csrf_exempt
@@ -198,11 +214,11 @@ def unfollow(request):
         currentUser = UserProfile.objects.get(id=request.user.id)
         username = request.POST.get('followed', '')
         user = UserProfile.objects.get(username=username)
-        #currentUser.follow.remove(user)
+        # currentUser.follow.remove(user)
         if len(Follow.objects.filter(follower=currentUser, followed=user)) == 0:
             return
         f = Follow.objects.filter(follower=currentUser, followed=user)
-        f.delete();
+        f.delete()
         return JsonResponse({'status': 'ok'})
 
 

@@ -8,6 +8,7 @@ admin.autodiscover()
 from . import views
 
 urlpatterns = patterns('', url(r'^admin', include(admin.site.urls)),
+                       url(r'^captcha/', include('captcha.urls')),
                        url(r'^movieprofile/', include('movie.urls')),
                        url(r'^search', include('search.urls')),
                        url(r'^user', include('useraccount.urls')),

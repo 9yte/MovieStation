@@ -41,7 +41,7 @@
 
                         <div class="caption">
                             <h1 class="media-heading">{{ movie.name }}</h1>
-                            <input id="movieRate" value="{{ rate }}" type="number" readonly="true" data-stars="10"
+                            <input id="movieRate" value="{{ movie.rate }}" type="number" readonly="true" data-stars="10"
                                    class="rating" min=0 max=10 step=0.2 data-size="xs">
                             {% comment %}<input id="mainStar" type="number" class="rating" min=1 max=10 step=0.5 data-size="lg" data-rtl="true">{% endcomment %}
                             <p>

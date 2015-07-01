@@ -2,7 +2,7 @@ var x = true;
 window.onscroll = function (ev) {
     if ((window.innerHeight + window.scrollY) >= document.body.offsetHeight & x) {
         x = false;
-        $.post("/post/get_post", {'num': 5, 'last_date': $('.post-body:last-child').attr('date_time')}, function (data) {
+        $.post("/post/get_post", {'num': 1, 'last_date': $('.post-body:last-child').attr('date_time'), 'query': $('#query').val(), 'user_id': $('#user-id').attr('user-id')}, function (data) {
             if (data.status == 'ok') {// the user comments about the post
                 var posts = JSON.parse(data.posts);
                 var comments = JSON.parse(data.comments);
@@ -18,7 +18,7 @@ window.onscroll = function (ev) {
                     c += 'class="text-muted date"><span class="glyphicon glyphicon-time"';
                     c += 'aria-hidden="true"></span><a href="/post/' + p.id + '"';
                     c += 'class="text-muted">' + p.date_time + '</a></span></h5>';
-                    c += '<a href="/movieprofile/'+ p.movie_name + '">';
+                    c += '<a href="/movieprofile/' + p.movie_name + '">';
                     c += '<span tabindex="0" id="movie-info1" class="color-popover" data-toggle="popover" data-trigger="hover"';
                     c += 'data-content="' + p.description + '">' + p.movie_name + '</span>';
                     c += '<div class="col-sm-12 col-md-12"><div class="thumbnail">';
@@ -63,7 +63,7 @@ window.onscroll = function (ev) {
                 }
                 console.log(c);
                 $('#post-tab').append(c);
-                $('#post-tab:last-child .comment').keyup(function (e) {
+                $('.comment').keyup(function (e) {
                     e.preventDefault();
                     if (e.which == 13) {
                         var x = e.target;

@@ -8,11 +8,11 @@ from useraccount.models import UserProfile
 from movie.models import Movie
 from django.contrib import messages
 from datetime import datetime
+from django.utils import timezone
 from django.views.decorators.csrf import csrf_exempt
 from django.http.response import JsonResponse, HttpResponse
 from .models import Favourite, Comment
 import json
-from django.core import serializers
 
 
 @login_required(login_url='')
@@ -21,8 +21,8 @@ def show_post(request, post_id):
     posts = Post.objects.filter(id=post_id)
     if len(posts) == 1:
         final_posts = []
-        followings = user.followings.all()
-        if posts[0].author in followings:
+        followings = user.follow.all()
+        if posts[0].author in followings or posts[0].author == user:
             for post in posts:
                 x = len(Favourite.objects.filter(post=post))
                 cms = Comment.objects.filter(post=post)
@@ -88,17 +88,27 @@ def get_post(request):
     if request.method == "POST":
         num = int(request.POST.get("num"))
         last_date = request.POST.get("last_date")
+        query = request.POST.get("query", None)
+        user_id = request.POST.get("user-id", None)
         user = UserProfile.objects.get(id=request.user.id)
-        followings = user.followings.all()
+        followings = user.follow.all()
         posts = []
-        try:
-            last_date = datetime.strptime(last_date, "%B %d, %Y, %I:%M a.m.")
-        except:
-            last_date = datetime.strptime(last_date, "%B %d, %Y, %I:%M p.m.")
-        for f in followings:
-            user_posts = Post.objects.filter(author=f, date_time__lt=last_date)
+        if last_date[-1] == '.':
+            last_date = last_date[0:len(last_date) - 3] + 'm'
+        last_date = datetime.strptime(last_date, "%B %d, %Y, %I:%M %p")
+        if query is not None:
+            for f in followings:
+                user_posts = Post.objects.filter(author=f, date_time__lt=last_date, text__contains=query)
+                posts += user_posts
+            posts += Post.objects.filter(author=user, date_time__lt=last_date, text_contains=query)
+        elif user_id is not None:
+            posts += Post.objects.filter(author=user, date_time__lt=last_date)
+        else:
+            for f in followings:
+                user_posts = Post.objects.filter(author=f, date_time__lt=last_date)
+                posts += user_posts
+            user_posts = Post.objects.filter(author=user, date_time__lt=last_date)
             posts += user_posts
-        posts += Post.objects.filter(author=user, date_time__lt=last_date)
         posts.sort(key=lambda x: x.date_time, reverse=True)
         counter = 0
         final_posts = []
@@ -154,6 +164,7 @@ def post(request, movie_id):
                 new_rate /= (number_of_voters + 1)
             movie.rate = new_rate
             movie.rate_numbers = number_of_voters + 1
+            movie.save()
             new_post.save()
             messages.success(request, 'Post has been sent successfully!')
             return redirect("/movieprofile/" + movie.name)
