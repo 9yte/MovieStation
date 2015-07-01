@@ -34,12 +34,14 @@ window.onscroll = function (ev) {
                         c += '<div class="hr second-color text-left"><span ';
                         c += 'class="glyphicon glyphicon-comment"></span><span p-id="' + p.id + '">' + p.comments_num + ' Comments</span><span ';
                         c += 'class="glyphicon glyphicon-star star-like"';
+                        c += ' id="star-like' + p.id +'"';
                         c += 'post-id="' + p.id + '"></span><span>' + p.likes + ' Favourites</span></div>';
                     }
                     else {
                         c += '<div class="hr second-color text-left"><span ';
                         c += 'class="glyphicon glyphicon-comment"></span><span p-id="' + p.id + '">' + p.comments_num + ' Comments</span><span ';
                         c += 'class="glyphicon glyphicon-star-empty star-like"';
+                        c += ' id="star-like' + p.id +'"';
                         c += 'post-id="' + p.id + '"></span><span>' + p.likes + ' Favourites</span></div>';
                     }
                     var l = p.comments_num;
@@ -58,13 +60,15 @@ window.onscroll = function (ev) {
                     c += '<img class="media-object img-circle"';
                     c += 'src="' + data.avatar_url + '" alt="user avatar"></a></div>';
                     c += '<div class="media-body"><div class="input-group col-lg-12 col-xs-12">';
-                    c += '<textarea type="text" class="form-control comment" post-id="' + p.id + '"placeholder="Add comment..."></textarea>';
+                    c += '<textarea type="text" class="form-control comment" id="comment-post-id';
+                    c += p.id + '" post-id="' + p.id + '"placeholder="Add comment..."></textarea>';
                     c += '</div></div></div></div></div><hr class="divider"></div></div>';
                 }
                 console.log(c);
                 $('#post-tab').append(c);
-                $('.comment').keyup(function (e) {
+                $('.post-body:last-child .comment#comment-post-id' + p.id).keyup(function (e) {
                     e.preventDefault();
+                    e.stopPropagation();
                     if (e.which == 13) {
                         var x = e.target;
                         var comment = $(this).val();
@@ -91,8 +95,9 @@ window.onscroll = function (ev) {
                         });
                     }
                 });
-                $('.star-like').click(function (e) {
+                $('.post-body:last-child .star-like#star-like' + p.id).click(function (e) {
                     e.preventDefault();
+                    e.stopPropagation();
                     var c = e.target;
                     if ($(c).hasClass('glyphicon-star-empty')) {
                         $.post("/post/" + $(c).attr('post-id') + "/like", {'req': 0}, function (data) {

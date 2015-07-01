@@ -24,6 +24,7 @@
                                        class="form-control input-sm color_tooltip my_input" placeholder="Password"
                                        data-toggle="tooltip" data-animation="true"
                                        data-placement="bottom" title="Please enter your password">
+                                <input type="hidden" name="next" value="{{ next }}">
                             </div>
                             {% if messages %}
                                 {% for message in messages %}
@@ -74,8 +75,10 @@
                         </form>
                     </div>
                     <hr class="divider">
+
                     <div class="panel-body">
-                        <form method="post" role="form" action="/user/register" data-toggle="validator" id="signup" enctype="multipart/form-data">
+                        <form method="post" role="form" action="/user/register" data-toggle="validator" id="signup"
+                              enctype="multipart/form-data">
                             {% csrf_token %}
                             <div class="form-group">
                                 <input type="text" name="username"

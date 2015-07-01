@@ -15,18 +15,37 @@
         <div class="panel panel-default" id="m">
             <div class="tab-content">
                 <div class="tab-pane active" id="post-tab">
+                    {% for message in messages %}
+                        {% if message.tags == 'error' %}
+                            <div class="alert alert-danger alert-dismissible" role="alert">
+                                <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span
+                                        aria-hidden="true">&times;</span></button>
+                                {{ message }}
+                            </div>
+                        {% elif message.tags == 'success' %}
+                            <div class="alert alert-success alert-dismissible" role="alert">
+                                <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span
+                                        aria-hidden="true">&times;</span></button>
+                                {{ message }}
+                            </div>
+                        {% endif %}
+                    {% endfor %}
                     {% for post in posts %}
                         <div class="panel-body post-body" date_time="{{ post.date_time }}">
                             <a href="/profile/{{ post.author.username }}"><img class="img-responsive col-lg-3 pro-pic"
-                                                                              src="{{ post.author.avatar.url }}"></a>
+                                                                               src="{{ post.author.avatar.url }}"></a>
                             <h5><a href="/profile/{{ post.author.username }}"> {{ post.author.nickname }}</a><span
                                     class="text-muted date"><span class="glyphicon glyphicon-time"
-                                                                  aria-hidden="true"></span><a href="/post/{{ post.id }}"
-                                                                                               class="text-muted">{{ post.date_time }}</a></span>
+                                                                  aria-hidden="true"></span><a
+                                    href="/post/{{ post.id }}"
+                                    class="text-muted">{{ post.date_time }}</a></span>
                             </h5>
-                            <a href="/movieprofile/{{ post.movie.name }}"><span tabindex="0" id="movie-info{{ post.id }}" class="color-popover" data-toggle="popover"
-                                  data-trigger="hover"
-                                  data-content="{{ post.movie.description }}">{{ post.movie.name }}</span></a>
+                            <a href="/movieprofile/{{ post.movie.name }}"><span tabindex="0"
+                                                                                id="movie-info{{ post.id }}"
+                                                                                class="color-popover"
+                                                                                data-toggle="popover"
+                                                                                data-trigger="hover"
+                                                                                data-content="{{ post.movie.description }}">{{ post.movie.name }}</span></a>
                             <!--<hr class="divider small-divider">-->
                             <div class="col-sm-12 col-md-12">
                                 <div class="thumbnail">
@@ -42,15 +61,16 @@
                                         </p>
                                         {% if post.liked %}
                                             <div class="hr second-color text-left"><span
-                                                    class="glyphicon glyphicon-comment"></span><span p-id="{{ post.id }}">{{ post.comments_num }} Comments</span><span
-                                                    class="glyphicon glyphicon-star star-like"
+                                                    class="glyphicon glyphicon-comment"></span><span
+                                                    p-id="{{ post.id }}">{{ post.comments_num }} Comments</span><span
+                                                    class="glyphicon glyphicon-star star-like" id="star-like{{ post.id }}"
                                                     post-id="{{ post.id }}"></span><span>{{ post.likes }} Favourites</span>
                                             </div>
                                         {% else %}
                                             <div class="hr second-color text-left"><span
                                                     class="glyphicon glyphicon-comment"></span>{{ post.comments_num }}
                                                 Comments</span><span
-                                                        class="glyphicon glyphicon-star-empty star-like"
+                                                        class="glyphicon glyphicon-star-empty star-like" id="star-like{{ post.id }}"
                                                         post-id="{{ post.id }}"></span><span>{{ post.likes }} Favourites</span>
                                             </div>
                                         {% endif %}
@@ -69,7 +89,7 @@
                                             </div>
                                             <div class="hr second-color small-divider text-right"><span
                                                     class="glyphicon glyphicon-time" aria-hidden="true"></span>
-                                                    {{ c.date_time }}</div>
+                                                {{ c.date_time }}</div>
                                         {% endfor %}
                                         <div class="media">
                                             <div class="media-left media-top my-media">
@@ -80,7 +100,8 @@
                                             </div>
                                             <div class="media-body">
                                                 <div class="input-group col-lg-12 col-xs-12">
-                                                    <textarea type="text" class="form-control comment" post-id="{{ post.id }}"
+                                                    <textarea type="text" class="form-control comment" id="comment-post-id{{ post.id }}"
+                                                              post-id="{{ post.id }}"
                                                               placeholder="Add comment..."></textarea>
                                                 </div>
                                             </div>
@@ -104,6 +125,6 @@
     <script type="text/javascript" src="{% static 'js/like.js' %}"></script>
     <script type="text/javascript" src="{% static 'js/movie_info.js' %}"></script>
     {% if is_scroll %}
-    <script type="text/javascript" src="{% static 'js/getPost.js' %}"></script>
+        <script type="text/javascript" src="{% static 'js/getPost.js' %}"></script>
     {% endif %}
 {% endblock content %}

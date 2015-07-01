@@ -62,26 +62,17 @@ def register(request):
 
 def login(request):
     if request.method == "POST":
-    #    form = LoginForm(request.POST)
-    #    if form.is_valid():
-    #        username = form.cleaned_data['username']
-    #        print(username)
-    #        password = form.cleaned_data['password']
-    #        print(password)
-    #        user = authenticate(username=username, password=password)
-    #        if user is not None:
-    #            a_login(request, user)
-    #            return redirect('/home')
-    #else:
-    #    form = LoginForm()
-    #return render(request, 'minpage.html', {'form': form})
         username = request.POST.get("UserName", "")
         password = request.POST.get("password", "")
-
+        next = request.POST.get("next", "")
         user = authenticate(username=username, password=password)
         if user is not None:
             a_login(request, user)
-            return redirect('/home')
+            print(next)
+            if next == "None":
+                return redirect('/home')
+            else:
+                return redirect(next)
         else:
             messages.error(request, 'Username or password is incorrect!')
             return redirect('/')
@@ -146,19 +137,19 @@ def show_profile(request, username, number_of_posts=2):
         if user.username == nowUser.username:
             return render(request, "mysite/profile.html",
                           {"user": nowUser, "owner": True, "other": user, "posts": final_posts, "followers": followers,
-                           "is_scroll": True})
+                           "is_scroll": True, 'number_of_posts': len(posts)})
         else:
             if user in nowUser.follow.all():
                 return render(request, "mysite/profile.html",
                               {"user": nowUser, "owner": False, "follows": True, "other": user, "posts": final_posts
-                                  , "followers": followers, "is_scroll": True})
+                                  , "followers": followers, "is_scroll": True, 'number_of_posts': len(posts)})
             else:
+                messages.error(request, "you need to follow " + user.username)
                 return render(request, "mysite/profile.html",
-                              {"user": nowUser, "owner": False, "follows": False, "other": user, "posts": final_posts
-                                  , "followers": followers, "is_scroll": True})
+                              {"user": nowUser, "owner": False, "follows": False, "other": user
+                                  , "followers": followers, "is_scroll": True, 'number_of_posts': len(posts)})
     else:
-        # TODO error page
-        return HttpResponse("Error : cant find requsted user")
+        return redirect("/home")
 
 
 @csrf_exempt

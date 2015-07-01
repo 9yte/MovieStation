@@ -35,6 +35,9 @@ def show_post(request, post_id):
                 final_posts.append(post)
             return render(request, "mysite/post.html",
                           {'posts': final_posts, 'user': user})
+        messages.error(request, 'You need to follow ' + posts[0].author.username)
+        return redirect("/home")
+    messages.error(request, 'Sorry, this post has been deleted!')
     return redirect("/home")
 
 
@@ -94,21 +97,24 @@ def get_post(request):
         user = UserProfile.objects.get(id=request.user.id)
         followings = user.follow.all()
         posts = []
-        print(last_date)
-        if last_date[-1] == '.':
-            last_date = last_date[0:len(last_date) - 3] + 'm'
-        print(last_date)
-        try:
-            last_date = datetime.strptime(last_date, "%B %d, %Y, %I:%M %p")
-        except:
-            last_date = datetime.strptime(last_date, "%B %d, %Y, %I %p")
+        print(user_id)
+        if last_date is None:
+            last_date = datetime.now().replace(microsecond=0)
+        else:
+            if last_date[-1] == '.':
+                last_date = last_date[0:len(last_date) - 3] + 'm'
+            try:
+                last_date = datetime.strptime(last_date, "%B %d, %Y, %I:%M %p")
+            except:
+                last_date = datetime.strptime(last_date, "%B %d, %Y, %I %p")
         if query is not None:
             for f in followings:
                 user_posts = Post.objects.filter(author=f, date_time__lt=last_date, text__contains=query)
                 posts += user_posts
             posts += Post.objects.filter(author=user, date_time__lt=last_date, text_contains=query)
         elif user_id is not None:
-            posts += Post.objects.filter(author=user, date_time__lt=last_date)
+            user1 = UserProfile.objects.filter(id=user_id)
+            posts += Post.objects.filter(author=user1, date_time__lt=last_date)
         else:
             for f in followings:
                 user_posts = Post.objects.filter(author=f, date_time__lt=last_date)

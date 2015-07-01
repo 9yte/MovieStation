@@ -1,6 +1,7 @@
 $(document).ready(function () {
     $('.comment').keyup(function (e) {
         e.preventDefault();
+        e.stopPropagation();
         if (e.which == 13) {
             var x = e.target;
             var comment = $(this).val();
