@@ -76,7 +76,6 @@ def comment(request, post_id):
             list = [{'username': cm.author.username, 'date_time': str(cm.date_time.strftime("%B %d, %Y, %I:%M %p")),
                      'text': cm.text,
                      'avatar_url': cm.author.avatar.url}]
-            print("%%%%%%%%%%%%%%%%5")
             print(cm.author.avatar.url)
             cm_json = json.dumps(list)
             return JsonResponse(dict(status='ok', comment=cm_json, comments_num=len(cms)))
@@ -91,13 +90,18 @@ def get_post(request):
         num = int(request.POST.get("num"))
         last_date = request.POST.get("last_date")
         query = request.POST.get("query", None)
-        user_id = request.POST.get("user-id", None)
+        user_id = request.POST.get("user_id", None)
         user = UserProfile.objects.get(id=request.user.id)
         followings = user.follow.all()
         posts = []
+        print(last_date)
         if last_date[-1] == '.':
             last_date = last_date[0:len(last_date) - 3] + 'm'
-        last_date = datetime.strptime(last_date, "%B %d, %Y, %I:%M %p")
+        print(last_date)
+        try:
+            last_date = datetime.strptime(last_date, "%B %d, %Y, %I:%M %p")
+        except:
+            last_date = datetime.strptime(last_date, "%B %d, %Y, %I %p")
         if query is not None:
             for f in followings:
                 user_posts = Post.objects.filter(author=f, date_time__lt=last_date, text__contains=query)
