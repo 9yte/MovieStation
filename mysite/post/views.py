@@ -72,13 +72,15 @@ def comment(request, post_id):
             p = Post.objects.get(id=post_id)
             user = UserProfile.objects.get(id=request.user.id)
             text = request.POST.get('text')
+            cms = Comment.objects.filter(post=p)
+            for c in cms:
+                Notif.objects.create(user=c.author, url='/post/'+post_id, date_time=datetime.now(), text=user.username + ' commented on the Post that you posted')
             cm = Comment.objects.create(author=user, post=p, text=text, date_time=datetime.now())
             cm.save()
             cms = Comment.objects.filter(post=p)
             list = [{'username': cm.author.username, 'date_time': str(cm.date_time.strftime("%B %d, %Y, %I:%M %p")),
                      'text': cm.text,
                      'avatar_url': cm.author.avatar.url}]
-            print("%%%%%%%%%%%%%%%%5")
             print(cm.author.avatar.url)
             cm_json = json.dumps(list)
             Notif.objects.create(user=p.author, url='/post/'+post_id, date_time=datetime.now(), text=user.username + ' commented on your Post')
@@ -178,29 +180,3 @@ def post(request, movie_id):
             return redirect("/movieprofile/" + movie.name)
     else:
         return redirect('')
-#
-#@csrf_exempt
-#def getNotif(request):
-#    print('GetNotif req')
-#    if request.method == 'POST':
-#        user = UserProfile.objects.get(id=request.user.id)
-#        print('from ')
-#        print(user.username)
-#        comments = Comment.objects.filter(post__author__username=user.username).order_by('-date_time')[:4]
-#        comment_owners = [o.author for o in comments]
-#        print('comments founded')
-#        print(comments)
-#        likes = Favourite.objects.filter(post__author__username=user.username).order_by('-date_time')[:4]
-#        like_owners = [o.user for o in likes]
-#        print('likes founded')
-#        print(likes)
-#
-#        new_comments = [serializers.serialize('json', [o]) for o in comments]
-#        new_comment_owners = [serializers.serialize('json', [o]) for o in comment_owners]
-#        new_likes = [serializers.serialize('json', [o]) for o in likes]
-#        new_like_owners = [serializers.serialize('json', [o]) for o in like_owners]
-#
-#        return JsonResponse(dict(status=True, notif_comments=new_comments, cm_owners=new_comment_owners,
-#                                 notif_likes=new_likes, like_owners=new_like_owners))
-#
-#    return JsonResponse(dict(status=False))
