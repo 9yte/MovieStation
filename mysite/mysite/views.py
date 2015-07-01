@@ -4,6 +4,7 @@ from useraccount.forms import RegisterForm
 from useraccount.models import UserProfile
 
 
+
 def mainpage(request):
     u = UserProfile.objects.filter(id=request.user.id)
     if len(u) == 0:
