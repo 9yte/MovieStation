@@ -55,7 +55,6 @@ function getPeople(n) {
                                 '</div>' +
                                 '<div class="media-body">' +
                                     '<h6 class="media-heading">' + display_name + '</h6>' +
-                                    '4 mutual follower' +
                                 '</div>' +
                             '</div>' +
                             '<hr class="divider small-divider">';

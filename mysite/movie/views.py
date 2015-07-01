@@ -35,10 +35,12 @@ def show_movie(request, movie_name):
 
 @csrf_exempt
 def suggestion(request, number):
+    print("SSSSUUUUGGGG MMMOOVVIIIEEE")
     if request.method == 'POST':
         user = UserProfile.objects.get(id=request.user.id)
 
         all_movies = Movie.objects.all()
+        print("here")
         movies = []
         for movie in all_movies:
             if len(Post.objects.filter(author=user, movie=movie)) != 0:
@@ -46,5 +48,7 @@ def suggestion(request, number):
             movies.append(movie)
             if len(movies) == 3:
                 break
+        print(movies)
         new_list = [serializers.serialize('json', [o]) for o in movies]
+        print("here2")
         return JsonResponse(dict(status=True, Movies=new_list))
