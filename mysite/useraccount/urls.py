@@ -16,5 +16,6 @@ urlpatterns = patterns('',
                        url(r'^/follow$', views.follow),
                        url(r'^/unfollow$', views.unfollow),
                        url(r'^/(?P<username>\w+)$', views.show_profile),
+                       url(r'^/suggestions/(?P<number>\d+)$', views.suggest),
                        url(r'^', views.homepage),
 )

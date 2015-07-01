@@ -45,24 +45,16 @@ def mainpage(request):
 
 @csrf_exempt
 def suggestion(request, number):
-    print('Get Suggestion Movies')
     if request.method == 'POST':
-        print(request.method)
         user = UserProfile.objects.get(id=request.user.id)
 
         all_movies = Movie.objects.all()
-        print('all_movies : ')
         movies = []
         for movie in all_movies:
-            print(movie)
             if len(Post.objects.filter(author=user, movie=movie)) != 0:
                 continue
             movies.append(movie)
-            print(movie)
-            print('added')
-            if len(movies) == number:
+            if len(movies) == 3:
                 break
-        print(len(movies))
         new_list = [serializers.serialize('json', [o]) for o in movies]
-        print('send')
         return JsonResponse(dict(status=True, Movies=new_list))
