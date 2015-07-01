@@ -14,6 +14,7 @@ from django.utils import timezone
 from django.views.decorators.csrf import csrf_exempt
 from django.http.response import JsonResponse, HttpResponse
 from .models import Favourite, Comment
+from notif.models import Notif
 import json
 
 
@@ -57,6 +58,7 @@ def like(request, post_id):
                 fav = Favourite.objects.get(post=p, user=user)
                 fav.delete()
                 l = Favourite.objects.filter(post=p)
+                Notif.objects.create(user=p.author, url='/post/'+post_id, date_time=datetime.now(), text=user.username +' liked on your Post')
                 return JsonResponse({'status': 'unlike', 'likes': len(l)})
         except:
             return JsonResponse({'status': 'wrong request'})
@@ -79,6 +81,7 @@ def comment(request, post_id):
             print("%%%%%%%%%%%%%%%%5")
             print(cm.author.avatar.url)
             cm_json = json.dumps(list)
+            Notif.objects.create(user=p.author, url='/post/'+post_id, date_time=datetime.now(), text=user.username + ' commented on your Post')
             return JsonResponse(dict(status='ok', comment=cm_json, comments_num=len(cms)))
         except:
             return JsonResponse({'status': 'false', 'text': cm.text, 'comments_num': len(cms)})
@@ -175,29 +178,29 @@ def post(request, movie_id):
             return redirect("/movieprofile/" + movie.name)
     else:
         return redirect('')
-
-@csrf_exempt
-def getNotif(request):
-    print('GetNotif req')
-    if request.method == 'POST':
-        user = UserProfile.objects.get(id=request.user.id)
-        print('from ')
-        print(user.username)
-        comments = Comment.objects.filter(post__author__username=user.username).order_by('-date_time')[:4]
-        comment_owners = [o.author for o in comments]
-        print('comments founded')
-        print(comments)
-        likes = Favourite.objects.filter(post__author__username=user.username).order_by('-date_time')[:4]
-        like_owners = [o.user for o in likes]
-        print('likes founded')
-        print(likes)
-
-        new_comments = [serializers.serialize('json', [o]) for o in comments]
-        new_comment_owners = [serializers.serialize('json', [o]) for o in comment_owners]
-        new_likes = [serializers.serialize('json', [o]) for o in likes]
-        new_like_owners = [serializers.serialize('json', [o]) for o in like_owners]
-
-        return JsonResponse(dict(status=True, notif_comments=new_comments, cm_owners=new_comment_owners,
-                                 notif_likes=new_likes, like_owners=new_like_owners))
-
-    return JsonResponse(dict(status=False))
+#
+#@csrf_exempt
+#def getNotif(request):
+#    print('GetNotif req')
+#    if request.method == 'POST':
+#        user = UserProfile.objects.get(id=request.user.id)
+#        print('from ')
+#        print(user.username)
+#        comments = Comment.objects.filter(post__author__username=user.username).order_by('-date_time')[:4]
+#        comment_owners = [o.author for o in comments]
+#        print('comments founded')
+#        print(comments)
+#        likes = Favourite.objects.filter(post__author__username=user.username).order_by('-date_time')[:4]
+#        like_owners = [o.user for o in likes]
+#        print('likes founded')
+#        print(likes)
+#
+#        new_comments = [serializers.serialize('json', [o]) for o in comments]
+#        new_comment_owners = [serializers.serialize('json', [o]) for o in comment_owners]
+#        new_likes = [serializers.serialize('json', [o]) for o in likes]
+#        new_like_owners = [serializers.serialize('json', [o]) for o in like_owners]
+#
+#        return JsonResponse(dict(status=True, notif_comments=new_comments, cm_owners=new_comment_owners,
+#                                 notif_likes=new_likes, like_owners=new_like_owners))
+#
+#    return JsonResponse(dict(status=False))

@@ -5,7 +5,7 @@ from captcha.fields import CaptchaField
 
 class RegisterForm(forms.ModelForm):
     confirm = forms.CharField(widget=forms.PasswordInput)
-    captcha = CaptchaField()
+    #captcha = CaptchaField()
     class Meta:
         model = UserProfile
         fields = ['username', 'email', 'password', 'confirm',
