@@ -21,7 +21,7 @@ def show_post(request, post_id):
     posts = Post.objects.filter(id=post_id)
     if len(posts) == 1:
         final_posts = []
-        followings = user.followings.all()
+        followings = user.follow.all()
         if posts[0].author in followings:
             for post in posts:
                 x = len(Favourite.objects.filter(post=post))
@@ -89,7 +89,7 @@ def get_post(request):
         num = int(request.POST.get("num"))
         last_date = request.POST.get("last_date")
         user = UserProfile.objects.get(id=request.user.id)
-        followings = user.followings.all()
+        followings = user.follow.all()
         posts = []
         try:
             last_date = datetime.strptime(last_date, "%B %d, %Y, %I:%M a.m.")
@@ -162,3 +162,29 @@ def post(request, movie_id):
             return redirect("/movieprofile/" + movie.name)
     else:
         return redirect('')
+
+@csrf_exempt
+def getNotif(request):
+    print('GetNotif req')
+    if request.method == 'POST':
+        user = UserProfile.objects.get(id=request.user.id)
+        print('from ')
+        print(user.username)
+        comments = Comment.objects.filter(post__author__username=user.username).order_by('-date_time')[:4]
+        comment_owners = [o.author for o in comments]
+        print('comments founded')
+        print(comments)
+        likes = Favourite.objects.filter(post__author__username=user.username).order_by('-date_time')[:4]
+        like_owners = [o.user for o in likes]
+        print('likes founded')
+        print(likes)
+
+        new_comments = [serializers.serialize('json', [o]) for o in comments]
+        new_comment_owners = [serializers.serialize('json', [o]) for o in comment_owners]
+        new_likes = [serializers.serialize('json', [o]) for o in likes]
+        new_like_owners = [serializers.serialize('json', [o]) for o in like_owners]
+
+        return JsonResponse(dict(status=True, notif_comments=new_comments, cm_owners=new_comment_owners,
+                                 notif_likes=new_likes, like_owners=new_like_owners))
+
+    return JsonResponse(dict(status=False))

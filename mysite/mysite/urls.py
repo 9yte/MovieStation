@@ -15,6 +15,7 @@ urlpatterns = patterns('', url(r'^admin', include(admin.site.urls)),
                        url(r'^profile', include('useraccount.urls')),
                        url(r'^post/', include('post.urls')),
                        url(r'^search$', views.show_searchResult),
+                       url(r'^captcha/', include('captcha.urls')),
                        url(r'^$', views.mainpage)
 )
 

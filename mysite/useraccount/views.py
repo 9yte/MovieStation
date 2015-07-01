@@ -26,6 +26,7 @@ from .forms import RegisterForm, ChangePassForm, EditForm
 # Create your views here.
 
 
+
 @login_required(login_url='/signin')
 def activation(request):
     user = UserProfile.objects.get(id=request.user.id)
@@ -64,6 +65,19 @@ def register(request):
 
 def login(request):
     if request.method == "POST":
+    #    form = LoginForm(request.POST)
+    #    if form.is_valid():
+    #        username = form.cleaned_data['username']
+    #        print(username)
+    #        password = form.cleaned_data['password']
+    #        print(password)
+    #        user = authenticate(username=username, password=password)
+    #        if user is not None:
+    #            a_login(request, user)
+    #            return redirect('/home')
+    #else:
+    #    form = LoginForm()
+    #return render(request, 'minpage.html', {'form': form})
         username = request.POST.get("UserName", "")
         password = request.POST.get("password", "")
 
@@ -106,7 +120,7 @@ def homepage(request, number_of_posts=2):
         post.liked = (len(Favourite.objects.filter(post=post, user=user)) == 1)
         final_posts.append(post)
         counter += 1
-    return render(request, "mysite/home.html", {"posts": final_posts, "is_scroll": True})
+    return render(request, "mysite/home.html", {"posts": final_posts, "is_scroll": True, "user": user})
 
 
 @login_required(login_url='/')
@@ -220,6 +234,7 @@ def suggest(request, number):
             users.append(user)
             if len(users) == 3:
                 break
-    new_list = [serializers.serialize('json', [o]) for o in users]
-    return JsonResponse(dict(status=True, Peoples=new_list))
+        new_list = [serializers.serialize('json', [o]) for o in users]
+        return JsonResponse(dict(status=True, Peoples=new_list))
+    return JsonResponse(dict(status=False))
 
