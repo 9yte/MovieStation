@@ -15,6 +15,7 @@ from django.http.response import HttpResponse, JsonResponse
 from django.views.decorators.csrf import csrf_exempt
 from .models import UserProfile, Follow
 
+from notif.models import Notif
 from post.models import Comment, Favourite
 from post.models import Post
 from datetime import datetime
@@ -181,6 +182,7 @@ def follow(request):
         user = UserProfile.objects.get(username=username)
         if len(Follow.objects.filter(follower=currentUser, followed=user)) == 0:
             Follow.objects.create(follower=currentUser, followed=user)
+            Notif.objects.create(user=user, url='/profile/'+currentUser.username, date_time=datetime.now(), text=currentUser.username + ' is now following you')
             return JsonResponse({'status': 'ok'})
         else:
             return JsonResponse({'false': 'ok'})

@@ -45,6 +45,7 @@ INSTALLED_APPS = (
     'movie',
     'post',
     'search',
+    'notif'
 )
 
 MIDDLEWARE_CLASSES = (
