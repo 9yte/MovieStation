@@ -44,6 +44,7 @@ INSTALLED_APPS = (
     'movie',
     'post',
     'search',
+    'captcha',
 )
 
 MIDDLEWARE_CLASSES = (

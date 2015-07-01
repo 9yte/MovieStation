@@ -1,4 +1,3 @@
-__author__ = 'hojjat'
 from django.shortcuts import render
 from django.shortcuts import redirect
 from useraccount.forms import RegisterForm
